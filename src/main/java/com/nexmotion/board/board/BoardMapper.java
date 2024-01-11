@@ -8,7 +8,7 @@ import java.util.List;
 @Mapper
 public interface BoardMapper {
 
-    public List<Board> selectBoard(Board board) throws SQLException;
+    public List<Board> selectBoard() throws SQLException;
 
     public void insertBoard(Board board) throws SQLException;
 

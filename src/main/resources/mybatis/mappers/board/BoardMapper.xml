@@ -35,6 +35,7 @@
     <select id="selectBoard" parameterType="com.nexmotion.board.board.Board" resultMap="boardResultMap">
         SELECT *
           FROM post
+         WHERE post_id = 1
     </select>
 
 

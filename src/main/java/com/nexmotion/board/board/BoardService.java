@@ -17,8 +17,8 @@ public class BoardService implements BoardMapper{
     BoardMapper boardMapper;
 
     @Override
-    public List<Board> selectBoard(Board board) throws SQLException {
-        return boardMapper.selectBoard(board);
+    public List<Board> selectBoard() throws SQLException {
+        return boardMapper.selectBoard();
     }
 
     @Override

@@ -7,7 +7,7 @@ public class ResponseObject<T> {
 
     public T getData() { return data; }
 
-    public void setData() { this.data = data; }
+    public void setData(T data) { this.data = data; }
 
     public String getReturnCode() { return returnCode; }
 
