@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.nexmotion.board.notice.NoticeMapper">
+
+    <resultMap type="com.nexmotion.board.notice.Notice" id="noticeResultMap">
+        <id column="post_id" property="postId" />
+        <result column="board_code" property="boardCode" />
+        <result column="post_author" property="postAuthor" />
+        <result column="post_title" property="postTitle" />
+        <result column="post_date" property="postDate" />
+        <result column="post_update_date" property="postUpdateDate" />
+        <result column="post_content" property="postContent" />
+        <result column="post_hit" property="postHit" />
+        <result column="post_delete_yn" property="postDeleteYn" />
+    </resultMap>
+
+    <select id="selectNotice" parameterType="com.nexmotion.board.notice.Notice" resultMap="noticeResultMap">
+        /*NoticeMapper.selectNotice Query*/
+        SELECT *
+          FROM post
+         WHERE board_code = #{boardCode}
+        <if test="@org.springframework.util.StringUtils@hasText(postAuthor)">
+           AND post_author  = #{postAuthor}
+        </if>
+        <if test="@org.springframework.util.StringUtils@hasText(postTitle)">
+           AND post_title = #{postTitle}
+        </if>
+        <if test="@org.springframework.util.StringUtils@hasText(postContent)">
+           AND post_content = #{postContent}
+        </if>
+        <if test="@org.springframework.util.StringUtils@hasText(postUpdateDate)">
+           AND post_update_date = #{postUpdateDate}
+        </if>
+        <if test="@org.springframework.util.StringUtils@hasText(postHit)">
+           AND post_hit = #{postHit}
+        </if>
+        <if test="@org.springframework.util.StringUtils@hasText(postDate)">
+           AND post_date = #{postDate}
+        </if>
+    </select>
+
+    <insert id="insertNotice" parameterType="com.nexmotion.board.notice.Notice">
+        /*NoticeMapper.insertNotice Query*/
+        INSERT
+          INTO post
+        VALUES (
+                #{postId}
+               ,#{boardCode}
+               ,#{postAuthor}
+               ,#{postTitle}
+               ,#{postDate}
+               ,#{postUpdateDate}
+               ,#{postContent}
+               ,#{postHit}
+               ,#{postDeleteYn})
+    </insert>
+
+    <update id="updateNotice" parameterType="com.nexmotion.board.notice.Notice">
+        /*NoticeMapper.updateNotice Query*/
+        UPDATE post
+           SET post_id = #{postId}
+              ,board_code = #{boardCode}
+              ,post_author = #{postAuthor}
+              ,post_title = #{postTitle}
+              ,post_date = #{postDate}
+              ,post_update_date = #{postUpdateDate}
+              ,post_content = #{postContent}
+              ,post_hit = #{postHit}
+              ,post_delete_yn = # {postDeleteYn}
+         WHERE post_id = #{postId}
+    </update>
+
+    <delete id="deleteNotice" parameterType="com.nexmotion.board.notice.Notice">
+        /*NoticeMapper.deleteNotice Query*/
+        DELETE
+          FROM post
+         WHERE post_id = #{postId}
+    </delete>
+
+
+
+
+</mapper>
