@@ -32,7 +32,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         String[] permitted = new String[] {
-               "/", "/resoucres/**", "/css/**", "/js/**", "/lib/**", "/auth/*", "/error/denied"
+               "/", "/resources/**", "/css/**", "/js/**", "/lib/**", "/auth/*", "/error/denied"
         };
 
         http.authorizeRequests()
