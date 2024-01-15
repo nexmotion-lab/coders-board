@@ -6,25 +6,25 @@
 <mapper namespace="com.nexmotion.board.account.AccountMapper">
 
     <resultMap type="com.nexmotion.board.account.Account" id="accountResultMap">
-        <id column="userid" property="userid" javaType="java.lang.String"/>
-        <result column="password" property="password" javaType="java.lang.String"/>
-        <result column="authority" property="authority" javaType="java.lang.String"/>
-        <result column="isaccountnonexpired" property="isAccountNonExpired" javaType="java.lang.Boolean"/>
-        <result column="isaccountnonlocked" property="isAccountNonLocked" javaType="java.lang.Boolean"/>
-        <result column="iscredentialsnonexpired" property="isCredentialsNonExpired" javaType="java.lang.Boolean"/>
-        <result column="isenabled" property="isEnabled" javaType="java.lang.Boolean"/>
+        <id column="member_id" property="userid" javaType="java.lang.String"/>
+        <result column="member_password" property="password" javaType="java.lang.String"/>
+        <result column="member_auth" property="authority" javaType="java.lang.String"/>
+        <result column="member_expired_yn" property="isAccountNonExpired" javaType="java.lang.Boolean"/>
+        <result column="member_lock_yn" property="isAccountNonLocked" javaType="java.lang.Boolean"/>
+        <result column="member_credential_lock_yn" property="isCredentialsNonExpired" javaType="java.lang.Boolean"/>
+        <result column="member_enable_yn" property="isEnabled" javaType="java.lang.Boolean"/>
     </resultMap>
 
     <select id="getAccount" parameterType="map" resultMap="accountResultMap">
-        SELECT userid
-              ,password
-              ,authority
-              ,isaccountnonexpired
-              ,isaccountnonlocked
-              ,iscredentialsnonexpired
-              ,isenabled
-         FROM account
-        WHERE userid = #{userid}
+        SELECT member_id
+              ,member_password
+              ,member_auth
+              ,member_expired_yn
+              ,member_lock_yn
+              ,member_enable_yn
+              ,member_credential_lock_yn
+         FROM member
+        WHERE member_id = #{userid}
     </select>
 
 </mapper>

@@ -11,6 +11,6 @@ public class ResponseObject<T> {
 
     public String getReturnCode() { return returnCode; }
 
-    public void setReturnCode() { this.returnCode = returnCode; }
+    public void setReturnCode(String returnCode) { this.returnCode = returnCode; }
 
 }
