@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class FreeController {
 
     @RequestMapping("/free")
-    public String noticePage() {
+    public String freePage() {
 
         return "/free/free";
     }

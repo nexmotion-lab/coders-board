@@ -2,7 +2,6 @@ package com.nexmotion.board.free;
 
 import com.nexmotion.board.common.ResponseObject;
 import com.nexmotion.board.common.StatusCode;
-import com.nexmotion.board.notice.Notice;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
