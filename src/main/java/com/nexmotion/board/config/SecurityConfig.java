@@ -27,12 +27,11 @@ public class SecurityConfig {
 
     private String loginSuccessUrl = "/";
 
-
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         String[] permitted = new String[] {
-               "/", "/resoucres/**", "/css/**", "/js/**", "/lib/**", "/auth/*", "/error/denied"
+               "/", "/resoucres/**", "/css/**", "/js/**", "/lib/**", "/auth/*", "/error/denied", "/img/**"
         };
 
         http.authorizeRequests()
