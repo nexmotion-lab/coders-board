@@ -4,7 +4,7 @@
             <li><a href = "/">
                 <img src="${pageContext.request.contextPath}/img/main_logo.png" alt="main_logo" class="brand-image">
             </a></li>
-            <li class="brand-title" onclick="redirectToIndex()">
+            <li class="brand-title">
                 <h2>삼육대학교 컴퓨터학과 홈페이지</h2>
             </li>
 
