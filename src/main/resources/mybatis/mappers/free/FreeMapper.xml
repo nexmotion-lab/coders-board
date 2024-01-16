@@ -43,13 +43,14 @@
 
     <insert id="insertBoard" parameterType="com.nexmotion.board.free.Free">
         INSERT
-        INTO post (board_code, post_author, post_title, post_content, post_hit)
+        INTO post (board_code, post_author, post_title, post_date, post_update_date, post_content)
         VALUES (
                #{boardCode}
                ,#{postAuthor}
                ,#{postTitle}
+               ,NOW()
+               ,NOW()
                ,#{postContent}
-               ,#{postHit}
                )
     </insert>
 
