@@ -36,6 +36,7 @@ public class SecurityConfig {
 
         http.authorizeRequests()
                 .antMatchers(permitted).permitAll()
+                .antMatchers("/").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -49,7 +50,7 @@ public class SecurityConfig {
                 .and()
                 .logout().permitAll()
                 .logoutUrl("/auth/logout")
-                .logoutSuccessUrl("/")
+                .logoutSuccessUrl("/auth/login")
                 .and()
                 .exceptionHandling().accessDeniedPage(errorAccessDeniedRedirectURL)
                 .and().csrf().disable();
