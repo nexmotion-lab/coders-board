@@ -11,7 +11,7 @@
         <nav>
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-item ${menu2 == 'announcement' ? 'active' : ''}" id="announcement">
-                    <a href="/" class="nav-link">
+                    <a href="/notice" class="nav-link">
                         <p>
                             <b>공지사항</b>
                         </p>

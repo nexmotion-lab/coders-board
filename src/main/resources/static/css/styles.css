@@ -1,5 +1,5 @@
 .main-footer {
-    position: absolute; /* 고정된 위치로 설정 */
+    position: relative; /* 고정된 위치로 설정 */
     text-align:center;
     width: 100%;
     background-color: #D1D1D1; /* 배경 색상 설정 */
@@ -8,6 +8,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    transform: translateY(0%);
+    display: flex;
 }
 
 .brand-image {
