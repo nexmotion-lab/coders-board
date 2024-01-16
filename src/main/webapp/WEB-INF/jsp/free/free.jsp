@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>notice</title>
+    <title>free</title>
     <script src="/lib/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="/js/auth/free.js"></script>
 
