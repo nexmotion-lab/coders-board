@@ -26,7 +26,7 @@
             <form class="m-5" id="frm" method="post" action="/auth/proc">
                 <div>
                     <!--justify-content-center-->
-                    <img class="d-flex ml-auto mr-auto pb-3 w-50" src="${pageContext.request.contextPath}/resources/img/syu_logo.png" alt="Logo">
+                    <img class="d-flex ml-auto mr-auto pb-3 w-50" src="${pageContext.request.contextPath}/img/syu_logo.png" alt="Logo">
                 </div>
                 <div class="input-group mb-2">
                     <input type="email" class="form-control" placeholder="이메일" name="username" id="username" />
