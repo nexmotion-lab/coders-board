@@ -9,6 +9,6 @@
 
 </head>
 <body>
-
+    <p>자유게시판</p>
 </body>
 </html>
