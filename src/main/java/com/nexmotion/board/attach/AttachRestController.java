@@ -46,7 +46,7 @@ public class AttachRestController {
             attachList = attachService.selectAttach(attach);
         } catch (Exception e) {
             ret.setReturnCode(StatusCode.ERROR_SERVICE);
-            logger.error("ERROR_SERVICE(newsError)", e);
+            logger.error("ERROR_SERVICE(AttachError)", e);
             return ret;
         }
         ret.setData(attachList);
@@ -133,7 +133,7 @@ public class AttachRestController {
             attachService.deleteAttach(attach);
         } catch (Exception e) {
             ret.setReturnCode(StatusCode.ERROR_SERVICE);
-            logger.error("ERROR_SERVICE(newsError", e);
+            logger.error("ERROR_SERVICE(attachError", e);
             return ret;
         }
         ret.setReturnCode(StatusCode.OK);
