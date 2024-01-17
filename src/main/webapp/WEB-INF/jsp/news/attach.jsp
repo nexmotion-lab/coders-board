@@ -3,7 +3,7 @@
 <head>
     <title>new</title>
     <script src="/lib/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" src="/js/news/news.js"></script>
+    <script type="text/javascript" src="/js/attach/attach.js"></script>
 </head>
 <body>
 

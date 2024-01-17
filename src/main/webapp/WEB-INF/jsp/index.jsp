@@ -17,7 +17,8 @@
 
     <%--main-content--%>
     <main class="flex-grow-1 p-4">
-        <img src="${pageContext.request.contextPath}/img/suya.png" alt="SUYA" style="max-width: 100%; height: auto; display: block; margin: 250px auto;">
+        <img src="${pageContext.request.contextPath}/img/suya.png" alt="SUYA"
+             style="max-width: 100%; height: 200px; display: block; margin: 250px auto;">
     </main>
 </div>
 

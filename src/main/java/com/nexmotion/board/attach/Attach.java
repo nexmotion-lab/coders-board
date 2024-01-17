@@ -1,10 +1,10 @@
-package com.nexmotion.board.news;
+package com.nexmotion.board.attach;
 
 import lombok.Data;
 import java.time.LocalDateTime;
 
 @Data
-public class News {
+public class Attach {
 
     private int postId;
     private int boardCode;
