@@ -27,7 +27,7 @@
                 </li>
 
                 <li class="nav-item ${menu2 == 'forum' ? 'active' : ''}" id="forum">
-                    <a href="/" class="nav-link">
+                    <a href="/free" class="nav-link">
                         <p>
                             <b>자유게시판</b>
                         </p>
