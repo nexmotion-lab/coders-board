@@ -1,8 +1,7 @@
-package com.nexmotion.board.news;
+package com.nexmotion.board.attach;
 
 import com.nexmotion.board.common.ResponseObject;
 import com.nexmotion.board.common.StatusCode;
-import com.nexmotion.board.news.News;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,14 +13,14 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
-public class NewsRestController {
-    private final Logger logger= LoggerFactory.getLogger(NewsRestController.class);
+public class AttachRestController {
+    private final Logger logger= LoggerFactory.getLogger(AttachRestController.class);
 
     @Autowired
-    NewsService newsService;
+    AttachService attachService;
 
-    @RequestMapping("/news/select")
-    public ResponseObject<List<News>> select (
+    @RequestMapping("/attach/select")
+    public ResponseObject<List<Attach>> select (
             @RequestParam(value = "postId", required = false) int postId,
             @RequestParam(value = "postAuthor", required = false) String postAuthor,
             @RequestParam(value = "postTitle", required = false) String postTitle,
@@ -31,32 +30,32 @@ public class NewsRestController {
             @RequestParam(value = "postHit", required = false) int postHit,
             @RequestParam(value = "postDeleteYn", required = false) String postDeleteYn) throws Throwable{
 
-        ResponseObject<List<News>> ret = new ResponseObject<>();
-        News news = new News();
-        List<News> newsList = null;
+        ResponseObject<List<Attach>> ret = new ResponseObject<>();
+        Attach attach = new Attach();
+        List<Attach> attachList = null;
 
-        news.setBoardCode(2);
-        news.setPostAuthor(postAuthor);
-        news.setPostContent(postContent);
-        news.setPostId(postId);
-        news.setPostHit(postHit);
-        news.setPostDeleteYn(postDeleteYn);
-        news.setPostTitle(postTitle);
+        attach.setBoardCode(2);
+        attach.setPostAuthor(postAuthor);
+        attach.setPostContent(postContent);
+        attach.setPostId(postId);
+        attach.setPostHit(postHit);
+        attach.setPostDeleteYn(postDeleteYn);
+        attach.setPostTitle(postTitle);
 
         try {
-            newsList = newsService.selectNews(news);
+            attachList = attachService.selectAttach(attach);
         } catch (Exception e) {
             ret.setReturnCode(StatusCode.ERROR_SERVICE);
             logger.error("ERROR_SERVICE(newsError)", e);
             return ret;
         }
-        ret.setData(newsList);
+        ret.setData(attachList);
         ret.setReturnCode(StatusCode.OK);
         return ret;
     }
 
-    @RequestMapping("/news/insert")
-    public ResponseObject<List<News>> insert(
+    @RequestMapping("/attach/insert")
+    public ResponseObject<List<Attach>> insert(
             @RequestParam(value = "postUpdateDate", required = false) LocalDateTime postUpdateDate,
             @RequestParam(value = "postAuthor", required = false) String postAuthor,
             @RequestParam(value = "postContent", required = false) String postContent,
@@ -66,30 +65,30 @@ public class NewsRestController {
             @RequestParam(value = "postDeleteYn", required = false) String postDeleteYn,
             @RequestParam(value = "postTitle", required = false) String postTitle) {
 
-        ResponseObject<List<News>> ret = new ResponseObject<>();
-        News news = new News();
+        ResponseObject<List<Attach>> ret = new ResponseObject<>();
+        Attach attach = new Attach();
 
-        news.setBoardCode(2);
-        news.setPostAuthor(postAuthor);
-        news.setPostContent(postContent);
-        news.setPostId(postId);
-        news.setPostHit(postHit);
-        news.setPostDeleteYn(postDeleteYn);
-        news.setPostTitle(postTitle);
+        attach.setBoardCode(2);
+        attach.setPostAuthor(postAuthor);
+        attach.setPostContent(postContent);
+        attach.setPostId(postId);
+        attach.setPostHit(postHit);
+        attach.setPostDeleteYn(postDeleteYn);
+        attach.setPostTitle(postTitle);
 
         try {
-            newsService.insertNews(news);
+            attachService.insertAttach(attach);
         } catch (Exception e) {
             ret.setReturnCode(StatusCode.ERROR_SERVICE);
-            logger.error("ERROR_SERVICE(newsError", e);
+            logger.error("ERROR_SERVICE(attachError", e);
             return ret;
         }
         ret.setReturnCode(StatusCode.OK);
         return ret;
     }
 
-    @RequestMapping("/news/update")
-    public ResponseObject<List<News>> update(
+    @RequestMapping("/attach/update")
+    public ResponseObject<List<Attach>> update(
             @RequestParam(value = "postUpdateDate", required = false) LocalDateTime postUpdateDate,
             @RequestParam(value = "postAuthor", required = false) String postAuthor,
             @RequestParam(value = "postContent", required = false) String postContent,
@@ -99,22 +98,22 @@ public class NewsRestController {
             @RequestParam(value = "postDeleteYn", required = false) String postDeleteYn,
             @RequestParam(value = "postTitle", required = false) String postTitle) {
 
-        ResponseObject<List<News>> ret = new ResponseObject<>();
-        News news = new News();
+        ResponseObject<List<Attach>> ret = new ResponseObject<>();
+        Attach attach = new Attach();
 
-        news.setBoardCode(2);
-        news.setPostAuthor(postAuthor);
-        news.setPostContent(postContent);
-        news.setPostId(postId);
-        news.setPostHit(postHit);
-        news.setPostDeleteYn(postDeleteYn);
-        news.setPostTitle(postTitle);
+        attach.setBoardCode(2);
+        attach.setPostAuthor(postAuthor);
+        attach.setPostContent(postContent);
+        attach.setPostId(postId);
+        attach.setPostHit(postHit);
+        attach.setPostDeleteYn(postDeleteYn);
+        attach.setPostTitle(postTitle);
 
         try {
-            newsService.updateNews(news);
+            attachService.updateAttach(attach);
         } catch (Exception e) {
             ret.setReturnCode(StatusCode.ERROR_SERVICE);
-            logger.error("ERROR_SERVICE(newsError", e);
+            logger.error("ERROR_SERVICE(attachError", e);
             return ret;
         }
         ret.setReturnCode(StatusCode.OK);
@@ -122,16 +121,16 @@ public class NewsRestController {
 
     }
 
-    @RequestMapping("/news/delete")
-    public ResponseObject<List<News>> deleteDestructionList(@RequestParam("postId") int postId){
+    @RequestMapping("/attach/delete")
+    public ResponseObject<List<Attach>> deleteDestructionList(@RequestParam("postId") int postId){
 
-        ResponseObject<List<News>> ret = new ResponseObject<>();
-        News news = new News();
+        ResponseObject<List<Attach>> ret = new ResponseObject<>();
+        Attach attach = new Attach();
 
-        news.setPostId(postId);
+        attach.setPostId(postId);
 
         try {
-            newsService.deleteNews(news);
+            attachService.deleteAttach(attach);
         } catch (Exception e) {
             ret.setReturnCode(StatusCode.ERROR_SERVICE);
             logger.error("ERROR_SERVICE(newsError", e);

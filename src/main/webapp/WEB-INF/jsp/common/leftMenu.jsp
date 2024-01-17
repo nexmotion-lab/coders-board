@@ -19,7 +19,7 @@
                 </li>
 
                 <li class="nav-item ${menu2 == 'reference' ? 'active' : ''}" id="reference">
-                    <a href="/" class="nav-link ">
+                    <a href="/attach" class="nav-link ">
                         <p>
                             <b>자료실</b>
                         </p>

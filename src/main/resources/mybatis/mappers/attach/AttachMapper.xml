@@ -3,9 +3,9 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.nexmotion.board.news.NewsMapper">
+<mapper namespace="com.nexmotion.board.attach.AttachMapper">
     
-    <resultMap id="newsResultMap" type="com.nexmotion.board.news.News">
+    <resultMap id="attachResultMap" type="com.nexmotion.board.attach.Attach">
         <id column="post_id" property="postId" />
         <result column="board_code" property="boardCode" />
         <result column="post_author" property="postAuthor" />
@@ -18,7 +18,7 @@
     </resultMap>
 
     <!-- select -->
-    <select id="selectNews" parameterType="com.nexmotion.board.news.News" resultMap="newsResultMap">
+    <select id="selectAttach" parameterType="com.nexmotion.board.attach.Attach" resultMap="attachResultMap">
         SELECT *
         FROM post
         WHERE board_code = #{boardCode}
@@ -43,7 +43,7 @@
     </select>
 
     <!-- insert -->
-    <insert id="insertNews" parameterType="com.nexmotion.board.news.News">
+    <insert id="insertAttach" parameterType="com.nexmotion.board.attach.Attach">
         INSERT
         INTO post
         VALUES (#{postId}
@@ -58,7 +58,7 @@
     </insert>
 
     <!-- update  -->
-    <update id="updateNews" parameterType="com.nexmotion.board.news.News">
+    <update id="updateAttach" parameterType="com.nexmotion.board.attach.Attach">
         UPDATE post
         SET post_id = #{postId}
             ,board_code = #{boardCode}
@@ -73,20 +73,20 @@
     </update>
 
     <!--  delete (delete문을 써야하나)  -->
-    <delete id="deleteNews" parameterType="int">
+    <delete id="deleteAttach" parameterType="int">
         UPDATE post
         SET post_delete_yn = 1
         WHERE post_id = #{postId}
     </delete>
 
     <!-- select by title -->
-    <select id="getNewsByTitle" resultType="com.nexmotion.board.news.News" parameterType="string">
+    <select id="getAttachByTitle" resultType="com.nexmotion.board.attach.Attach" parameterType="string">
         SELECT * FROM post
         WHERE post_title LIKE CONCAT('%', #{postTitle}, '%') AND post_delete_yn = 0
     </select>
 
     <!-- select by content -->
-    <select id="getNewsByContent" resultType="com.nexmotion.board.news.News" parameterType="string">
+    <select id="getAttachByContent" resultType="com.nexmotion.board.attach.Attach" parameterType="string">
         SELECT * FROM post
         WHERE post_content LIKE CONCAT('%', #{postContent}, '%') AND post_delete_yn = 0
     </select>
@@ -94,7 +94,7 @@
 
 
     <!-- Your select all query here with pagination -->
-    <select id="getAllNews" resultType="com.nexmotion.board.news.News" parameterType="java.util.Map">
+    <select id="getAllAttach" resultType="com.nexmotion.board.attach.Attach" parameterType="java.util.Map">
         SELECT * FROM post
         WHERE post_delete_yn = 0
         ORDER BY post_date DESC
