@@ -65,7 +65,6 @@ public class FreeRestController {
             @RequestParam(value = "postId", required = false) int postId,
             @RequestParam(value = "postHit", required = false) int postHit,
             @RequestParam(value = "postDate", required = false) LocalDateTime postDate,
-            @RequestParam(value = "postDeleteYn", required = false) String postDeleteYn,
             @RequestParam(value = "postTitle", required = false) String postTitle) throws Throwable {
 
         ResponseObject<List<Free>> ret = new ResponseObject<>();
@@ -78,7 +77,6 @@ public class FreeRestController {
         free.setPostId(postId);
         free.setPostHit(postHit);
         free.setPostDate(postDate);
-        free.setPostDeleteYn(postDeleteYn);
         free.setPostTitle(postTitle);
 
         try {

@@ -11,5 +11,10 @@ public class FreeController {
 
         return "/free/free";
     }
+    @RequestMapping("/freeWrite")
+    public String freeWrite() {
+
+        return "/free/freeWrite";
+    }
 
 }
