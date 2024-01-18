@@ -23,6 +23,6 @@
 
     <%@ include file="/WEB-INF/jsp/common/footer.jsp" %>
 
-    <script src="/lib/booatstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <aside class="sidebar col-md-2 d-md-block p-0" style="padding-left: 0;">
     <!-- Sidebar -->
-    <div>
+    <div class="vh-100">
         <!-- menu logo -->
         <a href="" class="brand-link d-flex justify-content-center">
             <img src="${pageContext.request.contextPath}/img/menu_logo.png" alt="Logo" style="opacity: .8;">
