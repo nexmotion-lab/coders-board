@@ -17,7 +17,7 @@
         <result column="post_delete_yn" property="postDeleteYn" />
     </resultMap>
 
-    <select id="selectBoard" parameterType="com.nexmotion.board.free.Free" resultMap="freeResultMap">
+    <select id="selectFree" parameterType="com.nexmotion.board.free.Free" resultMap="freeResultMap">
         SELECT *
         FROM post
         WHERE board_code = #{boardCode}
@@ -41,7 +41,7 @@
         </if>
     </select>
 
-    <insert id="insertBoard" parameterType="com.nexmotion.board.free.Free">
+    <insert id="insertFree" parameterType="com.nexmotion.board.free.Free">
         INSERT
         INTO post (board_code, post_author, post_title, post_date, post_update_date, post_content)
         VALUES (
@@ -54,7 +54,7 @@
                )
     </insert>
 
-    <update id="updateBoard" parameterType="com.nexmotion.board.free.Free">
+    <update id="updateFree" parameterType="com.nexmotion.board.free.Free">
         UPDATE post
         SET board_code = #{boardCode}
           ,post_author = #{postAuthor}
@@ -66,7 +66,7 @@
         WHERE post_id = #{postId}
     </update>
 
-    <delete id="deleteBoard" parameterType="com.nexmotion.board.free.Free">
+    <delete id="deleteFree" parameterType="com.nexmotion.board.free.Free">
         DELETE
         FROM post
         WHERE post_id = #{postId}

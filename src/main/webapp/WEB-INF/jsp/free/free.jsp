@@ -7,7 +7,6 @@
     <script type="text/javascript" src="/js/auth/free.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <link rel="stylesheet" href="/lib/admin/plugins/fontawesome-free/css/all.min.css">
-    <link rel="stylesheet" href="/css/admin/adminlte.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/styles.css">
     <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <title>free</title>
@@ -18,13 +17,16 @@
 
 <div class="d-flex">
     <%@ include file="/WEB-INF/jsp/common/leftMenu.jsp" %>
-
     <%--main-content--%>
     <main class="flex-grow-1 p-4">
         <div class="card">
-            <div class="card-header">
-                <h3 class="card-title">자유게시판</h3>
+            <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
+                <h3 class="card-title mt-2">자유게시판</h3>
+                <button type="button" class="btn btn-primary">
+                    <a href="/freeWrite" class="nav-link">작성</a>
+                </button>
             </div>
+
 
             <div class="card-body">
                 <table class="table table-bordered">
