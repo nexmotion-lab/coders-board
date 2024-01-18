@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ page language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +8,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <link rel="stylesheet" href="/lib/admin/plugins/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/styles.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <title>free</title>
 </head>
 <body>
@@ -78,6 +77,6 @@
 
 <%@ include file="/WEB-INF/jsp/common/footer.jsp" %>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+<script src="/lib/booatstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
