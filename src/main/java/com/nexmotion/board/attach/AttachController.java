@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class AttachController {
     @RequestMapping("/attach")
-    public String newspage(){
+    public String attachPage(){
         return "/attach/attach";
     }
 

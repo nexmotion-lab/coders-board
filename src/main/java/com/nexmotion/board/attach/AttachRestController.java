@@ -21,26 +21,18 @@ public class AttachRestController {
 
     @RequestMapping("/attach/select")
     public ResponseObject<List<Attach>> select (
-            @RequestParam(value = "postId", required = false) int postId,
+            @RequestParam(value = "postId", required = true, defaultValue = "999990") Integer postId,
             @RequestParam(value = "postAuthor", required = false) String postAuthor,
             @RequestParam(value = "postTitle", required = false) String postTitle,
-            @RequestParam(value = "postDate", required = false) LocalDateTime postDate,
-            @RequestParam(value = "postUpdateDate", required = false) LocalDateTime postUpdateDate,
-            @RequestParam(value = "postContent", required = false) String postContent,
-            @RequestParam(value = "postHit", required = false) int postHit,
-            @RequestParam(value = "postDeleteYn", required = false) String postDeleteYn) throws Throwable{
+            @RequestParam(value = "postContent", required = false) String postContent) throws Throwable{
 
         ResponseObject<List<Attach>> ret = new ResponseObject<>();
         Attach attach = new Attach();
         List<Attach> attachList = null;
-
-        attach.setBoardCode(2);
-        attach.setPostAuthor(postAuthor);
-        attach.setPostContent(postContent);
         attach.setPostId(postId);
-        attach.setPostHit(postHit);
-        attach.setPostDeleteYn(postDeleteYn);
+        attach.setPostAuthor(postAuthor);
         attach.setPostTitle(postTitle);
+        attach.setPostContent(postContent);
 
         try {
             attachList = attachService.selectAttach(attach);
@@ -68,7 +60,6 @@ public class AttachRestController {
         ResponseObject<List<Attach>> ret = new ResponseObject<>();
         Attach attach = new Attach();
 
-        attach.setBoardCode(2);
         attach.setPostAuthor(postAuthor);
         attach.setPostContent(postContent);
         attach.setPostId(postId);
@@ -101,7 +92,6 @@ public class AttachRestController {
         ResponseObject<List<Attach>> ret = new ResponseObject<>();
         Attach attach = new Attach();
 
-        attach.setBoardCode(2);
         attach.setPostAuthor(postAuthor);
         attach.setPostContent(postContent);
         attach.setPostId(postId);
