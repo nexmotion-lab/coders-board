@@ -20,23 +20,20 @@
     <select id="selectAttach" parameterType="com.nexmotion.board.attach.Attach" resultMap="attachResultMap">
         SELECT *
         FROM attach_board
-        WHERE post_id &lt; #{postId}
+        WHERE post_delete_yn = 'N'
+        <if test="postId != null and postId != 0">
+            AND post_id &lt; #{postId}
+        </if>
         ORDER BY post_id DESC
         LIMIT 10
     </select>
 
     <!-- insert -->
     <insert id="insertAttach" parameterType="com.nexmotion.board.attach.Attach">
-        INSERT
-        INTO attach_board
-        VALUES (#{postId}
-               ,#{postAuthor}
-               ,#{postTitle}
-               ,now()
-               ,now()
-               ,#{postContent}
-               ,#{postHit}
-               ,#{postDeleteYn})
+        INSERT INTO attach_board
+            (post_author, post_title, post_content, post_date)
+        VALUES
+            (#{postAuthor}, #{postTitle}, #{postContent}, now())
     </insert>
 
     <!-- update  -->

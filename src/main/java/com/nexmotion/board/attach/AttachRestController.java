@@ -21,7 +21,7 @@ public class AttachRestController {
 
     @RequestMapping("/attach/select")
     public ResponseObject<List<Attach>> select (
-            @RequestParam(value = "postId", required = true, defaultValue = "999990") Integer postId,
+            @RequestParam(value = "postId", required = false) Integer postId,
             @RequestParam(value = "postAuthor", required = false) String postAuthor,
             @RequestParam(value = "postTitle", required = false) String postTitle,
             @RequestParam(value = "postContent", required = false) String postContent) throws Throwable{
@@ -29,10 +29,10 @@ public class AttachRestController {
         ResponseObject<List<Attach>> ret = new ResponseObject<>();
         Attach attach = new Attach();
         List<Attach> attachList = null;
-        attach.setPostId(postId);
-        attach.setPostAuthor(postAuthor);
-        attach.setPostTitle(postTitle);
-        attach.setPostContent(postContent);
+        if (postId != null) attach.setPostId(postId);
+        if (postAuthor != null) attach.setPostAuthor(postAuthor);
+        if (postTitle != null) attach.setPostTitle(postTitle);
+        if (postContent != null) attach.setPostContent(postContent);
 
         try {
             attachList = attachService.selectAttach(attach);
@@ -48,24 +48,16 @@ public class AttachRestController {
 
     @RequestMapping("/attach/insert")
     public ResponseObject<List<Attach>> insert(
-            @RequestParam(value = "postUpdateDate", required = false) LocalDateTime postUpdateDate,
-            @RequestParam(value = "postAuthor", required = false) String postAuthor,
-            @RequestParam(value = "postContent", required = false) String postContent,
-            @RequestParam(value = "postId", required = false) int postId,
-            @RequestParam(value = "postHit", required = false) int postHit,
-            @RequestParam(value = "postDate", required = false) LocalDateTime postDate,
-            @RequestParam(value = "postDeleteYn", required = false) String postDeleteYn,
-            @RequestParam(value = "postTitle", required = false) String postTitle) {
+        @RequestParam(value = "postId", required = true) Integer postId,
+        @RequestParam(value = "postTitle", required = true) String postTitle,
+        @RequestParam(value = "postContent", required = true) String postContent) {
 
         ResponseObject<List<Attach>> ret = new ResponseObject<>();
         Attach attach = new Attach();
 
-        attach.setPostAuthor(postAuthor);
-        attach.setPostContent(postContent);
         attach.setPostId(postId);
-        attach.setPostHit(postHit);
-        attach.setPostDeleteYn(postDeleteYn);
         attach.setPostTitle(postTitle);
+        attach.setPostContent(postContent);
 
         try {
             attachService.insertAttach(attach);
@@ -80,24 +72,16 @@ public class AttachRestController {
 
     @RequestMapping("/attach/update")
     public ResponseObject<List<Attach>> update(
-            @RequestParam(value = "postUpdateDate", required = false) LocalDateTime postUpdateDate,
-            @RequestParam(value = "postAuthor", required = false) String postAuthor,
-            @RequestParam(value = "postContent", required = false) String postContent,
-            @RequestParam(value = "postId", required = false) int postId,
-            @RequestParam(value = "postHit", required = false) int postHit,
-            @RequestParam(value = "postDate", required = false) LocalDateTime postDate,
-            @RequestParam(value = "postDeleteYn", required = false) String postDeleteYn,
-            @RequestParam(value = "postTitle", required = false) String postTitle) {
+            @RequestParam(value = "postTitle", required = true) String postTitle,
+            @RequestParam(value = "postContent", required = true) String postContent,
+            @RequestParam(value = "postId", required = true) int postId) {
 
         ResponseObject<List<Attach>> ret = new ResponseObject<>();
         Attach attach = new Attach();
 
-        attach.setPostAuthor(postAuthor);
+        attach.setPostTitle(postTitle);
         attach.setPostContent(postContent);
         attach.setPostId(postId);
-        attach.setPostHit(postHit);
-        attach.setPostDeleteYn(postDeleteYn);
-        attach.setPostTitle(postTitle);
 
         try {
             attachService.updateAttach(attach);
