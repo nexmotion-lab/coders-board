@@ -9,5 +9,7 @@ public class AttachController {
     public String attachPage(){
         return "/attach/attach";
     }
+    @RequestMapping("/attachWrite")
+    public String attachWritePage(){ return "/attach/attachWrite"; }
 
 }

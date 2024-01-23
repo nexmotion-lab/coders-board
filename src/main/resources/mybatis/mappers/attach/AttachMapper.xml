@@ -48,7 +48,7 @@
     <!--  delete (delete문을 써야하나)  -->
     <delete id="deleteAttach" parameterType="int">
         UPDATE attach_board
-        SET post_delete_yn = 1
+        SET post_delete_yn = 'Y'
         WHERE post_id = #{postId}
     </delete>
 
