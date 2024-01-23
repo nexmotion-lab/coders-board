@@ -50,14 +50,14 @@ public class AttachRestController {
 
     @RequestMapping("/attach/insert")
     public ResponseObject<List<Attach>> insert(
-        @RequestParam(value = "postId", required = true) Integer postId,
+        @RequestParam(value = "postAuthor", required = true) String postAuthor,
         @RequestParam(value = "postTitle", required = true) String postTitle,
         @RequestParam(value = "postContent", required = true) String postContent) {
 
         ResponseObject<List<Attach>> ret = new ResponseObject<>();
         Attach attach = new Attach();
 
-        attach.setPostId(postId);
+        attach.setPostAuthor(postAuthor);
         attach.setPostTitle(postTitle);
         attach.setPostContent(postContent);
 

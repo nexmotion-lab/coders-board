@@ -1,0 +1,12 @@
+.ck-editor__editable { height: 400px; }
+.ck-content { font-size: 12px; }
+.submit-button {
+    background-color: #0B3479 !important;
+    margin-top: 5px;
+    border-radius: 3px;
+    color: white;
+}
+#postTitle {
+    width: auto;
+    border: none;
+}
