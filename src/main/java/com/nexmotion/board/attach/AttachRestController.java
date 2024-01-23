@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
@@ -20,6 +21,7 @@ public class AttachRestController {
     AttachService attachService;
 
     @RequestMapping("/attach/select")
+    @ResponseBody
     public ResponseObject<List<Attach>> select (
             @RequestParam(value = "postId", required = false) Integer postId,
             @RequestParam(value = "postAuthor", required = false) String postAuthor,
