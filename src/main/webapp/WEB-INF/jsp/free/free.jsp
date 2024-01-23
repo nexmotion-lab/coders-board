@@ -19,14 +19,13 @@
     <%@ include file="/WEB-INF/jsp/common/leftMenu.jsp" %>
     <%--main-content--%>
     <main class="flex-grow-1 p-4">
-        <div class="card">
+        <div class="card mb-5">
             <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
                 <h3 class="card-title mt-2">자유게시판</h3>
                 <button type="button" class="btn btn-primary">
                     <a href="/freeWrite" class="nav-link">작성</a>
                 </button>
             </div>
-
 
             <div class="card-body">
                 <table class="table table-bordered">
@@ -58,18 +57,9 @@
                         <td></td>
                         <td></td>
                     </tr>
+
                     </tbody>
                 </table>
-            </div>
-
-            <div class="card-footer clearfix">
-                <ul class="pagination pagination-sm m-0 float-right">
-                    <li class="page-item"><a class="page-link" href="#">«</a></li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">»</a></li>
-                </ul>
             </div>
         </div>
     </main>
@@ -77,6 +67,44 @@
 
 <%@ include file="/WEB-INF/jsp/common/footer.jsp" %>
 
-<script src="/lib/booatstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/lib/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="/js/auth/free.js"></script>
+<script>
+    $(document).ready(function () {
+        // AJAX를 사용하여 서버에서 데이터를 가져옵니다.
+        $.ajax({
+            url: 'http://localhost:8080/free/select',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                // 서버에서 받아온 데이터를 동적으로 추가합니다.
+                populateTable(data);
+            },
+            error: function (error) {
+                console.log('Error:', error);
+            }
+        });
+    });
+
+    function populateTable(data) {
+        var tableBody = $('#freeTableBody');
+        tableBody.empty(); // 테이블 내용 초기화
+
+        // 받아온 데이터를 테이블에 동적으로 추가합니다.
+        for (var i = 0; i < data.length; i++) {
+            var row = '<tr>';
+            row += '<td>' + (i + 1) + '</td>';
+            row += '<td>' + data[i].postTitle + '</td>';
+            row += '<td>' + data[i].postAuthor + '</td>';
+            row += '<td>' + data[i].postDate + '</td>';
+            row += '<td>' + data[i].attachment + '</td>';
+            row += '<td>' + data[i].postHit + '</td>';
+            row += '</tr>';
+
+            tableBody.append(row);
+        }
+    }
+</script>
 </body>
 </html>

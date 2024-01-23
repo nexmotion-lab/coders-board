@@ -22,29 +22,14 @@ public class FreeRestController {
 
     @RequestMapping("/free/select")
     public ResponseObject<List<Free>> select(
-            @RequestParam(value = "postUpdateDate", required = false) LocalDateTime postUpdateDate,
-            @RequestParam(value = "postAuthor", required = false) String postAuthor,
-            @RequestParam(value = "postContent", required = false) String postContent,
-            @RequestParam(value = "postId", required = false) int postId,
-            @RequestParam(value = "postHit", required = false) int postHit,
-            @RequestParam(value = "postDate", required = false) LocalDateTime postDate,
-            @RequestParam(value = "postDeleteYn", required = false) String postDeleteYn,
-            @RequestParam(value = "postTitle", required = false) String postTitle) throws Throwable {
+            @RequestParam(value = "postId", required = false) Integer postId
+            ) throws Throwable {
 
         ResponseObject<List<Free>> ret = new ResponseObject<>();
         Free free = new Free();
         List<Free> freeList = null;
 
-        free.setBoardCode(1);
-        free.setPostUpdateDate(postUpdateDate);
-        free.setPostAuthor(postAuthor);
-        free.setPostContent(postContent);
         free.setPostId(postId);
-        free.setPostHit(postHit);
-        free.setPostDate(postDate);
-        free.setPostDeleteYn(postDeleteYn);
-        free.setPostTitle(postTitle);
-
         try {
             freeList = freeService.selectFree(free);
         } catch (Exception e) {
@@ -59,24 +44,15 @@ public class FreeRestController {
 
     @RequestMapping("/free/insert")
     public ResponseObject<List<Free>> insert(
-            @RequestParam(value = "postUpdateDate", required = false) LocalDateTime postUpdateDate,
             @RequestParam(value = "postAuthor", required = false) String postAuthor,
             @RequestParam(value = "postContent", required = false) String postContent,
-            @RequestParam(value = "postId", required = false) int postId,
-            @RequestParam(value = "postHit", required = false) int postHit,
-            @RequestParam(value = "postDate", required = false) LocalDateTime postDate,
             @RequestParam(value = "postTitle", required = false) String postTitle) throws Throwable {
 
         ResponseObject<List<Free>> ret = new ResponseObject<>();
         Free free = new Free();
 
-        free.setBoardCode(1);
-        free.setPostUpdateDate(postUpdateDate);
         free.setPostAuthor(postAuthor);
         free.setPostContent(postContent);
-        free.setPostId(postId);
-        free.setPostHit(postHit);
-        free.setPostDate(postDate);
         free.setPostTitle(postTitle);
 
         try {
@@ -95,7 +71,7 @@ public class FreeRestController {
             @RequestParam(value = "postUpdateDate", required = false) LocalDateTime postUpdateDate,
             @RequestParam(value = "postAuthor", required = false) String postAuthor,
             @RequestParam(value = "postContent", required = false) String postContent,
-            @RequestParam(value = "postId", required = false) int postId,
+            @RequestParam(value = "postId", required = false) Integer postId,
             @RequestParam(value = "postHit", required = false) int postHit,
             @RequestParam(value = "postDate", required = false) LocalDateTime postDate,
             @RequestParam(value = "postDeleteYn", required = false) String postDeleteYn,
@@ -104,7 +80,6 @@ public class FreeRestController {
         ResponseObject<List<Free>> ret = new ResponseObject<>();
         Free free = new Free();
 
-        free.setBoardCode(1);
         free.setPostUpdateDate(postUpdateDate);
         free.setPostAuthor(postAuthor);
         free.setPostContent(postContent);
@@ -126,7 +101,7 @@ public class FreeRestController {
     }
 
     @RequestMapping("/free/delete")
-    public ResponseObject<List<Free>> deleteDestructionList(@RequestParam("postId") int postId){
+    public ResponseObject<List<Free>> deleteDestructionList(@RequestParam("postId") Integer postId){
 
         ResponseObject<List<Free>> ret = new ResponseObject<>();
         Free free = new Free();
@@ -137,7 +112,7 @@ public class FreeRestController {
             freeService.deleteFree(free);
         } catch (Exception e) {
             ret.setReturnCode(StatusCode.ERROR_SERVICE);
-            logger.error("ERROR_SETVICE(FreeError", e);
+            logger.error("ERROR_SERVICE(FreeError", e);
             return ret;
         }
         ret.setReturnCode(StatusCode.OK);

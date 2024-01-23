@@ -6,8 +6,7 @@ import java.time.LocalDateTime;
 @Data
 public class Free {
 
-    private int postId;
-    private int boardCode;
+    private Integer postId;
     private String postAuthor;
     private String postTitle;
     private LocalDateTime postDate;
