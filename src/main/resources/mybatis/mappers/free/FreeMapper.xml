@@ -16,35 +16,12 @@
         <result column="post_delete_yn" property="postDeleteYn" />
     </resultMap>
 
-<!--    <select id="selectFree" parameterType="com.nexmotion.board.free.Free" resultMap="freeResultMap">-->
-<!--        SELECT *-->
-<!--        FROM post-->
-<!--        WHERE board_code = #{boardCode}-->
-<!--        <if test="@org.springframework.util.StringUtils@hasText(postAuthor)">-->
-<!--            AND post_author  = #{postAuthor}-->
-<!--        </if>-->
-<!--        <if test="@org.springframework.util.StringUtils@hasText(postTitle)">-->
-<!--            AND post_title = #{postTitle}-->
-<!--        </if>-->
-<!--        <if test="@org.springframework.util.StringUtils@hasText(postContent)">-->
-<!--            AND post_content = #{postContent}-->
-<!--        </if>-->
-<!--        <if test="@org.springframework.util.StringUtils@hasText(postUpdateDate)">-->
-<!--            AND post_update_date = #{postUpdateDate}-->
-<!--        </if>-->
-<!--        <if test="@org.springframework.util.StringUtils@hasText(postHit)">-->
-<!--            AND post_hit = #{postHit}-->
-<!--        </if>-->
-<!--        <if test="@org.springframework.util.StringUtils@hasText(postDate)">-->
-<!--            AND post_date = #{postDate}-->
-<!--        </if>-->
-<!--    </select>-->
-
     <select id="selectFree" parameterType="com.nexmotion.board.free.Free" resultMap="freeResultMap">
         SELECT *
         FROM free_board
+        WHERE post_id &lt; #{postId}
         ORDER BY post_id DESC
-        LIMIT #{offset}, #{pageSize}
+        LIMIT 10
     </select>
 
     <select id="selectFreeDetails" parameterType="com.nexmotion.board.free.Free" resultMap="freeResultMap">

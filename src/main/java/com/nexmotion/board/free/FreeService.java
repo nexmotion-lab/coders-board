@@ -14,9 +14,8 @@ public class FreeService implements FreeMapper{
     FreeMapper freeMapper;
 
     @Override
-    public List<Free> selectFree(int page, int pageSize) throws SQLException {
-        int offset = (page - 1) * pageSize;
-        return freeMapper.selectFree(offset, pageSize);
+    public List<Free> selectFree(int postId) throws SQLException {
+        return freeMapper.selectFree(postId);
     }
 
     @Override
