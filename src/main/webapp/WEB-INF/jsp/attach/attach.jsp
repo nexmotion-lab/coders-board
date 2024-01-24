@@ -23,35 +23,8 @@
             <div class="card-header">
                 <h3 class="card-title">자료실</h3>
             </div>
-
             <div class="card-body">
-                <div>test</div>
-                <div id="result"></div>
-                <c:if test="${not empty attachList}">
-                    <table border="1">
-                        <thead>
-                        <tr>
-                            <th>Post ID</th>
-                            <th>Author</th>
-                            <th>Title</th>
-                            <th>Date</th>
-                            <!-- 필요한 열들을 추가 -->
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <c:forEach var="attach" items="${attachList}">
-                            <tr>
-                                <td>${attach.postId}</td>
-                                <td>${attach.postAuthor}</td>
-                                <td>${attach.postTitle}</td>
-                                <td>${attach.postDate}</td>
-                                <!-- 필요한 열들을 추가 -->
-                            </tr>
-                        </c:forEach>
-                        </tbody>
-                    </table>
-                </c:if>
-                <table class="table table-bordered">
+                <table class="table table-bordered table-striped">
                     <thead>
                     <tr>
                         <th style="width: auto">NO</th>
@@ -62,32 +35,23 @@
                         <th style="width: auto">조회수</th>
                     </tr>
                     </thead>
-                    <tbody>
-                    <p>ajax Test</p>
-                    <c:forEach var="attach" items="${attachList}">
-                        <tr>
-                            <td>${attach.postId}</td>
-                            <td>${attach.postTitle}</td>
-                            <td>${attach.postAuthor}</td>
-                            <td>${attach.postDate}</td>
-                            <td>첨부파일</td>
-                            <td>${attach.postHit}</td>
-                            <!-- 다른 필요한 컬럼들 추가 -->
-                        </tr>
-                    </c:forEach>
+                    <tbody id="posts">
+
                     </tbody>
                 </table>
             </div>
-
-            <div class="card-footer clearfix">
-                <ul class="pagination pagination-sm m-0 float-right">
-                    <li class="page-item"><a class="page-link" href="#">«</a></li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">»</a></li>
-                </ul>
-                <button>작성</button>
+            <div class="card-footer clearfix d-flex">
+                <div class="pagination-wrapper">
+                    <ul class="pagination pagination-sm m-0 float-right">
+                        <li class="page-item"><a class="page-link" href="#">&lt; 이전</a></li>
+                        <li class="page-item"><a class="page-link" href="#">다음 &gt;</a></li>
+                    </ul>
+                </div>
+                <div class="button-wrapper">
+                    <button type="button" class="btn btn-primary">
+                        <a href="/attachWrite" class="nav-link">작성</a>
+                    </button>
+                </div>
             </div>
         </div>
     </main>

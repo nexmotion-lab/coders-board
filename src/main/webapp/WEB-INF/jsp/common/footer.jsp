@@ -3,7 +3,7 @@
 <div class="main-footer">
 <footer style="position : absolute;bottom : 0;">
     <div>
-        <b>ⓒ 2024 Team coder</b>
+        <b>ⓒ 2024 Team coders</b>
     </div>
 </footer>
 </div>
