@@ -1,36 +1,32 @@
 var loading = false;
-var page= 1;
+var lastPostId;
 
 $(document).ready(function () {
     $(window).scroll(function() {
         if ($(window).scrollTop() + $(window).height() + 10 >= $(document).height()) {
             if (!loading) {
-                console.log("loading" + loading);
                 loading = true;
-                // 데이터를 가져오는 함수 호출
-                loadData(page++);
-                console.log("page" + page);
+
+                loadData();
             }
         }
     });
 
-    loadData(page);
-    console.log("page" + page);
-})
+    loadData();
+});
 
-function loadData(page) {
+function loadData() {
     $.ajax({
         url: '/free/select',
         type: 'GET',
-        data: { page: page, pageSize: 10 },
+        data: { postId: lastPostId },
         dataType: 'json',
         success: function(response) {
-            if(response.returnCode === "200") {
+            if (response.returnCode === "200") {
                 var freeList = response.data;
                 var table = $('#freeTable');
 
-                var nextPostId;
-                for(var i = 0; i < freeList.length; i++) {
+                for (var i = 0; i < freeList.length; i++) {
                     var post = freeList[i];
                     var row = '<tr onclick="location.href=\'free/details/' + post.postId + '\'">' +
                         '<td>' + post.postId + '</td>' +
@@ -42,6 +38,8 @@ function loadData(page) {
                         '</tr>';
 
                     table.append(row);
+
+                    lastPostId = post.postId;   //LastPostId 갱신
                 }
             } else {
                 alert('데이터 가져오기 실패');

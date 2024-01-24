@@ -22,14 +22,14 @@ public class FreeRestController {
 
     @RequestMapping("/free/select")
     public ResponseObject<List<Free>> select(
-            @RequestParam(name = "page", defaultValue = "1") int page,
-            @RequestParam(name = "pageSize", defaultValue = "10") int pageSize) throws Throwable {
+            @RequestParam(name = "postId", defaultValue = "2147483647") Integer postId) throws Throwable {
 
         ResponseObject<List<Free>> ret = new ResponseObject<>();
+        Free free = new Free();
         List<Free> freeList = null;
 
         try {
-            freeList = freeService.selectFree(page, pageSize);
+            freeList = freeService.selectFree(postId);
         } catch (Exception e) {
             ret.setReturnCode(StatusCode.ERROR_SERVICE);
             logger.error("ERROR_SERVICE(freeError)", e);
