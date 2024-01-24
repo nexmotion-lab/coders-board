@@ -22,8 +22,8 @@
         <div class="fs-3 fw-bold h3" style="color: #001F99">자유게시판</div>
         <div class="border-top border-bottom border-2 border-secondary mt-3" style="min-height: 75%">
             <div class="border-bottom border-2 p-3">
-                <div class="fw-bold h4">제목${postTitle}</div>
-                <div class="">2023.12.12${postDate} | 조회수 000${postHit} | 학사지원팀${postAuthor}</div>
+                <div class="fw-bold h4">제목$</div>
+                <div class="">2023.12.12 | 조회수 000 | 학사지원팀</div>
             </div>
             <div class="p-3" style="">안녕하세요어쩌구저쩌구</div>
         </div>
