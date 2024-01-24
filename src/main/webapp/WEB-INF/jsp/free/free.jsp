@@ -4,9 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <script src="/lib/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" src="/js/auth/free.js"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <link rel="stylesheet" href="/lib/admin/plugins/fontawesome-free/css/all.min.css">
+    <script type="text/javascript" src="/js/free/free.js"></script>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/styles.css">
     <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <title>free</title>
@@ -27,7 +25,6 @@
                 </button>
             </div>
 
-
             <div class="card-body">
                 <table class="table table-bordered">
                     <thead>
@@ -40,36 +37,9 @@
                         <th style="width: auto">조회수</th>
                     </tr>
                     </thead>
-                    <tbody>
-                    <tr>
-                        <td>1.</td>
-                        <td>Update software</td>
-                        <td>
-                        </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>1.</td>
-                        <td>Update software</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
+                    <tbody id="freeTable">
                     </tbody>
                 </table>
-            </div>
-
-            <div class="card-footer clearfix">
-                <ul class="pagination pagination-sm m-0 float-right">
-                    <li class="page-item"><a class="page-link" href="#">«</a></li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">»</a></li>
-                </ul>
             </div>
         </div>
     </main>
@@ -77,6 +47,6 @@
 
 <%@ include file="/WEB-INF/jsp/common/footer.jsp" %>
 
-<script src="/lib/booatstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
