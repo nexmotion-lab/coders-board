@@ -1,14 +1,22 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<nav class="main-header navbar navbar-expand navbar-white navbar-light d-flex border-bottom" style="height:100px;">
+        <ul class="navbar-nav ml-auto ms-4 d-flex align-items-center">
+            <li><a href = "/">
+                <img src="${pageContext.request.contextPath}/img/main_logo.png" alt="main_logo" class="brand-image">
+            </a></li>
+            <li class="brand-title" onclick="redirectToIndex()">
+                <h2>삼육대학교 컴퓨터학과 홈페이지</h2>
+            </li>
 
-<taglib xmlns="http://java.sun.com/xml/ns/javaee"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
-        version="2.1">
-
-    <tlib-version>1.0</tlib-version>
-    <short-name>myshortname</short-name>
-    <uri>http://mycompany.com</uri>
-
-    <!-- Invoke 'Generate' action to add tags or functions -->
-
-</taglib>
+            <%--        <li class="nav-item">--%>
+    <%--            <a class="nav-link" data-widget="control-sidebar" data-controlsidebar-slide="true" onclick="logout()" role="button">--%>
+    <%--                <i class='fas fa-sign-out-alt'></i>--%>
+    <%--            </a>--%>
+    <%--        </li>--%>
+        </ul>
+</nav>
+<%--<script>--%>
+<%--    function logout() {--%>
+<%--        document.getElementById("logoutForm").submit();--%>
+<%--    }--%>
+<%--</script>--%>

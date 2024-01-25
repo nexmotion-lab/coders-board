@@ -1,14 +1,41 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<aside class="sidebar col-md-2 d-md-block p-0" style="padding-left: 0;">
+    <!-- Sidebar -->
+    <div class="vh-100">
+        <!-- menu logo -->
+        <a href="" class="brand-link d-flex justify-content-center">
+            <img src="${pageContext.request.contextPath}/img/menu_logo.png" alt="Logo" style="opacity: .8;">
+        </a>
 
-<taglib xmlns="http://java.sun.com/xml/ns/javaee"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
-        version="2.1">
+        <!-- Sidebar Menu -->
+        <nav>
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <li class="nav-item ${menu2 == 'announcement' ? 'active' : ''}" id="announcement">
+                    <a href="/notice" class="nav-link">
+                        <p>
+                            <b>공지사항</b>
+                        </p>
+                    </a>
+                </li>
 
-    <tlib-version>1.0</tlib-version>
-    <short-name>myshortname</short-name>
-    <uri>http://mycompany.com</uri>
+                <li class="nav-item ${menu2 == 'reference' ? 'active' : ''}" id="reference">
+                    <a href="/" class="nav-link ">
+                        <p>
+                            <b>자료실</b>
+                        </p>
+                    </a>
+                </li>
 
-    <!-- Invoke 'Generate' action to add tags or functions -->
-
-</taglib>
+                <li class="nav-item ${menu2 == 'forum' ? 'active' : ''}" id="forum">
+                    <a href="/free" class="nav-link">
+                        <p>
+                            <b>자유게시판</b>
+                        </p>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+</aside>

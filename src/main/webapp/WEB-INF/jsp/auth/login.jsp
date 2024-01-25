@@ -7,10 +7,6 @@
     <title>게시판 로그인</title>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="/lib/admin/plugins/fontawesome-free/css/all.min.css">
-    <!-- icheck bootstrap -->
-    <link rel="stylesheet" href="/lib/admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="/css/admin/adminlte.min.css">
     <!-- SweetAlert2 -->
@@ -26,7 +22,7 @@
             <form class="m-5" id="frm" method="post" action="/auth/proc">
                 <div>
                     <!--justify-content-center-->
-                    <img class="d-flex ml-auto mr-auto pb-3 w-50" src="${pageContext.request.contextPath}/resources/img/syu_logo.png" alt="Logo">
+                    <img class="d-flex ml-auto mr-auto pb-3 w-50" src="${pageContext.request.contextPath}/img/syu_logo.png" alt="Logo">
                 </div>
                 <div class="input-group mb-2">
                     <input type="email" class="form-control" placeholder="이메일" name="username" id="username" />

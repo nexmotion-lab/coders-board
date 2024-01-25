@@ -27,16 +27,16 @@ public class SecurityConfig {
 
     private String loginSuccessUrl = "/";
 
-
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         String[] permitted = new String[] {
-               "/", "/resources/**", "/css/**", "/js/**", "/lib/**", "/auth/*", "/error/denied"
+               "/", "/resources/**", "/css/**", "/js/**", "/lib/**", "/auth/*", "/error/denied", "/img/**"
         };
 
         http.authorizeRequests()
                 .antMatchers(permitted).permitAll()
+                .antMatchers("/").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -50,7 +50,7 @@ public class SecurityConfig {
                 .and()
                 .logout().permitAll()
                 .logoutUrl("/auth/logout")
-                .logoutSuccessUrl("/")
+                .logoutSuccessUrl("/auth/login")
                 .and()
                 .exceptionHandling().accessDeniedPage(errorAccessDeniedRedirectURL)
                 .and().csrf().disable();

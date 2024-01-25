@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.nexmotion.board.free.FreeMapper">
+
+    <resultMap type="com.nexmotion.board.free.Free" id="freeResultMap">
+        <id column="post_id" property="postId" />
+        <result column="post_author" property="postAuthor" />
+        <result column="post_title" property="postTitle" />
+        <result column="post_date" property="postDate" />
+        <result column="post_update_date" property="postUpdateDate" />
+        <result column="post_content" property="postContent" />
+        <result column="post_hit" property="postHit" />
+        <result column="post_delete_yn" property="postDeleteYn" />
+    </resultMap>
+
+    <select id="selectFree" parameterType="com.nexmotion.board.free.Free" resultMap="freeResultMap">
+        SELECT *
+        FROM free_board
+        WHERE post_id &lt; #{postId}
+        ORDER BY post_id DESC
+        LIMIT 10
+    </select>
+
+    <select id="selectFreeDetails" parameterType="com.nexmotion.board.free.Free" resultMap="freeResultMap">
+        SELECT *
+        FROM free_board
+        WHERE post_id = #{postId}
+    </select>
+
+    <insert id="insertFree" parameterType="com.nexmotion.board.free.Free">
+        INSERT
+        INTO free_board (post_author, post_title, post_content, post_date)
+        VALUES (
+               #{postAuthor}
+               ,#{postTitle}
+               ,#{postContent}
+               ,NOW()
+               )
+    </insert>
+
+    <update id="updateFree" parameterType="com.nexmotion.board.free.Free">
+        UPDATE free_board
+        SET post_title = #{postTitle}
+            ,post_content = #{postContent}
+            ,post_update_date = NOW()
+        WHERE post_id = #{postId}
+    </update>
+
+    <delete id="deleteFree" parameterType="com.nexmotion.board.free.Free">
+        DELETE
+        FROM free_board
+        WHERE post_id = #{postId}
+    </delete>
+</mapper>
