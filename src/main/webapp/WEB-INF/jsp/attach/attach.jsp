@@ -43,8 +43,8 @@
 
             <div class="card-footer clearfix">
                 <ul class="pagination pagination-sm m-0 float-right">
-                    <li class="page-item"><a class="page-link" href="#">« 이전</a></li>
-                    <li class="page-item"><a class="page-link" href="#">다음 »</a></li>
+                    <li class="page-item"><a class="page-link" href="#" id="prevPage">« 이전</a></li>
+                    <li class="page-item"><a class="page-link" href="#" id="nextPage">다음 »</a></li>
                 </ul>
                 <button>작성</button>
             </div>
@@ -54,36 +54,36 @@
 
 <%@ include file="/WEB-INF/jsp/common/footer.jsp" %>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-<script>
-$(document).ready(function(){
-    start();
-});
+<%--<script>--%>
+<%--$(document).ready(function(){--%>
+<%--    start();--%>
+<%--});--%>
 
-function start() {
-    AJAX.call("/attach/select", null, function (data) {
-        let posts = JSON.parse(data.trim());
-        show(posts);
-    })
-}
+<%--function start() {--%>
+<%--    AJAX.call("/attach/select", null, function (data) {--%>
+<%--        let posts = JSON.parse(data.trim());--%>
+<%--        show(posts);--%>
+<%--    })--%>
+<%--}--%>
 
-function show(response){
-    let posts =response.data;
-    console.log(posts);
-    let s = "";
-    posts.forEach(function(item){
-        console.log(item);
-        s+="<tr>"
-        s+="<td>"+item.postId+"</td>";
-        s+="<td>"+item.postTitle+"</td>";
-        s+="<td>"+item.postAuthor+"</td>";
-        s+="<td>"+item.postDate+"</td>";
-        s+="<td>없음</td>";
-        s+="<td>"+item.postHit+"</td>";
-        s+="</tr>";
-    });
-    $("#posts").html(s)
-}
+<%--function show(response){--%>
+<%--    let posts =response.data;--%>
+<%--    console.log(posts);--%>
+<%--    let s = "";--%>
+<%--    posts.forEach(function(item){--%>
+<%--        console.log(item);--%>
+<%--        s+="<tr>"--%>
+<%--        s+="<td>"+item.postId+"</td>";--%>
+<%--        s+="<td>"+item.postTitle+"</td>";--%>
+<%--        s+="<td>"+item.postAuthor+"</td>";--%>
+<%--        s+="<td>"+item.postDate+"</td>";--%>
+<%--        s+="<td>없음</td>";--%>
+<%--        s+="<td>"+item.postHit+"</td>";--%>
+<%--        s+="</tr>";--%>
+<%--    });--%>
+<%--    $("#posts").html(s)--%>
+<%--}--%>
 
-</script>
+<%--</script>--%>
 </body>
 </html>

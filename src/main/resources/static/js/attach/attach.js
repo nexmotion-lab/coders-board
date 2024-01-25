@@ -24,3 +24,32 @@ let AJAX = {
         jQuery.ajax(callobj);
     }
 }
+    $(document).ready(function(){
+    start();
+});
+
+    function start() {
+    AJAX.call("/attach/select", null, function (data) {
+        let posts = JSON.parse(data.trim());
+        show(posts);
+    })
+}
+
+    function show(response){
+    let posts =response.data;
+    console.log(posts);
+    let s = "";
+    posts.forEach(function(item){
+    console.log(item);
+    s+="<tr>"
+    s+="<td>"+item.postId+"</td>";
+    s+="<td>"+item.postTitle+"</td>";
+    s+="<td>"+item.postAuthor+"</td>";
+    s+="<td>"+item.postDate+"</td>";
+    s+="<td>없음</td>";
+    s+="<td>"+item.postHit+"</td>";
+    s+="</tr>";
+});
+    $("#posts").html(s)
+}
+
