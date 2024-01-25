@@ -1,4 +1,7 @@
 let attach = {};
+let firstPostId = 0;
+let lastPostId = 0;
+let params = null;
 
 let AJAX = {
     call: function (url, params, func,isfd) {
@@ -24,32 +27,74 @@ let AJAX = {
         jQuery.ajax(callobj);
     }
 }
-    $(document).ready(function(){
+
+$(document).ready(function(){
+
     start();
+
+    $("#prevButton").on("click", function() {
+        goPrevPage();
+    });
+
+    $("#nextButton").on("click", function() {
+        goNextPage();
+    });
 });
 
-    function start() {
+function start() {
+
     AJAX.call("/attach/select", null, function (data) {
         let posts = JSON.parse(data.trim());
+        if (posts.length > 0) {
+            firstPostId = posts[0].postId;
+            lastPostId = posts[posts.length - 1].postId;
+        }
         show(posts);
     })
 }
 
-    function show(response){
+function goPrevPage() {
+
+    params = {postId :firstPostId };
+    AJAX.call("/attach/select", params, function (data) {
+        let posts = JSON.parse(data.trim());
+        if (posts.length > 0) {
+            firstPostId = posts[0].postId;
+            lastPostId = posts[posts.length - 1].postId;
+        }
+        show(posts);
+    })
+}
+
+function goNextPage() {
+
+    params = {postId: lastPostId}
+    AJAX.call("/attach/select", params, function (data) {
+        let posts = JSON.parse(data.trim());
+        if (posts.length > 0) {
+            firstPostId = posts[0].postId;
+            lastPostId = posts[posts.length - 1].postId
+        }
+        show(posts);
+    })
+}
+
+
+function show(response){
     let posts =response.data;
     console.log(posts);
     let s = "";
     posts.forEach(function(item){
-    console.log(item);
-    s+="<tr>"
-    s+="<td>"+item.postId+"</td>";
-    s+="<td>"+item.postTitle+"</td>";
-    s+="<td>"+item.postAuthor+"</td>";
-    s+="<td>"+item.postDate+"</td>";
-    s+="<td>없음</td>";
-    s+="<td>"+item.postHit+"</td>";
-    s+="</tr>";
-});
+        s+="<tr>"
+        s+="<td>"+item.postId+"</td>";
+        s+="<td>"+item.postTitle+"</td>";
+        s+="<td>"+item.postAuthor+"</td>";
+        s+="<td>"+item.postDate.split('T')[0].replace(/-/g, '.') +"</td>";
+        s+="<td>없음</td>";
+        s+="<td>"+item.postHit+"</td>";
+        s+="</tr>";
+    });
+
     $("#posts").html(s)
 }
 

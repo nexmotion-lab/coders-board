@@ -24,7 +24,7 @@
                 <h3 class="card-title">자료실</h3>
             </div>
             <div class="card-body">
-                <table class="table table-bordered table-striped">
+                <table class="table table-bordered table-striped text-center">
                     <thead>
                     <tr>
                         <th style="width: auto">NO</th>
@@ -43,8 +43,8 @@
             <div class="card-footer clearfix d-flex justify-content-between">
                 <div class="pagination-wrapper">
                     <ul class="pagination pagination-sm m-0 float-right">
-                        <li class="page-item"><a class="page-link" href="#">&lt; 이전</a></li>
-                        <li class="page-item"><a class="page-link" href="#">다음 &gt;</a></li>
+                        <li class="page-item" id="prevButton"><a class="page-link" href="#">&lt; 이전</a></li>
+                        <li class="page-item" id="nextButton"><a class="page-link" href="#" >다음 &gt;</a></li>
                     </ul>
                 </div>
                 <div class="button-wrapper">
