@@ -7,7 +7,6 @@ import java.time.LocalDateTime;
 public class Free {
 
     private int postId;
-    private int boardCode;
     private String postAuthor;
     private String postTitle;
     private LocalDateTime postDate;

@@ -9,7 +9,8 @@ import java.util.List;
 @Mapper
 public interface FreeMapper {
 
-    public List<Free> selectFree(Free free) throws SQLException;
+    public List<Free> selectFree(int postId) throws SQLException;
+    public Free selectFreeDetails(Free free) throws SQLException;
     public void insertFree(Free free) throws SQLException;
     public void updateFree(Free free) throws SQLException;
     public void deleteFree(Free free) throws SQLException;
