@@ -25,7 +25,7 @@ let AJAX = {
 
 $(document).ready(function(){
     start();
-});
+});``
 
 function start() {
     AJAX.call("/attach/select", null, function (data) {
@@ -36,11 +36,9 @@ function start() {
 
 function show(response){
     let posts =response.data;
-    console.log(posts);
     let s = "";
     posts.forEach(function(item){
-        console.log(item);
-        s+="<tr>"
+        s+="<tr onclick='location.href=\'attach/details/' + post.postId + '\'>"
         s+="<td>"+item.postId+"</td>";
         s+="<td>"+item.postTitle+"</td>";
         s+="<td>"+item.postAuthor+"</td>";

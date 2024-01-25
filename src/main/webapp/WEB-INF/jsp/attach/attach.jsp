@@ -40,7 +40,8 @@
                     </tbody>
                 </table>
             </div>
-            <div class="card-footer clearfix d-flex justify-content-between">
+            <div class="card-footer  d-flex justify-content-between align-items-center">
+                <div></div>
                 <div class="pagination-wrapper">
                     <ul class="pagination pagination-sm m-0 float-right">
                         <li class="page-item"><a class="page-link" href="#">&lt; 이전</a></li>
