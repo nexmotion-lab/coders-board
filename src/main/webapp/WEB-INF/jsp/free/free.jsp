@@ -27,38 +27,17 @@
                 </button>
             </div>
 
-            <div class="card-body">
+            <div class="card-body" id="freeTableBody">
                 <table class="table table-bordered">
                     <thead>
-                    <tr>
-                        <th style="width: auto">NO</th>
-                        <th style="width: auto">제목</th>
-                        <th style="width: auto">작성자</th>
-                        <th style="width: auto">등록일</th>
-                        <th style="width: auto">첨부파일</th>
-                        <th style="width: auto">조회수</th>
-                    </tr>
+                        <tr>
+                            <th style="width: 13%">NO</th>
+                            <th style="width: 23%">제목</th>
+                            <th style="width: 23%">작성자</th>
+                            <th style="width: 23%">등록일</th>
+                            <th style="width: 8%">조회수</th>
+                        </tr>
                     </thead>
-                    <tbody>
-                    <tr>
-                        <td>1.</td>
-                        <td>Update software</td>
-                        <td>
-                        </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>1.</td>
-                        <td>Update software</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-
-                    </tbody>
                 </table>
             </div>
         </div>
@@ -71,40 +50,67 @@
 <script src="/lib/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="/js/auth/free.js"></script>
 <script>
+    var offset = 0;
+    var limit = 10;
+
     $(document).ready(function () {
+        // 초기 데이터 로드
+        loadMoreData();
+
+        // 스크롤 이벤트 감지
+        $(window).scroll(function () {
+            // 스크롤이 페이지 하단에 도달하면 추가 데이터 로드
+            if ($(window).scrollTop() + $(window).height() >= $(document).height() - 100) {
+                loadMoreData();
+            }
+        });
+    });
+
+    function loadMoreData() {
         // AJAX를 사용하여 서버에서 데이터를 가져옵니다.
         $.ajax({
-            url: 'http://localhost:8080/free/select',
+            url: '/free/select',
             type: 'GET',
-            dataType: 'json',
+            data: {
+                offset: offset,
+                limit: limit
+            },
             success: function (data) {
-                // 서버에서 받아온 데이터를 동적으로 추가합니다.
-                populateTable(data);
+                // Check if data is not empty
+                if (data && data.data) {
+                    // 서버에서 받아온 데이터를 동적으로 추가합니다.
+                    populateTable(data.data);
+                    // offset을 업데이트하여 다음 데이터를 가져올 위치 설정
+                    offset += limit;
+                } else {
+                    console.log('Error: No data received from the server.');
+                }
             },
             error: function (error) {
                 console.log('Error:', error);
             }
         });
-    });
+    }
 
     function populateTable(data) {
         var tableBody = $('#freeTableBody');
-        tableBody.empty(); // 테이블 내용 초기화
+        var tableContent = '<table class="table table-bordered"><tbody>';
 
         // 받아온 데이터를 테이블에 동적으로 추가합니다.
         for (var i = 0; i < data.length; i++) {
-            var row = '<tr>';
-            row += '<td>' + (i + 1) + '</td>';
-            row += '<td>' + data[i].postTitle + '</td>';
-            row += '<td>' + data[i].postAuthor + '</td>';
-            row += '<td>' + data[i].postDate + '</td>';
-            row += '<td>' + data[i].attachment + '</td>';
-            row += '<td>' + data[i].postHit + '</td>';
-            row += '</tr>';
-
-            tableBody.append(row);
+            tableContent += '<tr>';
+            tableContent += '<td style="width: 13%">' + data[i].postId + '</td>';
+            tableContent += '<td style="width: 23%">' + data[i].postTitle + '</td>';
+            tableContent += '<td style="width: 23%">' + data[i].postAuthor + '</td>';
+            tableContent += '<td style="width: 23%">' + data[i].postDate + '</td>';
+            tableContent += '<td style="width: 8%">' + data[i].postHit + '</td>';
+            tableContent += '</tr>';
         }
+
+        tableContent += '</tbody></table>';
+        tableBody.append(tableContent);
     }
 </script>
+
 </body>
 </html>

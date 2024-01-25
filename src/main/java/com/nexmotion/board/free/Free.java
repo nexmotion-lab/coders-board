@@ -12,6 +12,6 @@ public class Free {
     private LocalDateTime postDate;
     private LocalDateTime postUpdateDate;
     private String postContent;
-    private int postHit;
+    private Integer postHit;
     private String postDeleteYn;
 }

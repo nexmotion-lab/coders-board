@@ -13,8 +13,8 @@ public class FreeService implements FreeMapper{
     FreeMapper freeMapper;
 
     @Override
-    public List<Free> selectFree(Free free) throws SQLException {
-        return freeMapper.selectFree(free);
+    public List<Free> selectFree(int offset, int limit) throws SQLException {
+        return freeMapper.selectFree(offset, limit);
     }
 
     @Override

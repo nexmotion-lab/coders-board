@@ -22,16 +22,29 @@ public class FreeRestController {
 
     @RequestMapping("/free/select")
     public ResponseObject<List<Free>> select(
-            @RequestParam(value = "postId", required = false) Integer postId
+            @RequestParam(value = "offset", defaultValue = "0") int offset,
+            @RequestParam(value = "limit", defaultValue = "10") int limit,
+            @RequestParam(value = "postId", required = false) Integer postId,
+            @RequestParam(value = "postDate", required = false) LocalDateTime postDate,
+            @RequestParam(value = "postHit", required = false) Integer postHit,
+            @RequestParam(value = "postAuthor", required = false) String postAuthor,
+            @RequestParam(value = "postContent", required = false) String postContent,
+            @RequestParam(value = "postTitle", required = false) String postTitle
             ) throws Throwable {
 
         ResponseObject<List<Free>> ret = new ResponseObject<>();
         Free free = new Free();
         List<Free> freeList = null;
 
+        free.setPostAuthor(postAuthor);
+        free.setPostContent(postContent);
         free.setPostId(postId);
+        free.setPostHit(postHit);
+        free.setPostDate(postDate);
+        free.setPostTitle(postTitle);
+
         try {
-            freeList = freeService.selectFree(free);
+            freeList = freeService.selectFree(offset, limit);
         } catch (Exception e) {
             ret.setReturnCode(StatusCode.ERROR_SERVICE);
             logger.error("ERROR_SERVICE(freeError)", e);
@@ -72,7 +85,7 @@ public class FreeRestController {
             @RequestParam(value = "postAuthor", required = false) String postAuthor,
             @RequestParam(value = "postContent", required = false) String postContent,
             @RequestParam(value = "postId", required = false) Integer postId,
-            @RequestParam(value = "postHit", required = false) int postHit,
+            @RequestParam(value = "postHit", required = false) Integer postHit,
             @RequestParam(value = "postDate", required = false) LocalDateTime postDate,
             @RequestParam(value = "postDeleteYn", required = false) String postDeleteYn,
             @RequestParam(value = "postTitle", required = false) String postTitle) throws Throwable {

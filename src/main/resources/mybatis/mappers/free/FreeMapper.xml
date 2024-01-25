@@ -19,9 +19,8 @@
     <select id="selectFree" parameterType="com.nexmotion.board.free.Free" resultMap="freeResultMap">
         SELECT *
         FROM free_board
-        WHERE post_id &lt; #{postId}
         ORDER BY post_id DESC
-            LIMIT 10
+            LIMIT #{offset}, #{limit}
     </select>
 
     <insert id="insertFree" parameterType="com.nexmotion.board.free.Free">
