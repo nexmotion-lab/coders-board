@@ -14,7 +14,7 @@
 <%--해더부분--%>
 <%@ include file="/WEB-INF/jsp/common/header.jsp" %>
 
-<div class="d-flex">
+<div class="tw-mt-[127px] tw-w-full tw-flex tw-flex-row tw-w-full tw-max-w-[80%] lg:tw-min-w-[1250px] tw-items-start tw-justify-between tw-mx-auto tw-gap-[30px] !tw-z-[99]" >
     <%@ include file="/WEB-INF/jsp/common/leftMenu.jsp" %>
 
     <main class="flex-grow-1 p-4 pb-0">
