@@ -40,6 +40,17 @@ function fillPage(post) {
 // URL에서 특정 파라미터의 값을 가져오는 함수
 function getPostId() {
     var postId = window.location.pathname.split('/').pop();
-    console.log(postId); // 출력: 33333
     return postId;
+}
+
+function getPrevPost() {
+    var postId = getPostId();
+    var prevUrl = '/free/details/' + (postId - 1);
+    window.location.href = prevUrl;
+}
+
+function getNextPost() {
+    var postId = getPostId();
+    var nextUrl = '/free/details/' + (postId + 1);
+    window.location.href = nextUrl;
 }
