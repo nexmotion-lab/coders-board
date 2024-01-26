@@ -4,13 +4,19 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <script src="/ckeditor5/build/ckeditor.js"></script>
     <script src="/lib/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="/js/auth/freeWrite.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <link rel="stylesheet" href="/lib/admin/plugins/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/styles.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <title>freeWrite</title>
+    <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .ck-editor__editable { height: 400px; }
+        .ck-content { font-size: 12px; }
+
+    </style>
+    <title>자유게시판</title>
 </head>
 <body>
 <%--해더부분--%>
@@ -23,10 +29,7 @@
     <main class="flex-grow-1 p-4">
         <div class="card">
             <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
-                <h3 class="card-title mt-2">자유게시판</h3>
-                <button type="submit" class="btn btn-primary">
-                    <a href="/free" class="nav-link">등록</a>
-                </button>
+                <h3 class="card-title">자유게시판</h3>
             </div>
 
             <div class="card-body">
@@ -34,11 +37,12 @@
                 <form action="WriteServlet" method="post">
                     <input type="text" id="title" name="title" style="width: 1140px; border: none;" class="p-3 mb-3 bg-secondary-subtle" placeholder="제목을 입력하세요" required><br>
                     <textarea id="content" name="content" rows="17" style="width: 1140px;" class="p-3" placeholder="내용을 입력하세요" required></textarea><br>
-
+                    <p class="submit" style="text-align: right;">
+                        <input type="submit" value="등록" class="btn btn-primary submit-button" onclick="submitForm()" >
+                    </p>
                 </form>
 
             </div>
-
         </div>
     </main>
 </div>
