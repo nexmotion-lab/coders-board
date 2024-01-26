@@ -1,9 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!-- Main Footer -->
-<div class="main-footer">
-<footer style="position : absolute; bottom : 0;">
-    <div>
-        <b>ⓒ 2024 Team coders</b>
+<footer>
+    <div class="main-footer">
+        <b>ⓒ 2024 Team coder</b>
     </div>
 </footer>
-</div>
+
+
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    clifford: '#da373d',
+                }
+            }
+        },
+        prefix: 'tw-',
+    }
+</script>
