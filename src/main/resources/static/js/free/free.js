@@ -24,7 +24,7 @@ function loadData() {
         success: function(response) {
             if (response.returnCode === "200") {
                 var freeList = response.data;
-                var table = $('#freeTable');
+                var table = $('#posts');
 
                 for (var i = 0; i < freeList.length; i++) {
                     var post = freeList[i];
