@@ -24,7 +24,7 @@
     <%@ include file="/WEB-INF/jsp/common/leftMenu.jsp" %>
 
     <%--main-content--%>
-    <main class="flex-grow-1 p-4">
+    <main class="flex-grow-1 p-0">
         <div class="card">
             <div class="card-header tw-bg-[#0B3479]" style="display: flex; justify-content: space-between; align-items: center;">
                 <h3 class="card-title mt-2" style="color: white;">자유게시판</h3>
