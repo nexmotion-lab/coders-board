@@ -1,7 +1,7 @@
 $(document).ready(function () {
     // 페이지 로드 시 URL에서 postId를 추출하여 loadData 함수 호출
     var postId = getPostId();
-    console.log("postId " + postId);
+    upPostHit(postId);
     loadData(postId);
 });
 
@@ -35,6 +35,25 @@ function fillPage(post) {
         '</div>' +
         '<div class="p-3" style="">' + post.postContent + '</div>';
     $('#postDetail').html(postDetailHtml);
+}
+
+function upPostHit(postId) {
+    $.ajax({
+        url: '/free/update/postHit',
+        type: 'POST',
+        data: { postId: postId },
+        dataType: 'json',
+        success: function (response) {
+            if(response.returnCode === '200') {
+                console.log("조회수 증가 성공");
+            } else {
+                console.log("조회수 증가 안됨");
+            }
+        },
+        error: function () {
+            alert('서버와의 통신 중 오류가 발생했습니다.');
+        }
+    })
 }
 
 // URL에서 특정 파라미터의 값을 가져오는 함수

@@ -13,6 +13,7 @@ public interface FreeMapper {
     public Free selectFreeDetails(Free free) throws SQLException;
     public void insertFree(Free free) throws SQLException;
     public void updateFree(Free free) throws SQLException;
+    public void updatePostHit(Free free) throws SQLException;
     public void deleteFree(Free free) throws SQLException;
 
 }

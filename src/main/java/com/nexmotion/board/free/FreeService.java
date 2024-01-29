@@ -34,6 +34,11 @@ public class FreeService implements FreeMapper{
     }
 
     @Override
+    public void updatePostHit(Free free) throws SQLException {
+        freeMapper.updatePostHit(free);
+    }
+
+    @Override
     public void deleteFree(Free free) throws SQLException {
         freeMapper.deleteFree(free);
     }
