@@ -15,13 +15,12 @@
 <%--해더부분--%>
 <%@ include file="/WEB-INF/jsp/common/header.jsp" %>
 
-<div class="d-flex">
-    <%@ include file="/WEB-INF/jsp/common/leftMenu.jsp" %>
+<div class="tw-mt-[127px] tw-w-full tw-flex tw-flex-row tw-w-full tw-max-w-[80%] lg:tw-min-w-[1250px] tw-items-start tw-justify-between tw-mx-auto tw-gap-[30px] !tw-z-[99]">  <%@ include file="/WEB-INF/jsp/common/leftMenu.jsp" %>
     <%--main-content--%>
     <main class="flex-grow-1 p-4">
         <div class="card mb-5">
-            <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
-                <h3 class="card-title mt-2">자유게시판</h3>
+            <div class="card-header tw-bg-[#0B3479]" style="display: flex; justify-content: space-between; align-items: center;">
+                <h3 class="card-title mt-2" style="color: white;">자유게시판</h3>
                 <button type="button" class="btn btn-primary">
                     <a href="/freeWrite" class="nav-link">작성</a>
                 </button>
@@ -96,7 +95,7 @@
         var tableBody = $('#freeTableBody');
         var tableContent = '<table class="table table-bordered"><tbody>';
 
-        // 받아온 데이터를 테이블에 동적으로 추가합니다.
+        // 받아온 데이터를 테이블에 동적으로 추가합니다.정
         for (var i = 0; i < data.length; i++) {
             tableContent += '<tr>';
             tableContent += '<td style="width: 13%">' + data[i].postId + '</td>';

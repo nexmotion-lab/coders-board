@@ -14,7 +14,7 @@
 
     <div class="d-flex">
         <%@ include file="/WEB-INF/jsp/common/leftMenu.jsp" %>
-    
+
         <%--main-content--%>
         <main class="flex-grow-1">
             <img src="${pageContext.request.contextPath}/img/suya.png" alt="SUYA" style="max-width: 100%; height: auto; display: block; margin: 10px auto;">

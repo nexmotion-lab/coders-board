@@ -6,4 +6,16 @@
         <b>ⓒ 2024 Team coder</b>
     </div>
 </footer>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        clifford: '#da373d',
+                    }
+                }
+            },
+            prefix: 'tw-',
+        }
+    </script>
 </div>

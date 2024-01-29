@@ -16,15 +16,15 @@
 <%--해더부분--%>
 <%@ include file="/WEB-INF/jsp/common/header.jsp" %>
 
-<div class="d-flex">
+<div class="tw-mt-[127px] tw-w-full tw-flex tw-flex-row tw-w-full tw-max-w-[80%] lg:tw-min-w-[1250px] tw-items-start tw-justify-between tw-mx-auto tw-gap-[30px] !tw-z-[99]" >
     <%@ include file="/WEB-INF/jsp/common/leftMenu.jsp" %>
 
     <%--main-content--%>
     <main class="flex-grow-1 p-4">
         <div class="card">
-            <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
-                <h3 class="card-title mt-2">자유게시판</h3>
-                <button type="submit" class="btn btn-primary" onclick="submitForm()">
+            <div class="card-header tw-bg-[#0B3479]" style="display: flex; justify-content: space-between; align-items: center;">
+                <h3 class="card-title mt-2" style="color: white;">자유게시판</h3>
+                <button type="submit" class="btn tw-text-[#0B3479] tw-text-[15px] tw-leading-[150%] tw-tracking-[-0.6px] tw-font-[600]" style="border: none; background-color: white; color: #0B3479;" onclick="submitForm()">
                     <a href="/free" class="nav-link">등록</a>
                 </button>
             </div>
@@ -32,8 +32,8 @@
             <div class="card-body">
 
                 <form id="postForm" action="/free/insert" method="post">
-                    <input type="text" id="postTitle" name="postTitle" style="width: 1140px; border: none;" class="p-3 mb-3 bg-secondary-subtle" placeholder="제목을 입력하세요" required><br>
-                    <textarea id="postContent" name="postContent" rows="17" style="width: 1140px;" class="p-3" placeholder="내용을 입력하세요" required></textarea><br>
+                    <input type="text" id="postTitle" name="postTitle" style="width: 900px; border: none;" class="p-3 mb-3 bg-secondary-subtle" placeholder="제목을 입력하세요" required><br>
+                    <textarea id="postContent" name="postContent" style="width: 900px" rows="17" class="p-3" placeholder="내용을 입력하세요" required></textarea><br>
                 </form>
 
             </div>
