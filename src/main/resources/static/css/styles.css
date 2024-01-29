@@ -74,3 +74,6 @@ thead tr th{
 #posts tr:hover > td{
     text-decoration: underline !important;
 }
+.pointer {
+    cursor: pointer;
+}
