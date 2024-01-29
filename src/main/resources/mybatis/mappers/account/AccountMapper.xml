@@ -8,6 +8,7 @@
     <resultMap type="com.nexmotion.board.account.Account" id="accountResultMap">
         <id column="member_id" property="userid" javaType="java.lang.String"/>
         <result column="member_password" property="password" javaType="java.lang.String"/>
+        <result column="member_name" property="memberName" javaType="java.lang.String"/>
         <result column="member_auth" property="authority" javaType="java.lang.String"/>
         <result column="member_expired_yn" property="isAccountNonExpired" javaType="java.lang.Boolean"/>
         <result column="member_lock_yn" property="isAccountNonLocked" javaType="java.lang.Boolean"/>
@@ -18,6 +19,7 @@
     <select id="getAccount" parameterType="map" resultMap="accountResultMap">
         SELECT member_id
               ,member_password
+              ,member_name
               ,member_auth
               ,member_expired_yn
               ,member_lock_yn
