@@ -23,12 +23,7 @@ public class Account implements UserDetails {
     public void setUserid(String userid) {
         this.userid = userid;
     }
-    public void setMemberName(String memberName) {
-        this.memberName = memberName;
-    }
-    public String getMemberName() {
-        return memberName;
-    }
+
     public void setPassword(String password) {
         this.password = password;
     }
