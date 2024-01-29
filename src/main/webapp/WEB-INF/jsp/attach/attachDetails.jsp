@@ -25,29 +25,14 @@
                 <h3 class="tw-text-[#0B3479] !tw-text-[26px] tw-font-[800] tw-leading-[160%] tw-tracking-[-0.8px]">자료실</h3>
             </div>
             <div class="card-body tw-rounded-[8px] tw-overflow-hidden tw-shadow-md !tw-border-[1px] !tw-border-[#dfdfdf] tw-mb-[22px]">
-                <table class="table table-bordered table-striped !tw-m-[0px]">
-                   <colgroup>
-                       <col class="tw-w-[10%]">
-                       <col class="tw-w-[35%]">
-                       <col class="tw-w-[15%]">
-                       <col class="tw-w-[20%]">
-                       <col class="tw-w-[10%]">
-                       <col class="tw-w-[10%]">
-                   </colgroup>
-                    <thead>
-                    <tr class="tw-bg-[#0B3479]">
-                        <th class="!tw-bg-[#0B3479] !tw-border-none !tw-text-[#fff] !tw-text-[18px] !tw-font-[600] !tw-tracking-[-0.8px] !tw-leading-[150%] tw-text-center" style="width: auto">NO</th>
-                        <th class="!tw-bg-[#0B3479] !tw-border-none !tw-text-[#fff] !tw-text-[18px] !tw-font-[600] !tw-tracking-[-0.8px] !tw-leading-[150%] tw-text-center" style="width: auto">제목</th>
-                        <th class="!tw-bg-[#0B3479] !tw-border-none !tw-text-[#fff] !tw-text-[18px] !tw-font-[600] !tw-tracking-[-0.8px] !tw-leading-[150%] tw-text-center" style="width: auto">작성자</th>
-                        <th class="!tw-bg-[#0B3479] !tw-border-none !tw-text-[#fff] !tw-text-[18px] !tw-font-[600] !tw-tracking-[-0.8px] !tw-leading-[150%] tw-text-center" style="width: auto">등록일</th>
-                        <th class="!tw-bg-[#0B3479] !tw-border-none !tw-text-[#fff] !tw-text-[18px] !tw-font-[600] !tw-tracking-[-0.8px] !tw-leading-[150%] tw-text-center" style="width: auto">첨부파일</th>
-                        <th class="!tw-bg-[#0B3479] !tw-border-none !tw-text-[#fff] !tw-text-[18px] !tw-font-[600] !tw-tracking-[-0.8px] !tw-leading-[150%] tw-text-center" style="width: auto">조회수</th>
-                    </tr>
-                    </thead>
-                    <tbody id="posts">
-
-                    </tbody>
-                </table>
+                <div class="fs-3 fw-bold h3" style="color: #001F99">자유게시판</div>
+                <div id="postDetail" class="border-top border-bottom border-2 border-secondary mt-3" style="min-height: 75%">
+                    <!-- 여기에 동적으로 채워질 내용 -->
+                </div>
+                <div class="p-2">
+                    <div class="fw-bold mt-2" onclick="getPrevPost()"> 이전글</div>
+                    <div class="fw-bold mt-2" onclick="getNextPost()">다음글</div>
+                </div>
                 <style>
                     thead tr th{
                         padding: 18px 15px !important;
