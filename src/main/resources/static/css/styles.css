@@ -52,14 +52,6 @@
     background: #fff;
 }
 
-/*test//*/
-/*test2*/
-
-.nav-item.\'active\'{
-    border: solid 3px #125fac;
-    background: Gray;
-}
-
 thead tr th{
     padding: 18px 15px !important;
 }
@@ -81,4 +73,7 @@ thead tr th{
 }
 #posts tr:hover > td{
     text-decoration: underline !important;
+}
+.pointer {
+    cursor: pointer;
 }

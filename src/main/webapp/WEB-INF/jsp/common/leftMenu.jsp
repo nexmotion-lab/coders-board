@@ -3,9 +3,9 @@
     <!-- Sidebar -->
     <div class="vh-100">
         <!-- menu logo -->
-<%--        <a href="" class="brand-link d-flex justify-content-center">--%>
-<%--            <img src="${pageContext.request.contextPath}/img/menu_logo.png" alt="Logo" style="opacity: .8;">--%>
-<%--        </a>--%>
+        <%--        <a href="" class="brand-link d-flex justify-content-center">--%>
+        <%--            <img src="${pageContext.request.contextPath}/img/menu_logo.png" alt="Logo" style="opacity: .8;">--%>
+        <%--        </a>--%>
         <div class="tw-w-full tw-flex tw-flex-col tw-items-center tw-shadow-md tw-rounded-[4px] tw-p-[20px] tw-bg-[#0B3479] tw-mb-[10px]">
             <div class="tw-w-full tw-flex tw-flex-row tw-items-center tw-gap-[10px] tw-mb-[20px]">
                 <div class="tw-w-[40px] tw-aspect-square tw-bg-[#fff] tw-rounded-full"></div>
@@ -19,7 +19,8 @@
 
         <!-- Sidebar Menu -->
         <nav>
-            <ul class="nav nav-pills nav-sidebar flex-column " data-widget="treeview" role="menu" data-accordion="false">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <ul class="nav nav-pills nav-sidebar flex-column " data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-item ${menu2 == 'announcement' ? 'active' : ''}" id="announcement">
                     <a href="/notice" class="nav-link">
                         <p>
@@ -29,7 +30,7 @@
                 </li>
 
                 <li class="nav-item ${menu2 == 'reference' ? 'active' : ''}" id="reference">
-                    <a href="/attach" class="nav-link ">
+                    <a href="/" class="nav-link ">
                         <p>
                             <b>자료실</b>
                         </p>

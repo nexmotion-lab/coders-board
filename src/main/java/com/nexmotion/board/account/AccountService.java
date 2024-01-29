@@ -34,7 +34,6 @@ public class AccountService implements UserDetailsService, AccountMapper{
 
         return account;
     }
-
     public String getCurrentUsername() {
         // Spring Security를 이용하여 현재 로그인한 사용자의 이름을 가져옴
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -52,7 +51,6 @@ public class AccountService implements UserDetailsService, AccountMapper{
 
         return null; // 예외 상황에 대한 처리
     }
-
     @Override
     public Account getAccount(String userid) throws Throwable {
 
