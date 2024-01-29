@@ -1,5 +1,6 @@
 package com.nexmotion.board.attach;
 
+import com.nexmotion.board.account.AccountService;
 import com.nexmotion.board.common.ResponseObject;
 import com.nexmotion.board.common.StatusCode;
 import com.nexmotion.board.free.Free;
@@ -20,6 +21,8 @@ public class AttachRestController {
 
     @Autowired
     AttachService attachService;
+    @Autowired
+    AccountService accountService;
 
     @RequestMapping("/attach/select")
     @ResponseBody
@@ -71,14 +74,16 @@ public class AttachRestController {
 
     @RequestMapping("/attach/insert")
     public ResponseObject<List<Attach>> insert(
-        @RequestParam(value = "postAuthor", required = true) String postAuthor,
         @RequestParam(value = "postTitle", required = true) String postTitle,
-        @RequestParam(value = "postContent", required = true) String postContent) {
+        @RequestParam(value = "postContent", required = true) String postContent) throws Throwable {
 
         ResponseObject<List<Attach>> ret = new ResponseObject<>();
         Attach attach = new Attach();
 
-        attach.setPostAuthor(postAuthor);
+        String userid = accountService.getCurrentUsername();
+        String memberName = accountService.getAccount(userid).getMemberName();
+
+        attach.setPostAuthor(memberName);
         attach.setPostTitle(postTitle);
         attach.setPostContent(postContent);
 

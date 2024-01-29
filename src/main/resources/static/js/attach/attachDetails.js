@@ -1,6 +1,5 @@
 $(document).ready(function () {
     let postId = getPostId();
-    console.log(111, postId)
     loadData(postId);
 });
 
@@ -14,7 +13,6 @@ function loadData(postId) {
         success: function (response) {
             if (response.returnCode === "200") {
                 let post = response.data;
-                console.log(post)
                 // 가져온 데이터로 페이지 채우기
                 fillPage(post);
             } else {
@@ -46,12 +44,12 @@ function getPostId() {
 
 function getPrevPost() {
     let postId = getPostId();
-    let prevUrl = '/attach/details/' + (postId - 1);
+    let prevUrl = '/attach/details/' + (parseInt(postId) - 1);
     window.location.href = prevUrl;
 }
 
 function getNextPost() {
     let postId = getPostId();
-    let nextUrl = '/attach/details/' + (postId + 1);
+    let nextUrl = '/attach/details/' + (parseInt(postId) + 1);
     window.location.href = nextUrl;
 }

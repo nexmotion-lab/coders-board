@@ -31,50 +31,17 @@
                 <h3 class="card-title">자료실 글 작성</h3>
             </div>
             <div class="card-body">
-                <form id="postForm" action="/attach/insert" method="POST">
-                    <input type="text" id="postTitle" name="postTitle" class="p-3 mb-3 bg-secondary-subtle" placeholder="제목을 입력하세요" required><br>
-                    <textarea name="postContent" id="postContent"></textarea>
+                <form>
+                    <input type="text" id="postTitle" name="postTitle" style="width: 1140px; border: none;" class="p-3 mb-3 bg-secondary-subtle" placeholder="제목을 입력하세요" required><br>
+                    <textarea id="postContent" name="postContent" rows="17" style="width: 1140px;" class="p-3" placeholder="내용을 입력하세요" required></textarea><br>
                     <p class="submit" style="text-align: right;">
                         <input type="submit" value="등록" class="btn btn-primary submit-button" onclick="submitForm()" >
                     </p>
                 </form>
             </div>
-            <%--            <div class="card-footer clearfix"></div>--%>
         </div>
     </main>
 </div>
-<script>
-    ClassicEditor.create( document.querySelector( '#postContent' ) );
-    function submitForm() {
-        // 입력된 데이터 가져오기
-        let postTitle = $("#postTitle").val();
-        let postContent = $("#postContent").val();
-
-        // Ajax를 사용하여 서버에 데이터 전송
-        $.ajax({
-            type: "POST",
-            url: "/attach/insert",
-            data: {
-                postAuthor: "이세진",
-                postTitle: postTitle,
-                postContent: postContent
-            },
-            success: function(response) {
-                // 성공적으로 응답 받은 경우 처리
-                console.log(response);
-                // 페이지 새로고침 또는 필요한 동작 수행
-                // 리다이렉트 수행
-                window.location.href = "/attach";
-            },
-            error: function(error) {
-                // 오류 발생 시 처리
-                console.error(error);
-            }
-        });
-        // 리다이렉트 수행
-        window.location.href = "/attach";
-    }
-</script>
 <%@ include file="/WEB-INF/jsp/common/footer.jsp" %>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
