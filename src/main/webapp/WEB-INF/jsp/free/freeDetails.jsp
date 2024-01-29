@@ -17,7 +17,7 @@
 <div class="tw-mt-[127px] tw-w-full tw-flex tw-flex-row tw-w-full tw-max-w-[80%] lg:tw-min-w-[1250px] tw-items-start tw-justify-between tw-mx-auto tw-gap-[30px] !tw-z-[99]" >
   <%@ include file="/WEB-INF/jsp/common/leftMenu.jsp" %>
 
-  <main class="flex-grow-1 p-4 pb-0">
+  <main class="flex-grow-1 p-0 pb-0">
     <div class="fs-3 fw-bold h3" style="color: #001F99">자유게시판</div>
     <div id="postDetail" class="border-top border-bottom border-2 border-secondary mt-3" style="min-height: 75%">
       <!-- 여기에 동적으로 채워질 내용 -->
