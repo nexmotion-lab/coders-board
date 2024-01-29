@@ -2,7 +2,6 @@ package com.nexmotion.board.free;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.sql.SQLException;
 import java.util.List;
 
@@ -13,8 +12,13 @@ public class FreeService implements FreeMapper{
     FreeMapper freeMapper;
 
     @Override
-    public List<Free> selectFree(int offset, int limit) throws SQLException {
-        return freeMapper.selectFree(offset, limit);
+    public List<Free> selectFree(int postId) throws SQLException {
+        return freeMapper.selectFree(postId);
+    }
+
+    @Override
+    public Free selectFreeDetails(Free free) throws SQLException {
+        return freeMapper.selectFreeDetails(free);
     }
 
     @Override

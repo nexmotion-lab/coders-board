@@ -5,6 +5,7 @@ import com.nexmotion.board.common.StatusCode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import com.nexmotion.board.account.AccountService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,32 +20,18 @@ public class FreeRestController {
 
     @Autowired
     FreeService freeService;
+    @Autowired
+    AccountService accountService;
 
     @RequestMapping("/free/select")
     public ResponseObject<List<Free>> select(
-            @RequestParam(value = "offset", defaultValue = "0") int offset,
-            @RequestParam(value = "limit", defaultValue = "10") int limit,
-            @RequestParam(value = "postId", required = false) Integer postId,
-            @RequestParam(value = "postDate", required = false) LocalDateTime postDate,
-            @RequestParam(value = "postHit", required = false) Integer postHit,
-            @RequestParam(value = "postAuthor", required = false) String postAuthor,
-            @RequestParam(value = "postContent", required = false) String postContent,
-            @RequestParam(value = "postTitle", required = false) String postTitle
-            ) throws Throwable {
+            @RequestParam(name = "postId", defaultValue = "2147483647") Integer postId) throws Throwable {
 
         ResponseObject<List<Free>> ret = new ResponseObject<>();
-        Free free = new Free();
         List<Free> freeList = null;
 
-        free.setPostAuthor(postAuthor);
-        free.setPostContent(postContent);
-        free.setPostId(postId);
-        free.setPostHit(postHit);
-        free.setPostDate(postDate);
-        free.setPostTitle(postTitle);
-
         try {
-            freeList = freeService.selectFree(offset, limit);
+            freeList = freeService.selectFree(postId);
         } catch (Exception e) {
             ret.setReturnCode(StatusCode.ERROR_SERVICE);
             logger.error("ERROR_SERVICE(freeError)", e);
@@ -55,16 +42,41 @@ public class FreeRestController {
         return ret;
     }
 
+    @RequestMapping("/free/details/select")
+    public ResponseObject<Free> selectDetails(
+            @RequestParam(value = "postId", required = false) int postId) throws Throwable {
+
+        ResponseObject<Free> ret = new ResponseObject<>();
+        Free free = new Free();
+        Free freeDetails = null;
+
+        free.setPostId(postId);
+
+        try {
+            freeDetails = freeService.selectFreeDetails(free);
+        } catch (Exception e) {
+            ret.setReturnCode(StatusCode.ERROR_SERVICE);
+            logger.error("ERROR_SERVICE(freeError)", e);
+            return ret;
+        }
+        ret.setData(freeDetails);
+        ret.setReturnCode(StatusCode.OK);
+        return ret;
+    }
+
     @RequestMapping("/free/insert")
     public ResponseObject<List<Free>> insert(
-            @RequestParam(value = "postAuthor", required = false) String postAuthor,
             @RequestParam(value = "postContent", required = false) String postContent,
             @RequestParam(value = "postTitle", required = false) String postTitle) throws Throwable {
 
+        System.out.println("*** /free/insert");
         ResponseObject<List<Free>> ret = new ResponseObject<>();
         Free free = new Free();
 
-        free.setPostAuthor(postAuthor);
+        String userid = accountService.getCurrentUsername();
+
+        String memberName = accountService.getAccount(userid).getMemberName();
+        free.setPostAuthor(memberName);
         free.setPostContent(postContent);
         free.setPostTitle(postTitle);
 
@@ -82,24 +94,16 @@ public class FreeRestController {
     @RequestMapping("/free/update")
     public ResponseObject<List<Free>> update(
             @RequestParam(value = "postUpdateDate", required = false) LocalDateTime postUpdateDate,
-            @RequestParam(value = "postAuthor", required = false) String postAuthor,
             @RequestParam(value = "postContent", required = false) String postContent,
-            @RequestParam(value = "postId", required = false) Integer postId,
-            @RequestParam(value = "postHit", required = false) Integer postHit,
-            @RequestParam(value = "postDate", required = false) LocalDateTime postDate,
-            @RequestParam(value = "postDeleteYn", required = false) String postDeleteYn,
+            @RequestParam(value = "postId", required = false) int postId,
             @RequestParam(value = "postTitle", required = false) String postTitle) throws Throwable {
 
         ResponseObject<List<Free>> ret = new ResponseObject<>();
         Free free = new Free();
 
         free.setPostUpdateDate(postUpdateDate);
-        free.setPostAuthor(postAuthor);
         free.setPostContent(postContent);
         free.setPostId(postId);
-        free.setPostHit(postHit);
-        free.setPostDate(postDate);
-        free.setPostDeleteYn(postDeleteYn);
         free.setPostTitle(postTitle);
 
         try {
@@ -114,7 +118,7 @@ public class FreeRestController {
     }
 
     @RequestMapping("/free/delete")
-    public ResponseObject<List<Free>> deleteDestructionList(@RequestParam("postId") Integer postId){
+    public ResponseObject<List<Free>> deleteDestructionList(@RequestParam("postId") int postId){
 
         ResponseObject<List<Free>> ret = new ResponseObject<>();
         Free free = new Free();
