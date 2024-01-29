@@ -10,8 +10,13 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <link rel="stylesheet" href="/lib/admin/plugins/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/styles.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <title>freeWrite</title>
+    <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .ck-editor__editable { height: 400px; }
+        .ck-content { font-size: 12px; }
+
+    </style>
+    <title>자유게시판</title>
 </head>
 <body>
 <%--해더부분--%>
@@ -22,27 +27,26 @@
 
     <%--main-content--%>
     <main class="flex-grow-1 p-4">
-        <div class="d-flex justify-content-between">
-            <div class="fs-3 fw-bold h3" style="color: #001F99">자유게시판</div>
-            <input type="submit" class="btn btn-primary pt-0 pb-0" value="등록">
-        </div>
-        <div class="border-top border-bottom border-2 border-secondary mt-3" style="min-height: 75%">
-            <div class="border-bottom border-2 pt-3 pb-3">
-                <input class="text-secondary border-0 fw-bold p-2 w-100" style="background-color: #f1f1f1" placeholder="제목을 입력하세요"></input>
+        <div class="card">
+            <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
+                <h3 class="card-title">자유게시판</h3>
             </div>
-            <div class="card-body">
-                <form action="" method="POST">
-                    <textarea name="text" id="editor"></textarea>
 
+            <div class="card-body">
+
+                <form action="WriteServlet" method="post">
+                    <input type="text" id="title" name="title" style="width: 1140px; border: none;" class="p-3 mb-3 bg-secondary-subtle" placeholder="제목을 입력하세요" required><br>
+                    <textarea id="content" name="content" rows="17" style="width: 1140px;" class="p-3" placeholder="내용을 입력하세요" required></textarea><br>
+                    <p class="submit" style="text-align: right;">
+                        <input type="submit" value="등록" class="btn btn-primary submit-button" onclick="submitForm()" >
+                    </p>
                 </form>
+
             </div>
         </div>
     </main>
 </div>
 
-<script>
-    ClassicEditor.create( document.querySelector( '#editor' ) );
-</script>
 <%@ include file="/WEB-INF/jsp/common/footer.jsp" %>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
