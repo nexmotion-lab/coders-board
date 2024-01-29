@@ -36,7 +36,7 @@
             <div class="card-body">
 
                 <form>
-                    <input type="text" id="postTitle" name="postTitle" style="width: 900px; border: none;" class="p-3 mb-3 bg-secondary-subtle" placeholder="제목을 입력하세요" required><br>
+                    <input type="text" id="postTitle" name="postTitle" style="width: 1000px; border: none;" class="p-3 mb-3 bg-secondary-subtle" placeholder="제목을 입력하세요" required><br>
                     <textarea id="postContent" name="postContent" style="width: 900px" rows="17" class="p-3" placeholder="내용을 입력하세요" required></textarea><br>
                 </form>
 
