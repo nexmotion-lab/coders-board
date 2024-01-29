@@ -45,12 +45,12 @@ function getPostId() {
 
 function getPrevPost() {
     var postId = getPostId();
-    var prevUrl = '/free/details/' + (postId - 1);
+    var prevUrl = '/free/details/' + (parseInt(postId) - 1);
     window.location.href = prevUrl;
 }
 
 function getNextPost() {
     var postId = getPostId();
-    var nextUrl = '/free/details/' + (postId + 1);
+    var nextUrl = '/free/details/' + (parseInt(postId) + 1);
     window.location.href = nextUrl;
 }
