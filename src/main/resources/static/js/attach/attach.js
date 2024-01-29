@@ -57,9 +57,9 @@ function goPrevPage() {
     params = { postId : firstPostId + 11 };
     AJAX.call("/attach/select", params, function (data) {
         let posts = JSON.parse(data.trim());
-        if (posts.length > 0) {
-            firstPostId = posts[0].postId;
-            lastPostId = posts[posts.length - 1].postId;
+        if (posts.data.length > 0) {
+            firstPostId = posts.data[0].postId;
+            lastPostId = posts.data[posts.data.length - 1].postId;
         }
         show(posts);
     })
@@ -70,7 +70,7 @@ function goNextPage() {
     AJAX.call("/attach/select", params, function (data) {
         let posts = JSON.parse(data.trim());
         if (posts.data.length > 0) {
-            firstPostId = posts.data[0].postId + 11;
+            firstPostId = posts.data[0].postId;
             lastPostId = posts.data[posts.data.length - 1].postId;
         }
         show(posts);
