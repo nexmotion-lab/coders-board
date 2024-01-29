@@ -33,6 +33,10 @@ public class Account implements UserDetails {
         this.password = password;
     }
 
+    public void setMemberName(String memberName) {
+        this.memberName = memberName;
+    }
+
     public void setAccountNonExpired(boolean isAccountNonExpired) {
         this.isAccountNonExpired = isAccountNonExpired;
     }
@@ -77,6 +81,10 @@ public class Account implements UserDetails {
     @Override
     public String getUsername() {
         return this.userid;
+    }
+
+    public String getMemberName() {
+        return memberName;
     }
 
     @Override

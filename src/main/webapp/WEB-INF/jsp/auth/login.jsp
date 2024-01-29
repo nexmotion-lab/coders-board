@@ -15,7 +15,7 @@
     <script src="/lib/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="/js/auth/login.js"></script>
 </head>
-<body class="login-page">
+<body class="login-page bg-secondary">
 <div class="login-box">
     <div class="card">
         <div class="card-body">

@@ -6,74 +6,26 @@
     <meta charset="UTF-8">
     <script src="/lib/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="/js/auth/notice.js"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <link rel="stylesheet" href="/css/admin/adminlte.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/styles.css">
     <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <title>notice</title>
 </head>
 <body>
-<%--해더부분--%>
-<%@ include file="/WEB-INF/jsp/common/header.jsp" %>
+    <%--해더부분--%>
+    <%@ include file="/WEB-INF/jsp/common/header.jsp" %>
 
-<div class="d-flex">
-    <%@ include file="/WEB-INF/jsp/common/leftMenu.jsp" %>
+    <div class="tw-mt-[127px] tw-w-full tw-flex tw-flex-row tw-w-full tw-max-w-[80%] lg:tw-min-w-[1250px] tw-items-start tw-justify-between tw-mx-auto tw-gap-[30px] !tw-z-[99]" >
+        <%@ include file="/WEB-INF/jsp/common/leftMenu.jsp" %>
 
-    <%--main-content--%>
-    <main class="flex-grow-1 p-4">
-        <div class="card">
-            <div class="card-header">
-                <h3 class="card-title">자유게시판</h3>
-            </div>
+        <%--main-content--%>
+        <%--main-content--%>
+        <main class="flex-grow-1 p-4">
 
-            <div class="card-body">
-                <table class="table table-bordered">
-                    <thead>
-                    <tr>
-                        <th style="width: auto">NO</th>
-                        <th style="width: auto">제목</th>
-                        <th style="width: auto">작성자</th>
-                        <th style="width: auto">등록일</th>
-                        <th style="width: auto">첨부파일</th>
-                        <th style="width: auto">조회수</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>1.</td>
-                        <td>Update software</td>
-                        <td>
-                        </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>1.</td>
-                        <td>Update software</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
+        </main>
+    </div>
 
-            <div class="card-footer clearfix">
-                <ul class="pagination pagination-sm m-0 float-right">
-                    <li class="page-item"><a class="page-link" href="#">«</a></li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">»</a></li>
-                </ul>
-            </div>
-        </div>
-    </main>
-</div>
+    <%@ include file="/WEB-INF/jsp/common/footer.jsp" %>
 
-<%@ include file="/WEB-INF/jsp/common/footer.jsp" %>
-
-<script src="/lib/booatstrap/js/bootstrap.bundle.min.js"></script></body>
+    <script src="/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>

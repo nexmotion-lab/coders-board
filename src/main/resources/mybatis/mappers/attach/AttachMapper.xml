@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.nexmotion.board.attach.AttachMapper">
+    
+    <resultMap id="attachResultMap" type="com.nexmotion.board.attach.Attach">
+        <id column="post_id" property="postId" />
+        <result column="post_author" property="postAuthor" />
+        <result column="post_title" property="postTitle" />
+        <result column="post_date" property="postDate" />
+        <result column="post_update_date" property="postUpdateDate" />
+        <result column="post_content" property="postContent" />
+        <result column="post_hit" property="postHit" />
+        <result column="post_delete_yn" property="postDeleteYn" />
+    </resultMap>
+
+    <!-- select -->
+    <select id="selectAttach" parameterType="com.nexmotion.board.attach.Attach" resultMap="attachResultMap">
+        SELECT *
+        FROM attach_board
+        WHERE post_delete_yn = 'N'
+        <if test="postId != null and postId != 0">
+            AND post_id &lt; #{postId}
+        </if>
+        ORDER BY post_id DESC
+        LIMIT 10
+    </select>
+
+    <select id="selectAttachDetails" parameterType="com.nexmotion.board.attach.Attach" resultMap="attachResultMap">
+        SELECT *
+        FROM attach_board
+        WHERE post_id = #{postId}
+    </select>
+
+    <!-- insert -->
+    <insert id="insertAttach" parameterType="com.nexmotion.board.attach.Attach">
+        INSERT INTO attach_board
+            (post_author, post_title, post_content, post_date)
+        VALUES
+            (#{postAuthor}, #{postTitle}, #{postContent}, now())
+    </insert>
+
+    <!-- update  -->
+    <update id="updateAttach" parameterType="com.nexmotion.board.attach.Attach">
+        UPDATE attach_board
+        SET post_title = #{postTitle}
+            ,post_update_date = now()
+            ,post_content = #{postContent}
+        WHERE post_id = #{postId}
+    </update>
+
+    <!--  delete (delete문을 써야하나)  -->
+    <update id="deleteAttach" parameterType="int">
+        UPDATE attach_board
+        SET post_delete_yn = 'Y'
+        WHERE post_id = #{postId}
+    </update>
+
+    <!-- select by title -->
+    <select id="getAttachByTitle" resultType="com.nexmotion.board.attach.Attach" parameterType="string">
+        SELECT * FROM attach_board
+        WHERE post_title LIKE CONCAT('%', #{postTitle}, '%') AND post_delete_yn = "N"
+    </select>
+
+    <!-- select by content -->
+    <select id="getAttachByContent" resultType="com.nexmotion.board.attach.Attach" parameterType="string">
+        SELECT * FROM attach_board
+        WHERE post_content LIKE CONCAT('%', #{postContent}, '%') AND post_delete_yn = "N"
+    </select>
+
+
+    <!-- Your select all query here with pagination -->
+    <select id="getAllAttach" resultType="com.nexmotion.board.attach.Attach" parameterType="java.util.Map">
+        SELECT * FROM attach_board
+        WHERE post_delete_yn = "N"
+        ORDER BY post_date DESC
+            LIMIT #{start}, #{pageSize}
+    </select>
+
+    <!-- Your count all query here -->
+    <select id="getTotalCount" resultType="int">
+        SELECT COUNT(*) FROM attach_board WHERE post_delete_yn = "N"
+    </select>
+
+</mapper>

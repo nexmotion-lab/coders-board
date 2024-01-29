@@ -21,7 +21,7 @@
         FROM free_board
         WHERE post_id &lt; #{postId}
         ORDER BY post_id DESC
-            LIMIT 10
+        LIMIT 10
     </select>
 
     <select id="selectFreeDetails" parameterType="com.nexmotion.board.free.Free" resultMap="freeResultMap">
@@ -32,20 +32,26 @@
 
     <insert id="insertFree" parameterType="com.nexmotion.board.free.Free">
         INSERT
-        INTO free_board (post_author, post_title, post_date, post_content)
+        INTO free_board (post_author, post_title, post_content, post_date)
         VALUES (
                #{postAuthor}
                ,#{postTitle}
-               ,NOW()
                ,#{postContent}
+               ,NOW()
                )
     </insert>
 
     <update id="updateFree" parameterType="com.nexmotion.board.free.Free">
         UPDATE free_board
         SET post_title = #{postTitle}
-          ,post_update_date = NOW()
-          ,post_content = #{postContent}
+            ,post_content = #{postContent}
+            ,post_update_date = NOW()
+        WHERE post_id = #{postId}
+    </update>
+
+    <update id="updatePostHit" parameterType="com.nexmotion.board.free.Free">
+        UPDATE free_board
+        SET post_hit = #{postHit}
         WHERE post_id = #{postId}
     </update>
 
