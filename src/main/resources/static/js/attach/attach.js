@@ -83,7 +83,7 @@ function show(response){
     let posts =response.data;
     let s = "";
     posts.forEach(function(item){
-        s+="<tr onclick=\"location.href='attach/Details/" + item.postId + "'\">";
+        s+="<tr onclick=\"location.href='attach/details/" + item.postId + "'\">";
         s+="<td>"+item.postId+"</td>";
         s+="<td>"+item.postTitle+"</td>";
         s+="<td>"+item.postAuthor+"</td>";

@@ -2,6 +2,7 @@ package com.nexmotion.board.attach;
 
 import com.nexmotion.board.common.ResponseObject;
 import com.nexmotion.board.common.StatusCode;
+import com.nexmotion.board.free.Free;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +45,26 @@ public class AttachRestController {
             return ret;
         }
         ret.setData(attachList);
+        ret.setReturnCode(StatusCode.OK);
+        return ret;
+    }
+
+    @RequestMapping("/attach/details/select")
+    public ResponseObject<Attach> selectDetails(
+            @RequestParam(value = "postId", required = true) int postId) throws Throwable {
+
+        ResponseObject<Attach> ret = new ResponseObject<>();
+        Attach attach = new Attach();
+        attach.setPostId(postId);
+
+        try {
+            attach = attachService.selectAttachDetails(attach);
+        } catch (Exception e) {
+            ret.setReturnCode(StatusCode.ERROR_SERVICE);
+            logger.error("ERROR_SERVICE(attachError)", e);
+            return ret;
+        }
+        ret.setData(attach);
         ret.setReturnCode(StatusCode.OK);
         return ret;
     }

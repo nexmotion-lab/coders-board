@@ -6,8 +6,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/styles.css">
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-    <script type="text/javascript" src="/js/attach/attach.js"></script>
-    <script type="text/javascript" src="/js/attach/attachWrite.js"></script>
+    <script type="text/javascript" src="/js/attach/attachDetails.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <title>자료실 - 삼육대학교 컴퓨터학과</title>
 </head>
@@ -25,7 +24,6 @@
                 <h3 class="tw-text-[#0B3479] !tw-text-[26px] tw-font-[800] tw-leading-[160%] tw-tracking-[-0.8px]">자료실</h3>
             </div>
             <div class="card-body tw-rounded-[8px] tw-overflow-hidden tw-shadow-md !tw-border-[1px] !tw-border-[#dfdfdf] tw-mb-[22px]">
-                <div class="fs-3 fw-bold h3" style="color: #001F99">자유게시판</div>
                 <div id="postDetail" class="border-top border-bottom border-2 border-secondary mt-3" style="min-height: 75%">
                     <!-- 여기에 동적으로 채워질 내용 -->
                 </div>
@@ -57,29 +55,6 @@
                        text-decoration: underline !important;
                     }
                 </style>
-            </div>
-            <div class="card-footer tw-w-full  tw-flex justify-content-between tw-items-center">
-                <div class="tw-opacity-0 tw-z-[-1]">blind</div>
-                <div class="pagination-wrapper">
-                    <ul class="pagination pagination-sm tw-flex tw-flex-row tw-items-center tw-gap-[8px]">
-                        <li class="page-item">
-                            <button class="page-link-button hover:!tw-opacity-[0.7] tw-h-[40px] tw-flex tw-items-center !tw-bg-[# fff] !tw-border-[1px] !tw-border-[#0B3479] !tw-rounded-[6px] !tw-text-[15px] !tw-text-[#0B3479] !tw-px-[15px] !tw-leading-[160%] !tw-tracking-[-0.8px] !tw-font-[500]" id="prevButton" type="button">
-                            &lt; 이전
-                            </button>
-                        <li class="page-item">
-                            <button class="page-link-button hover:!tw-opacity-[0.7] tw-h-[40px] tw-flex tw-items-center !tw-bg-[# fff] !tw-border-[1px] !tw-border-[#0B3479] !tw-rounded-[6px] !tw-text-[15px] !tw-text-[#0B3479] !tw-px-[15px] !tw-leading-[160%] !tw-tracking-[-0.8px] !tw-font-[500]" id="nextButton" type="button">
-                             다음 &gt;
-                            </button>
-                        </li>
-                    </ul>
-                </div>
-                <div class="button-wrapper">
-                    <a href="/attachWrite" class="nav-link !tw-bg-[#0B3479] !tw-text-[#fff] tw-py-[8px] tw-px-[15px] tw-rounded-[4px] hover:tw-opacity-[0.85]">
-                        <span>
-                            작성
-                        </span>
-                    </a>
-                </div>
             </div>
         </div>
     </main>
