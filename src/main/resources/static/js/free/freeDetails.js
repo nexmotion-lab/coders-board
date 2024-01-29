@@ -31,7 +31,7 @@ function fillPage(post) {
     // 가져온 데이터로 페이지를 동적으로 채우는 코드
     var postDetailHtml = '<div class="border-bottom border-2 p-3">' +
         '<div class="fw-bold h4">' + post.postTitle + '</div>' +
-        '<div class="text-secondary">' + post.postDate + ' | 조회수 ' + post.postHit + ' | ' + post.postAuthor + '</div>' +
+        '<div class="text-secondary">' + post.postDate.replace('T', ' ') + ' | 조회수 ' + post.postHit + ' | ' + post.postAuthor + '</div>' +
         '</div>' +
         '<div class="p-3" style="">' + post.postContent + '</div>';
     $('#postDetail').html(postDetailHtml);
