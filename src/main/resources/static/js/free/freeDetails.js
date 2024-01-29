@@ -31,7 +31,7 @@ function fillPage(post) {
     // 가져온 데이터로 페이지를 동적으로 채우는 코드
     var postDetailHtml = '<div class="border-bottom border-2 p-3">' +
         '<div class="fw-bold h4">' + post.postTitle + '</div>' +
-        '<div class="">' + post.postDate + ' | 조회수 ' + post.postHit + ' | ' + post.postAuthor + '</div>' +
+        '<div class="text-secondary">' + post.postDate + ' | 조회수 ' + post.postHit + ' | ' + post.postAuthor + '</div>' +
         '</div>' +
         '<div class="p-3" style="">' + post.postContent + '</div>';
     $('#postDetail').html(postDetailHtml);
@@ -40,6 +40,17 @@ function fillPage(post) {
 // URL에서 특정 파라미터의 값을 가져오는 함수
 function getPostId() {
     var postId = window.location.pathname.split('/').pop();
-    console.log(postId); // 출력: 33333
     return postId;
+}
+
+function getPrevPost() {
+    var postId = getPostId();
+    var prevUrl = '/free/details/' + (postId - 1);
+    window.location.href = prevUrl;
+}
+
+function getNextPost() {
+    var postId = getPostId();
+    var nextUrl = '/free/details/' + (postId + 1);
+    window.location.href = nextUrl;
 }
