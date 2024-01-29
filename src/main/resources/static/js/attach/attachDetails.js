@@ -29,12 +29,12 @@ function loadData(postId) {
 
 function fillPage(post) {
     // 가져온 데이터로 페이지를 동적으로 채우는 코드
-    var postDetailHtml =
+    let postDetailHtml =
         '<div class="border-bottom border-2 p-3">' +
-        '<div class="fw-bold h4">' + post.postTitle + '</div>' +
+        '<div class="fw-bold h4" id="postTitle">' + post.postTitle + '</div>' +
         '<div class="text-secondary">' + post.postDate + ' | 조회수 ' + post.postHit + ' | ' + post.postAuthor + '</div>' +
         '</div>' +
-        '<div class="p-3" style="">' + post.postContent + '</div>';
+        '<div class="p-3" style="" id="postContent">' + post.postContent + '</div>';
     $('#postDetail').html(postDetailHtml);
 }
 
@@ -54,4 +54,38 @@ function getNextPost() {
     let postId = getPostId();
     let nextUrl = '/attach/details/' + (postId + 1);
     window.location.href = nextUrl;
+}
+
+function attachUpdate() {
+
+    let postId = getPostId(); // 이전에 정의한 함수 사용 (getPostId는 페이지의 postId를 가져오는 함수)
+
+    // 쿼리 매개변수를 사용하여 URL 생성
+    let redirectUrl = `/attachWrite?postId=${postId}&postContent=${encodeURIComponent(postContent)}&postTitle=${encodeURIComponent(postTitle)}`;
+
+    // 리다이렉트
+    window.location.href = redirectUrl;
+}
+
+function attachDelete() {
+
+
+    let postId =getPostId();
+
+    $.ajax({
+        url: '/attach/delete',
+        type: 'POST',
+        data: { postId: postId },
+        dataType: 'json',
+        success: function (response) {
+            if(response.returnCode === "200") {
+                alert('게시글이 성공적으로 삭제되었습니다.');
+            } else
+                alert('게시글을 삭제하지 못했습니다.')
+            window.location.href= "/attach";
+        },
+        error: function () {
+            alert('서버와의 통신 중 오류가 발생했습니다.');
+        }
+    })
 }

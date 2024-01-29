@@ -119,7 +119,7 @@ public class AttachRestController {
     }
 
     @RequestMapping("/attach/delete")
-    public ResponseObject<List<Attach>> deleteDestructionList(@RequestParam("postId") int postId){
+    public ResponseObject<List<Attach>> deleteDestructionList(@RequestParam(value = "postId") int postId){
 
         ResponseObject<List<Attach>> ret = new ResponseObject<>();
         Attach attach = new Attach();

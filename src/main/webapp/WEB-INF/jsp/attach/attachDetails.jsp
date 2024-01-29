@@ -20,8 +20,18 @@
     <%--main-content--%>
     <main class="tw-w-full">
         <div class="tw-w-full">
-            <div class="tw-mb-[8px]">
+            <div class="tw-mb-[8px]" style="display: flex; justify-content: space-between; align-items: center;">
                 <h3 class="tw-text-[#0B3479] !tw-text-[26px] tw-font-[800] tw-leading-[160%] tw-tracking-[-0.8px]">자료실</h3>
+                <div class="tw-flex">
+                    <div class="tw-mr-[8px]">
+                        <button type="button" class="nav-button !tw-bg-[#0B3479] !tw-text-[#fff] tw-py-[8px] tw-px-[15px] tw-rounded-[4px] hover:tw-opacity-[0.85]" onclick="attachDelete()">
+                            삭제
+                        </button>
+                    </div>
+                    <button type="button">
+                        <a href="/attachWrite" class="nav-link !tw-bg-[#0B3479] !tw-text-[#fff] tw-py-[8px] tw-px-[15px] tw-rounded-[4px] hover:tw-opacity-[0.85]">수정</a>
+                    </button>
+                </div>
             </div>
             <div class="card-body tw-rounded-[8px] tw-overflow-hidden tw-shadow-md !tw-border-[1px] !tw-border-[#dfdfdf] tw-mb-[22px]">
                 <div id="postDetail" class="border-top border-bottom border-2 border-secondary mt-3" style="min-height: 75%">
