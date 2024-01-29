@@ -1,5 +1,6 @@
 package com.nexmotion.board.free;
 
+import com.nexmotion.board.account.AccountService;
 import com.nexmotion.board.common.ResponseObject;
 import com.nexmotion.board.common.StatusCode;
 import org.slf4j.Logger;
@@ -19,13 +20,14 @@ public class FreeRestController {
 
     @Autowired
     FreeService freeService;
+    @Autowired
+    AccountService accountService;
 
     @RequestMapping("/free/select")
     public ResponseObject<List<Free>> select(
             @RequestParam(name = "postId", defaultValue = "2147483647") Integer postId) throws Throwable {
 
         ResponseObject<List<Free>> ret = new ResponseObject<>();
-        Free free = new Free();
         List<Free> freeList = null;
 
         try {
@@ -64,14 +66,18 @@ public class FreeRestController {
 
     @RequestMapping("/free/insert")
     public ResponseObject<List<Free>> insert(
-            @RequestParam(value = "postAuthor", required = false) String postAuthor,
-            @RequestParam(value = "postTitle", required = false) String postTitle,
-            @RequestParam(value = "postContent", required = false) String postContent) throws Throwable {
+            @RequestParam(name = "postTitle", required = false) String postTitle,
+            @RequestParam(name = "postContent", required = false) String postContent) throws Throwable {
 
+        System.out.println("*** /free/insert");
         ResponseObject<List<Free>> ret = new ResponseObject<>();
         Free free = new Free();
 
-        free.setPostAuthor(postAuthor);
+        String userid = accountService.getCurrentUsername();
+
+        String memberName = accountService.getAccount(userid).getMemberName();
+
+        free.setPostAuthor(memberName);
         free.setPostTitle(postTitle);
         free.setPostContent(postContent);
 
