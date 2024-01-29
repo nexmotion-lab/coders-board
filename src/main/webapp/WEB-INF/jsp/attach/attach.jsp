@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/styles.css">
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script type="text/javascript" src="/js/attach/attach.js"></script>
+    <script type="text/javascript" src="/js/attach/attachWrite.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <title>자료실 - 삼육대학교 컴퓨터학과</title>
 </head>
@@ -76,8 +77,15 @@
                 <div class="tw-opacity-0 tw-z-[-1]">blind</div>
                 <div class="pagination-wrapper">
                     <ul class="pagination pagination-sm tw-flex tw-flex-row tw-items-center tw-gap-[8px]">
-                        <li class="page-item"><a class="page-link hover:!tw-opacity-[0.7] tw-h-[40px] tw-flex tw-items-center !tw-bg-[#fff] !tw-border-[1px] !tw-border-[#0B3479] !tw-rounded-[6px] !tw-text-[15px] !tw-text-[#0B3479] !tw-px-[15px] !tw-leading-[160%] !tw-tracking-[-0.8px] !tw-font-[500]" href="#">&lt; 이전</a></li>
-                        <li class="page-item"><a class="page-link hover:!tw-opacity-[0.7] tw-h-[40px] tw-flex tw-items-center !tw-bg-[#fff] !tw-border-[1px] !tw-border-[#0B3479] !tw-rounded-[6px] !tw-text-[15px] !tw-text-[#0B3479] !tw-px-[15px] !tw-leading-[160%] !tw-tracking-[-0.8px] !tw-font-[500]" href="#">다음 &gt;</a></li>
+                        <li class="page-item">
+                            <button class="page-link-button hover:!tw-opacity-[0.7] tw-h-[40px] tw-flex tw-items-center !tw-bg-[# fff] !tw-border-[1px] !tw-border-[#0B3479] !tw-rounded-[6px] !tw-text-[15px] !tw-text-[#0B3479] !tw-px-[15px] !tw-leading-[160%] !tw-tracking-[-0.8px] !tw-font-[500]" id="prevButton" type="button">
+                            &lt; 이전
+                            </button>
+                        <li class="page-item">
+                            <button class="page-link-button hover:!tw-opacity-[0.7] tw-h-[40px] tw-flex tw-items-center !tw-bg-[# fff] !tw-border-[1px] !tw-border-[#0B3479] !tw-rounded-[6px] !tw-text-[15px] !tw-text-[#0B3479] !tw-px-[15px] !tw-leading-[160%] !tw-tracking-[-0.8px] !tw-font-[500]" id="nextButton" type="button">
+                             다음 &gt;
+                            </button>
+                        </li>
                     </ul>
                 </div>
                 <div class="button-wrapper">

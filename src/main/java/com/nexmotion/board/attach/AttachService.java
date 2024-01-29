@@ -18,6 +18,11 @@ public class AttachService implements AttachMapper {
     }
 
     @Override
+    public Attach selectAttachDetails(Attach attach) throws SQLException {
+        return attachMapper.selectAttachDetails(attach);
+    }
+
+    @Override
     public void insertAttach(Attach attach) throws SQLException {
         attachMapper.insertAttach(attach);
     }

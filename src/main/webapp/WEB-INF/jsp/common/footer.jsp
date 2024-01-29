@@ -2,7 +2,7 @@
 <!-- Main Footer -->
 <footer>
     <div class="main-footer">
-        <b>ⓒ 2024 Team coder</b>
+        <b>ⓒ 2024 Team coders</b>
     </div>
 </footer>
 
