@@ -9,6 +9,11 @@
         font-family: 'Noto Sans KR', sans-serif !important;
     }
 </style>
+<script>
+    function logout() {
+        document.getElementById("logoutForm").submit();
+    }
+</script>
 <%--230125 feat: talwind css & gooogle font__end --%>
 <nav class="tw-fixed tw-top-0 tw-left-0 tw-w-full tw-py-[18px] tw-h-[87px] tw-bg-[#0B3479] tw-px-[20px] tw-flex tw-items-center tw-shadow-xl">
         <ul class="navbar-nav tw-flex !tw-flex-row tw-justify-between align-items-center tw-w-full lg:tw-max-w-[80%] lg:tw-min-w-[1250px] tw-mx-auto">
@@ -17,7 +22,7 @@
                 <h2 class="brand-title tw-text-[22px] tw-text-[#FFF] tw-font-[700] tw-leading-[160%] tw-tracking-[-0.6px] !tw-m-[0px] !tw-p-[0px] ">삼육대학교 컴퓨터공학부</h2>
             </a></li>
             <li>
-                <a href="#" class="tw-border-[1px] tw-border-[#0B3479] hover:tw-opacity-[0.85] tw-bg-[#fff] tw-rounded-full tw-py-[5px] tw-px-[16px] tw-whitespace-nowrap  tw-flex tw-items-center tw-justify-center">
+                <a onclick="logout()" role="button" class="tw-border-[1px] tw-border-[#0B3479] hover:tw-opacity-[0.85] tw-bg-[#fff] tw-rounded-full tw-py-[5px] tw-px-[16px] tw-whitespace-nowrap  tw-flex tw-items-center tw-justify-center">
                     <span class="tw-text-[#0B3479] tw-text-[15px] tw-leading-[150%] tw-tracking-[-0.6px] tw-font-[600]">Logout</span>
                 </a>
             </li>

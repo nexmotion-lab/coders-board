@@ -13,7 +13,7 @@
             </div>
             <div class="tw-w-full tw-flex tw-flex-row tw-justify-center tw-items-center tw-gap-[15px]">
                 <a class="tw-text-[#fff] tw-text-[14px] hover:tw-opacity-[0.8] hover:tw-underline">마이페이지</a>
-                <a class="tw-text-[#fff] tw-text-[14px] hover:tw-opacity-[0.8] hover:tw-underline">로그아웃</a>
+                <a onclick="logout()" role="button" class="tw-text-[#fff] tw-text-[14px] hover:tw-opacity-[0.8] hover:tw-underline">로그아웃</a>
             </div>
         </div>
 
