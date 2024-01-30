@@ -32,7 +32,7 @@ function loadData() {
                         '<td>' + post.postId + '</td>' +
                         '<td>' + post.postTitle + '</td>' +
                         '<td>' + post.postAuthor + '</td>' +
-                        '<td>' + post.postDate + '</td>' +
+                        '<td>' + post.postDate.split('T')[0].replace(/-/g, '.') + '</td>' +
                         '<td></td>' +
                         '<td>' + post.postHit + '</td>' +
                         '</tr>';

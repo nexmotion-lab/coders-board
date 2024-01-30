@@ -49,6 +49,12 @@
         WHERE post_id = #{postId}
     </update>
 
+    <update id="updatePostHit" parameterType="com.nexmotion.board.free.Free">
+        UPDATE free_board
+        SET post_hit = #{postHit}
+        WHERE post_id = #{postId}
+    </update>
+
     <delete id="deleteFree" parameterType="com.nexmotion.board.free.Free">
         DELETE
         FROM free_board

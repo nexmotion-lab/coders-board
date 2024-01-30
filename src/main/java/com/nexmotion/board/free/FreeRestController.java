@@ -69,7 +69,6 @@ public class FreeRestController {
             @RequestParam(name = "postTitle", required = false) String postTitle,
             @RequestParam(name = "postContent", required = false) String postContent) throws Throwable {
 
-        System.out.println("*** /free/insert");
         ResponseObject<List<Free>> ret = new ResponseObject<>();
         Free free = new Free();
 
@@ -99,7 +98,6 @@ public class FreeRestController {
             @RequestParam(value = "postContent", required = false) String postContent,
             @RequestParam(value = "postUpdateDate", required = false) LocalDateTime postUpdateDate) throws Throwable {
 
-
         ResponseObject<List<Free>> ret = new ResponseObject<>();
         Free free = new Free();
 
@@ -110,6 +108,28 @@ public class FreeRestController {
 
         try {
             freeService.updateFree(free);
+        } catch (Exception e) {
+            ret.setReturnCode(StatusCode.ERROR_SERVICE);
+            logger.error("ERROR_SERVICE(freeError)", e);
+            return ret;
+        }
+        ret.setReturnCode(StatusCode.OK);
+        return ret;
+    }
+
+    @RequestMapping("/free/update/postHit")
+    public ResponseObject<Free> updatePostHit(
+            @RequestParam(value = "postId", required = false) int postId) throws Throwable {
+
+        ResponseObject<Free> ret = new ResponseObject<>();
+        Free free = new Free();
+
+        free.setPostId(postId);
+        free = freeService.selectFreeDetails(free);
+        free.setPostHit(free.getPostHit() + 1);
+
+        try {
+            freeService.updatePostHit(free);
         } catch (Exception e) {
             ret.setReturnCode(StatusCode.ERROR_SERVICE);
             logger.error("ERROR_SERVICE(freeError)", e);

@@ -25,7 +25,6 @@
                     <a href="/freeWrite" class="nav-link !tw-bg-[#0B3479] !tw-text-[#fff] tw-py-[8px] tw-px-[15px] tw-rounded-[4px] hover:tw-opacity-[0.85]">작성</a>
                 </button>
             </div>
-
             <div class="card-body  tw-rounded-[8px] tw-overflow-hidden tw-shadow-md !tw-border-[1px] !tw-border-[#dfdfdf] tw-mb-[22px]">
                 <table class="table table-bordered table-striped !tw-m-[0px]">
                     <colgroup>
@@ -56,6 +55,6 @@
 
 <%@ include file="/WEB-INF/jsp/common/footer.jsp" %>
 
-    <script src="/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
