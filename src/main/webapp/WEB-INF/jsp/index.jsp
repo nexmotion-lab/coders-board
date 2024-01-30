@@ -19,7 +19,7 @@
     <main class="tw-flex tw-flex-col tw-items-center tw-justify-center tw-min-h-[calc(100vh-150px)]">
         <div class="tw-flex tw-items-center tw-justify-center tw-gap-[30px] tw-mb-[40px]">
             <img src="${pageContext.request.contextPath}/img/suya.png" alt="삼육대학교 마스코트 이미지" class="tw-w-[15%]">
-            <img src="${pageContext.request.contextPath}/img/suya.png" alt="삼육대학교 마스코트 이미지" class="tw-w-[15%]">
+            <img src="${pageContext.request.contextPath}/img/suho.png" alt="삼육대학교 마스코트 이미지" class="tw-w-[15%]">
         </div>
         <p class="tw-text-[#0B3479] !tw-text-[26px] tw-font-[800] tw-leading-[160%] tw-tracking-[-0.8px] tw-mb-[5px]">환영합니다! </p>
         <p class="tw-text-[#0B3479] !tw-text-[21px] tw-font-[800] tw-leading-[160%] tw-tracking-[-0.8px]">

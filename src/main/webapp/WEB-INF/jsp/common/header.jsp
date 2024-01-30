@@ -15,7 +15,7 @@
     }
 </script>
 <%--230125 feat: talwind css & gooogle font__end --%>
-<nav class="tw-fixed tw-top-0 tw-left-0 tw-w-full tw-py-[18px] tw-h-[87px] tw-bg-[#0B3479] tw-px-[20px] tw-flex tw-items-center tw-shadow-xl">
+<nav class="tw-fixed tw-top-0 tw-left-0 tw-w-full tw-py-[18px] tw-h-[87px] tw-bg-[#0B3479] tw-px-[20px] tw-flex tw-items-center tw-shadow-xl" style="z-index:99">
         <ul class="navbar-nav tw-flex !tw-flex-row tw-justify-between align-items-center tw-w-full lg:tw-max-w-[80%] lg:tw-min-w-[1250px] tw-mx-auto">
             <li><a href = "/" class="tw-flex tw-items-center tw-gap-[12px] text-decoration-none text-black ">
                 <img  src="${pageContext.request.contextPath}/img/main_logo.png" alt="삼육대학교 로고" class="brand-image tw-bg-[#fff] tw-rounded-full ">

@@ -62,6 +62,7 @@ public class AttachRestController {
 
         try {
             attach = attachService.selectAttachDetails(attach);
+            attach.setPostHit(attach.getPostHit() + 1);
         } catch (Exception e) {
             ret.setReturnCode(StatusCode.ERROR_SERVICE);
             logger.error("ERROR_SERVICE(attachError)", e);
