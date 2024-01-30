@@ -54,9 +54,16 @@
     <!--  delete (delete문을 써야하나)  -->
     <update id="deleteAttach" parameterType="int">
         UPDATE attach_board
-        SET post_delete_yn = 'Y'
+        SET post_title="삭제된 게시물 입니다." , post_content="삭제된 게시물입니다."
         WHERE post_id = #{postId}
     </update>
+
+<!--    <update id="deleteAttach" parameterType="int">-->
+<!--        UPDATE attach_board-->
+<!--        SET post_delete_yn = 'Y' -->
+<!--        WHERE post_id = #{postId}-->
+<!--    </update>-->
+
 
     <!-- select by title -->
     <select id="getAttachByTitle" resultType="com.nexmotion.board.attach.Attach" parameterType="string">

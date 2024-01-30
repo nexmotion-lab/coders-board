@@ -1,5 +1,6 @@
 package com.nexmotion.board.attach;
 
+import com.nexmotion.board.account.AccountService;
 import com.nexmotion.board.common.ResponseObject;
 import com.nexmotion.board.common.StatusCode;
 import com.nexmotion.board.free.Free;
@@ -20,6 +21,8 @@ public class AttachRestController {
 
     @Autowired
     AttachService attachService;
+    @Autowired
+    AccountService accountService;
 
     @RequestMapping("/attach/select")
     @ResponseBody
@@ -59,6 +62,7 @@ public class AttachRestController {
 
         try {
             attach = attachService.selectAttachDetails(attach);
+            attach.setPostHit(attach.getPostHit() + 1);
         } catch (Exception e) {
             ret.setReturnCode(StatusCode.ERROR_SERVICE);
             logger.error("ERROR_SERVICE(attachError)", e);
@@ -71,14 +75,16 @@ public class AttachRestController {
 
     @RequestMapping("/attach/insert")
     public ResponseObject<List<Attach>> insert(
-        @RequestParam(value = "postAuthor", required = true) String postAuthor,
         @RequestParam(value = "postTitle", required = true) String postTitle,
-        @RequestParam(value = "postContent", required = true) String postContent) {
+        @RequestParam(value = "postContent", required = true) String postContent) throws Throwable {
 
         ResponseObject<List<Attach>> ret = new ResponseObject<>();
         Attach attach = new Attach();
 
-        attach.setPostAuthor(postAuthor);
+        String userid = accountService.getCurrentUsername();
+        String memberName = accountService.getAccount(userid).getMemberName();
+
+        attach.setPostAuthor(memberName);
         attach.setPostTitle(postTitle);
         attach.setPostContent(postContent);
 
@@ -97,7 +103,7 @@ public class AttachRestController {
     public ResponseObject<List<Attach>> update(
             @RequestParam(value = "postTitle", required = true) String postTitle,
             @RequestParam(value = "postContent", required = true) String postContent,
-            @RequestParam(value = "postId", required = true) int postId) {
+            @RequestParam(value = "postId", required = true) int postId) throws Throwable{
 
         ResponseObject<List<Attach>> ret = new ResponseObject<>();
         Attach attach = new Attach();
@@ -119,7 +125,7 @@ public class AttachRestController {
     }
 
     @RequestMapping("/attach/delete")
-    public ResponseObject<List<Attach>> deleteDestructionList(@RequestParam("postId") int postId){
+    public ResponseObject<List<Attach>> deleteDestructionList(@RequestParam(value = "postId") int postId){
 
         ResponseObject<List<Attach>> ret = new ResponseObject<>();
         Attach attach = new Attach();

@@ -8,7 +8,7 @@
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script type="text/javascript" src="/js/attach/attachDetails.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <title>자료실 - 삼육대학교 컴퓨터학과</title>
+    <title>자료실 - 삼육대학교 컴퓨터공학부</title>
 </head>
 <body>
 <%--해더부분--%>
@@ -18,44 +18,26 @@
     <%@ include file="/WEB-INF/jsp/common/leftMenu.jsp" %>
 
     <%--main-content--%>
-    <main class="tw-w-full">
-        <div class="tw-w-full">
-            <div class="tw-mb-[8px]">
-                <h3 class="tw-text-[#0B3479] !tw-text-[26px] tw-font-[800] tw-leading-[160%] tw-tracking-[-0.8px]">자료실</h3>
-            </div>
-            <div class="card-body tw-rounded-[8px] tw-overflow-hidden tw-shadow-md !tw-border-[1px] !tw-border-[#dfdfdf] tw-mb-[22px]">
-                <div id="postDetail" class="border-top border-bottom border-2 border-secondary mt-3" style="min-height: 75%">
-                    <!-- 여기에 동적으로 채워질 내용 -->
+    <main class="flex-grow-1 p-0 pb-0">
+        <div class="tw-mb-[8px]" style="display: flex; justify-content: space-between; align-items: center;">
+            <h3 class="tw-text-[#0B3479] !tw-text-[26px] tw-font-[800] tw-leading-[160%] tw-tracking-[-0.8px]">자료실</h3>
+            <div class="tw-flex">
+                <div class="tw-mr-[8px]">
+                    <button type="button" class="nav-button !tw-bg-[#0B3479] !tw-text-[#fff] tw-py-[8px] tw-px-[15px] tw-rounded-[4px] hover:tw-opacity-[0.85]" onclick="attachDelete()">
+                        삭제
+                    </button>
                 </div>
-                <div class="p-2">
-                    <div class="fw-bold mt-2" onclick="getPrevPost()"> 이전글</div>
-                    <div class="fw-bold mt-2" onclick="getNextPost()">다음글</div>
-                </div>
-                <style>
-                    thead tr th{
-                        padding: 18px 15px !important;
-                    }
-                    #posts tr td{
-                        cursor: pointer;
-                        text-align: center;
-                        padding: 16px 15px !important;
-                        font-size: 16px;
-                        letter-spacing: -0.6px;
-                        line-height: 150% !important;
-                        font-weight: 400 !important;
-                    }
-                    #posts tr td:nth-child(2){
-                        cursor: pointer;
-                        text-align: left;
-                    }
-                    #posts tr:hover{
-                        opacity: 0.75 !important;
-                    }
-                    #posts tr:hover > td{
-                       text-decoration: underline !important;
-                    }
-                </style>
+                <button type="button" class="nav-button !tw-bg-[#0B3479] !tw-text-[#fff] tw-py-[8px] tw-px-[15px] tw-rounded-[4px] hover:tw-opacity-[0.85]" onclick="reDirectAttachUpdate()">
+                    수정
+                </button>
             </div>
+        </div>
+        <div id="postDetail" class="border-top border-bottom border-2 border-secondary mt-3" style="min-height: 75%">
+            <!-- 여기에 동적으로 채워질 내용 -->
+        </div>
+        <div class="p-2">
+            <div class="fw-bold mt-2 pointer" onclick="getPrevPost()"> 이전글</div>
+            <div class="fw-bold mt-2 pointer" onclick="getNextPost()">다음글</div>
         </div>
     </main>
 </div>

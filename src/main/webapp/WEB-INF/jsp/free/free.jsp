@@ -7,7 +7,7 @@
     <script type="text/javascript" src="/js/free/free.js"></script>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/styles.css">
     <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <title>자유게시판</title>
+    <title>자유게시판 - 삼육대학교 컴퓨터공학부</title>
 </head>
 <body>
 <%--해더부분--%>

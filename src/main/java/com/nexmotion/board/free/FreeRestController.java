@@ -93,15 +93,14 @@ public class FreeRestController {
 
     @RequestMapping("/free/update")
     public ResponseObject<List<Free>> update(
-            @RequestParam(value = "postId", required = false) int postId,
-            @RequestParam(value = "postTitle", required = false) String postTitle,
-            @RequestParam(value = "postContent", required = false) String postContent,
-            @RequestParam(value = "postUpdateDate", required = false) LocalDateTime postUpdateDate) throws Throwable {
+            @RequestParam(value = "postId", required = true) int postId,
+            @RequestParam(value = "postTitle", required = true) String postTitle,
+            @RequestParam(value = "postContent", required = true) String postContent
+            ) throws Throwable {
 
         ResponseObject<List<Free>> ret = new ResponseObject<>();
         Free free = new Free();
 
-        free.setPostUpdateDate(postUpdateDate);
         free.setPostContent(postContent);
         free.setPostId(postId);
         free.setPostTitle(postTitle);

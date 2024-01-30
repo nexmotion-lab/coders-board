@@ -1,4 +1,4 @@
-// 에디터를 객체를 전역변수로 선언
+// 에디터 객체를 전역 변수로 선언
 let editor;
 
 // 문서가 로드된 후에 실행될 함수
@@ -21,7 +21,7 @@ function submitForm() {
     let postContent = editor.getData();
 
     $.ajax({
-        url: '/free/insert',
+        url: '/attach/insert',
         type: 'POST',
         data: { postTitle: postTitle, postContent: postContent },
         dataType: 'json',
@@ -35,5 +35,5 @@ function submitForm() {
             alert('서버와의 통신 중 오류가 발생했습니다.');
         }
     });
-    window.location.href = "/free";
+    window.location.href = "/attach";
 }
