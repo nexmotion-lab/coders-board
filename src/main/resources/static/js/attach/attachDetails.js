@@ -1,6 +1,5 @@
 $(document).ready(function () {
     let postId = getPostId();
-    console.log(111, postId)
     loadData(postId);
 });
 
@@ -14,7 +13,6 @@ function loadData(postId) {
         success: function (response) {
             if (response.returnCode === "200") {
                 let post = response.data;
-                console.log(post)
                 // 가져온 데이터로 페이지 채우기
                 fillPage(post);
             } else {
@@ -31,8 +29,8 @@ function fillPage(post) {
     // 가져온 데이터로 페이지를 동적으로 채우는 코드
     let postDetailHtml =
         '<div class="border-bottom border-2 p-3">' +
-        '<div class="fw-bold h4" id="postTitle">' + post.postTitle + '</div>' +
-        '<div class="text-secondary">' + post.postDate + ' | 조회수 ' + post.postHit + ' | ' + post.postAuthor + '</div>' +
+        '<div class="fw-bold h4">' + post.postTitle + '</div>' +
+        '<div class="text-secondary">' + post.postDate.replace('T', ' ') + ' | 조회수 ' + post.postHit + ' | ' + post.postAuthor + '</div>' +
         '</div>' +
         '<div class="p-3" style="" id="postContent">' + post.postContent + '</div>';
     $('#postDetail').html(postDetailHtml);
@@ -46,13 +44,13 @@ function getPostId() {
 
 function getPrevPost() {
     let postId = getPostId();
-    let prevUrl = '/attach/details/' + (postId - 1);
+    let prevUrl = '/attach/details/' + (parseInt(postId) - 1);
     window.location.href = prevUrl;
 }
 
 function getNextPost() {
     let postId = getPostId();
-    let nextUrl = '/attach/details/' + (postId + 1);
+    let nextUrl = '/attach/details/' + (parseInt(postId) + 1);
     window.location.href = nextUrl;
 }
 

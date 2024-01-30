@@ -1,8 +1,6 @@
 package com.nexmotion.board.free;
 
-import com.nexmotion.board.notice.Notice;
 import org.apache.ibatis.annotations.Mapper;
-
 import java.sql.SQLException;
 import java.util.List;
 
@@ -13,6 +11,7 @@ public interface FreeMapper {
     public Free selectFreeDetails(Free free) throws SQLException;
     public void insertFree(Free free) throws SQLException;
     public void updateFree(Free free) throws SQLException;
+    public void updatePostHit(Free free) throws SQLException;
     public void deleteFree(Free free) throws SQLException;
 
 }
