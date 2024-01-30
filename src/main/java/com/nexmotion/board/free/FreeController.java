@@ -12,20 +12,13 @@ public class FreeController {
     FreeService freeService;
 
     @RequestMapping("/free")
-    public String freePage(Model model) {
-
-        return "/free/free";
-    }
+    public String freePage(Model model) { return "/free/free"; }
     @RequestMapping("/freeWrite")
-    public String freeWrite() {
-
-        return "/free/freeWrite";
-    }
+    public String freeWrite() { return "/free/freeWrite"; }
 
     @RequestMapping("/free/details/{postId}")
-    public String freeDetailsPage(@PathVariable String postId) {
+    public String freeDetailsPage(@PathVariable String postId) { return "/free/freeDetails"; }
 
-        return "/free/freeDetails";
-    }
-
+    @RequestMapping("/freeModify/{postId}")
+    public String freeModifyPage(@PathVariable String postId){return "/free/freeModify";}
 }

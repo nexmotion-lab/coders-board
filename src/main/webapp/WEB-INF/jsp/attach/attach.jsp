@@ -9,7 +9,7 @@
     <script type="text/javascript" src="/js/attach/attach.js"></script>
     <script type="text/javascript" src="/js/attach/attachWrite.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <title>자료실 - 삼육대학교 컴퓨터학과</title>
+    <title>자료실 - 삼육대학교 컴퓨터공학부</title>
 </head>
 <body>
 <%--해더부분--%>
@@ -24,7 +24,7 @@
             <div class="tw-mb-[8px]">
                 <h3 class="tw-text-[#0B3479] !tw-text-[26px] tw-font-[800] tw-leading-[160%] tw-tracking-[-0.8px]">자료실</h3>
             </div>
-            <div class="card-body tw-rounded-[8px] tw-overflow-hidden tw-shadow-md !tw-border-[1px] !tw-border-[#dfdfdf] tw-mb-[22px]">
+            <div class="card-body tw-rounded-[8px] tw-overflow-hidden tw-shadow-md !tw-border-[1px] !tw-border-[#dfdfdf] tw-mb-[12px]">
                 <table class="table table-bordered table-striped !tw-m-[0px]">
                    <colgroup>
                        <col class="tw-w-[10%]">
@@ -73,7 +73,7 @@
                     }
                 </style>
             </div>
-            <div class="card-footer tw-w-full  tw-flex justify-content-between tw-items-center">
+            <div class="card-footer tw-w-full  tw-flex justify-content-between tw-items-center tw-mb-[70px]">
                 <div class="tw-opacity-0 tw-z-[-1]">blind</div>
                 <div class="pagination-wrapper">
                     <ul class="pagination pagination-sm tw-flex tw-flex-row tw-items-center tw-gap-[8px]">

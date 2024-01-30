@@ -1,6 +1,6 @@
 $(document).ready(function () {
     // 페이지 로드 시 URL에서 postId를 추출하여 loadData 함수 호출
-    var postId = getPostId();
+    let postId = getPostId();
     upPostHit(postId);
     loadData(postId);
 });
@@ -14,7 +14,7 @@ function loadData(postId) {
         dataType: 'json',
         success: function (response) {
             if (response.returnCode === "200") {
-                var post = response.data;
+                let post = response.data;
                 // 가져온 데이터로 페이지 채우기
                 fillPage(post);
             } else {
@@ -29,11 +29,11 @@ function loadData(postId) {
 
 function fillPage(post) {
     // 가져온 데이터로 페이지를 동적으로 채우는 코드
-    var postDetailHtml = '<div class="border-bottom border-2 p-3">' +
+    let postDetailHtml = '<div class="border-bottom border-2 p-3">' +
         '<div class="fw-bold h4">' + post.postTitle + '</div>' +
         '<div class="text-secondary">' + post.postDate.replace('T', ' ') + ' | 조회수 ' + post.postHit + ' | ' + post.postAuthor + '</div>' +
         '</div>' +
-        '<div class="p-3" style="height: 300px;">' + post.postContent + '</div>';
+        '<div class="p-3" style="min-height: 300px;">' + post.postContent + '</div>';
     $('#postDetail').html(postDetailHtml);
 }
 
@@ -58,18 +58,51 @@ function upPostHit(postId) {
 
 // URL에서 특정 파라미터의 값을 가져오는 함수
 function getPostId() {
-    var postId = window.location.pathname.split('/').pop();
+    let postId = window.location.pathname.split('/').pop();
     return postId;
 }
 
 function getPrevPost() {
-    var postId = getPostId();
-    var prevUrl = '/free/details/' + (parseInt(postId) - 1);
+    let postId = getPostId();
+    let prevUrl = '/free/details/' + (parseInt(postId) + 1);
     window.location.href = prevUrl;
 }
 
 function getNextPost() {
-    var postId = getPostId();
-    var nextUrl = '/free/details/' + (parseInt(postId) + 1);
+    let postId = getPostId();
+    let nextUrl = '/free/details/' + (parseInt(postId) - 1);
     window.location.href = nextUrl;
+}
+
+function reDirectFreeUpdate() {
+
+    let postId = getPostId(); // 이전에 정의한 함수 사용 (getPostId는 페이지의 postId를 가져오는 함수)
+
+    // 쿼리 매개변수를 사용하여 URL 생성
+    let redirectUrl = "/freeModify/"+ postId;
+
+    // 리다이렉트
+    window.location.href = redirectUrl;
+}
+
+function freeDelete() {
+
+    let postId = getPostId();
+
+    $.ajax({
+        url: '/free/delete',
+        type: 'POST',
+        data: { postId: postId },
+        dataType: 'json',
+        success: function (response) {
+            if(response.returnCode === "200") {
+                alert('게시글이 성공적으로 삭제되었습니다.');
+            } else
+                alert('게시글을 삭제하지 못했습니다.')
+            window.location.href= "/free";
+        },
+        error: function () {
+            alert('서버와의 통신 중 오류가 발생했습니다.');
+        }
+    })
 }

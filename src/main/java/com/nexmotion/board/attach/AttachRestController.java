@@ -103,7 +103,7 @@ public class AttachRestController {
     public ResponseObject<List<Attach>> update(
             @RequestParam(value = "postTitle", required = true) String postTitle,
             @RequestParam(value = "postContent", required = true) String postContent,
-            @RequestParam(value = "postId", required = true) int postId) {
+            @RequestParam(value = "postId", required = true) int postId) throws Throwable{
 
         ResponseObject<List<Attach>> ret = new ResponseObject<>();
         Attach attach = new Attach();

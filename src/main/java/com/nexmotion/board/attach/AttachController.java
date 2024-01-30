@@ -14,4 +14,7 @@ public class AttachController {
     public String attachWritePage(){ return "/attach/attachWrite"; }
     @RequestMapping("/attach/details/{postId}")
     public String attachDetailsPage(@PathVariable String postId){ return "/attach/attachDetails"; }
+
+    @RequestMapping("/attachModify/{postId}")
+    public String attachModifyPage(@PathVariable String postId){return "/attach/attachModify";}
 }
