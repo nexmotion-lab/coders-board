@@ -28,3 +28,6 @@
             </li>
         </ul>
 </nav>
+
+<form action="/auth/logout" method="post" id="logoutForm">
+</form>

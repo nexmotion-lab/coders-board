@@ -26,9 +26,6 @@
             삼육대학교 컴퓨터공학부입니다.
         </p>
     </main>
-    <form action="/auth/logout" method="post" id="logoutForm">
-        <!-- <button type="button" id="logout">로그아웃</button> -->
-    </form>
 </div>
 
 <%@ include file="/WEB-INF/jsp/common/footer.jsp" %>
