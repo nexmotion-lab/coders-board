@@ -10,7 +10,20 @@
             <div class="tw-w-full tw-flex tw-flex-row tw-items-center tw-gap-[10px] tw-mb-[20px]">
                 <div class="tw-w-[40px] tw-aspect-square tw-bg-[#fff] tw-rounded-full"></div>
                 <div class="tw-flex-row">
-                    <p class="tw-text-[#fff] tw-text-[14px]"><span class="!tw-text-[10px]"><sec:authentication property="principal.authority"/></span></p>
+                    <c:set var="isAdmin" value="false" />
+                    <c:forEach var="authority" items="${pageContext.request.userPrincipal.authorities}">
+                        <c:if test="${authority.authority eq 'ROLE_ADMIN'}">
+                            <c:set var="isAdmin" value="true" />
+                        </c:if>
+                    </c:forEach>
+                    <p class="tw-text-[#fff] tw-text-[14px]">
+                        <span class="!tw-text-[12px]">
+                            <c:choose>
+                                <c:when test="${isAdmin eq 'true'}">[ 관리자 ] </c:when>
+                                <c:otherwise>[ 사용자 ]</c:otherwise>
+                            </c:choose>
+                        </span>
+                    </p>
                     <p class="tw-text-[#fff] tw-text-[14px]"><span class="!tw-text-[19px]"><sec:authentication property="principal.memberName"/></span> 님</p>
                 </div>
             </div>

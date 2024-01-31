@@ -57,12 +57,4 @@ public class AccountService implements UserDetailsService, AccountMapper{
         AccountMapper mapper = sqlSession.getMapper(AccountMapper.class);
         return mapper.getAccount(userid);
     }
-
-    public String getMemberNameByUsername(String username) throws Throwable{
-        Account account =getAccount(username);
-        if (account != null){
-            return account.getMemberName();
-        }
-        return null;
-    }
 }
