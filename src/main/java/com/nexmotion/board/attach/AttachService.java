@@ -37,4 +37,9 @@ public class AttachService implements AttachMapper {
         attachMapper.deleteAttach(attach);
     }
 
+    @Override
+    public void updatePostHit(Attach attach) throws SQLException{
+        attachMapper.updatePostHit(attach);
+    }
+
 }

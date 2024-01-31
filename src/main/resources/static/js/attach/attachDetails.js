@@ -1,6 +1,6 @@
 $(document).ready(function () {
     let postId = getPostId();
-    loadData(postId);
+    upPostHit(postId);
 });
 
 function loadData(postId) {
@@ -25,6 +25,25 @@ function loadData(postId) {
     });
 }
 
+function upPostHit(postId) {
+    $.ajax({
+        url: '/attach/update/postHit',
+        type: 'POST',
+        data: { postId: postId },
+        dataType: 'json',
+        success: function (response) {
+            if(response.returnCode === '200') {
+                console.log("조회수 증가 성공");
+                loadData(postId);
+            } else {
+                console.log("조회수 증가 안됨");
+            }
+        },
+        error: function () {
+            alert('서버와의 통신 중 오류가 발생했습니다.');
+        }
+    })
+}
 function fillPage(post) {
     // 가져온 데이터로 페이지를 동적으로 채우는 코드
     let postDetailHtml =
@@ -43,14 +62,12 @@ function getPostId() {
 
 function getPrevPost() {
     let postId = getPostId();
-    let prevUrl = '/attach/details/' + (parseInt(postId)  + 1);
-    window.location.href = prevUrl;
+    window.location.href = '/attach/details/' + (parseInt(postId) + 1);
 }
 
 function getNextPost() {
     let postId = getPostId();
-    let nextUrl = '/attach/details/' + (parseInt(postId) - 1);
-    window.location.href = nextUrl;
+    window.location.href = '/attach/details/' + (parseInt(postId) - 1);
 }
 
 function reDirectAttachUpdate() {

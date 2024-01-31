@@ -3,7 +3,7 @@ package com.nexmotion.board.attach;
 import com.nexmotion.board.account.AccountService;
 import com.nexmotion.board.common.ResponseObject;
 import com.nexmotion.board.common.StatusCode;
-import com.nexmotion.board.free.Free;
+import com.nexmotion.board.attach.Attach;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,7 +62,6 @@ public class AttachRestController {
 
         try {
             attach = attachService.selectAttachDetails(attach);
-            attach.setPostHit(attach.getPostHit() + 1);
         } catch (Exception e) {
             ret.setReturnCode(StatusCode.ERROR_SERVICE);
             logger.error("ERROR_SERVICE(attachError)", e);
@@ -98,6 +97,30 @@ public class AttachRestController {
         ret.setReturnCode(StatusCode.OK);
         return ret;
     }
+
+    @RequestMapping("/attach/update/postHit")
+    public ResponseObject<Attach> updatePostHit(
+            @RequestParam(value = "postId", required = true) int postId) throws Throwable {
+
+        ResponseObject<Attach> ret = new ResponseObject<>();
+        Attach attach = new Attach();
+
+        attach.setPostId(postId);
+        attach = attachService.selectAttachDetails(attach);
+        attach.setPostHit(attach.getPostHit() + 1);
+
+        try {
+            attachService.updatePostHit(attach);
+        } catch (Exception e) {
+            ret.setReturnCode(StatusCode.ERROR_SERVICE);
+            logger.error("ERROR_SERVICE(attachError)", e);
+            return ret;
+        }
+        ret.setReturnCode(StatusCode.OK);
+        return ret;
+    }
+
+
 
     @RequestMapping("/attach/update")
     public ResponseObject<List<Attach>> update(
