@@ -12,6 +12,6 @@ public interface AttachMapper {
     public void insertAttach(Attach attach) throws SQLException;
     public void updateAttach(Attach attach) throws SQLException;
     public void deleteAttach(Attach attach) throws SQLException;
-
+    public void updatePostHit(Attach attach) throws  SQLException;
 
 }

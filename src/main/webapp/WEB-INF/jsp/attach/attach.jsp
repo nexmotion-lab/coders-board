@@ -4,10 +4,11 @@
 <html>
 <head>
     <meta charset="UTF-8">
+
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/styles.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/fontawesome/css/all.css">
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script type="text/javascript" src="/js/attach/attach.js"></script>
-    <script type="text/javascript" src="/js/attach/attachWrite.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <title>자료실 - 삼육대학교 컴퓨터공학부</title>
 </head>
@@ -21,8 +22,23 @@
     <%--main-content--%>
     <main class="tw-w-full">
         <div class="tw-w-full">
-            <div class="tw-mb-[8px]">
+            <div class="tw-mb-[8px] tw-flex tw-f tw-justify-between">
                 <h3 class="tw-text-[#0B3479] !tw-text-[26px] tw-font-[800] tw-leading-[160%] tw-tracking-[-0.8px]">자료실</h3>
+                <div class="tw-border-solid tw-border-b-2 tw-border-b-[#0B3479] tw-flex tw-items-end tw-p-0.5">
+                    <form name="search-form" autocomplete="off">
+                        <select class="tw-font-[800] tw-leading-[160%] tw-tracking-[-0.8px] tw-pr-3" name="type">
+                            <option selected value="all">전체</option>
+                            <option value="title">제목</option>
+                            <option value="content">내용</option>
+                        </select>
+                        <label for="keyword">
+                            <input type="text" name="keyword" id="keyword" value=""/>
+                            <button>
+                                <i class="fas fa-search tw-text-[#0B3479] tw-font-[800] tw-px-1 hover:!tw-opacity-[0.7]"></i>
+                            </button>
+                        </label>
+                    </form>
+                </div>
             </div>
             <div class="card-body tw-rounded-[8px] tw-overflow-hidden tw-shadow-md !tw-border-[1px] !tw-border-[#dfdfdf] tw-mb-[12px]">
                 <table class="table table-bordered table-striped !tw-m-[0px]">

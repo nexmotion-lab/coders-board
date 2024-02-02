@@ -65,6 +65,7 @@
 <!--    </update>-->
 
 
+
     <!-- select by title -->
     <select id="getAttachByTitle" resultType="com.nexmotion.board.attach.Attach" parameterType="string">
         SELECT * FROM attach_board
@@ -77,6 +78,11 @@
         WHERE post_content LIKE CONCAT('%', #{postContent}, '%') AND post_delete_yn = "N"
     </select>
 
+    <update id="updatePostHit" parameterType="com.nexmotion.board.attach.Attach">
+        UPDATE attach_board
+        SET post_hit = #{postHit}
+        WHERE post_id = #{postId}
+    </update>
 
     <!-- Your select all query here with pagination -->
     <select id="getAllAttach" resultType="com.nexmotion.board.attach.Attach" parameterType="java.util.Map">

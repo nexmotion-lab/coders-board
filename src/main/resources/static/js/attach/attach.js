@@ -85,10 +85,10 @@ function show(response){
     posts.forEach(function(item){
         s+="<tr onclick=\"location.href='attach/details/" + item.postId + "'\">";
         s+="<td>"+item.postId+"</td>";
-        s+="<td>"+item.postTitle+"</td>";
+        s+="<td><p class='tw-line-clamp-1'>"+item.postTitle+"</p></td>";
         s+="<td>"+item.postAuthor+"</td>";
         s+="<td>"+item.postDate.split('T')[0].replace(/-/g, '.') +"</td>";
-        s+="<td>없음</td>";
+        s+="<td></td>";
         s+="<td>"+item.postHit+"</td>";
         s+="</tr>";
     });

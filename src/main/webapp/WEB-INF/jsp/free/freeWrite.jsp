@@ -7,6 +7,7 @@
     <script src="/lib/jquery-3.6.0.min.js"></script>
     <script src="/ckeditor5/build/ckeditor.js"></script>
     <script type="text/javascript" src="/js/free/freeWrite.js"></script>
+    <script type="text/javascript" src="/js/common/formUtils.js"></script>
     <link rel="stylesheet" href="/lib/admin/plugins/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -29,7 +30,7 @@
             <div class="card-header tw-bg-[#0B3479]" style="display: flex; justify-content: space-between; align-items: center;">
                 <h3 class="card-title mt-2" style="color: white;">자유게시판</h3>
                 <button type="submit" class="btn tw-text-[#0B3479] tw-text-[15px] tw-leading-[150%] tw-tracking-[-0.6px] tw-font-[600]" style="border: none; background-color: white; color: #0B3479;" onclick="submitForm()">
-                    <a href="/free" class="nav-link">등록</a>
+                    등록
                 </button>
             </div>
 
