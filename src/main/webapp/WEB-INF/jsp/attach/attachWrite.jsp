@@ -8,6 +8,7 @@
     <script src="/ckeditor5/build/ckeditor.js"></script>
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script type="text/javascript" src="/js/attach/attachWrite.js"></script>
+    <script type="text/javascript" src="/js/common/formUtils.js"></script>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/attach/attachWrite.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <style>
@@ -30,7 +31,7 @@
             <div class="card-header tw-bg-[#0B3479]" style="display: flex; justify-content: space-between; align-items: center;">
                 <h3 class="card-title mt-2" style="color: white;">자료실</h3>
                 <button type="submit" class="btn tw-text-[#0B3479] tw-text-[15px] tw-leading-[150%] tw-tracking-[-0.6px] tw-font-[600]" style="border: none; background-color: white; color: #0B3479;" onclick="submitForm()">
-                    <a href="/attach" class="nav-link">등록</a>
+                    등록
                 </button>
             </div>
             <div class="card-body">

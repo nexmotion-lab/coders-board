@@ -8,6 +8,7 @@ $(document).ready(function () {
         .create(document.querySelector('#postContent'))
         .then(instance => {
             editor = instance;
+            console.log('ckeditor 초기화 성공');
         })
         .catch(error => {
             console.error('에디터 초기화 중 오류 발생:', error);
@@ -17,7 +18,13 @@ $(document).ready(function () {
 // Ajax 제출 함수
 function submitForm() {
     // 에디터에서 작성한 내용 가져오기
-    let postTitle = $("#postTitle").val();
+    let maxLength = 256;
+
+    if(!checkWriteInput(maxLength)){
+        return;
+    }
+
+    let postTitle = $('#postTitle').val();
     let postContent = editor.getData();
 
     $.ajax({
