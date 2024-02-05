@@ -37,7 +37,7 @@ function fillPage(post) {
     $('#postDetail').html(postDetailHtml);
 }
 
-function upPostHit(postId) {정
+function upPostHit(postId) {
     $.ajax({
         url: '/free/update/postHit',
         type: 'POST',
