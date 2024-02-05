@@ -33,11 +33,11 @@ function fillPage(post) {
         '<div class="fw-bold h4">' + post.postTitle + '</div>' +
         '<div class="text-secondary">' + post.postDate.replace('T', ' ') + ' | 조회수 ' + post.postHit + ' | ' + post.postAuthor + '</div>' +
         '</div>' +
-        '<div class="p-3" style="height: 300px;">' + post.postContent + '</div>';
+        '<div class="p-3" style="height: 350px;">' + post.postContent + '</div>';
     $('#postDetail').html(postDetailHtml);
 }
 
-function upPostHit(postId) {
+function upPostHit(postId) {정
     $.ajax({
         url: '/free/update/postHit',
         type: 'POST',
