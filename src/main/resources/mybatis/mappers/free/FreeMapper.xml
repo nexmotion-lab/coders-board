@@ -55,9 +55,9 @@
         WHERE post_id = #{postId}
     </update>
 
-    <delete id="deleteFree" parameterType="com.nexmotion.board.free.Free">
-        DELETE
-        FROM free_board
+    <update id="deleteFree" parameterType="int">
+        UPDATE free_board
+        SET post_title="삭제된 게시물 입니다." , post_content="삭제된 게시물입니다."
         WHERE post_id = #{postId}
-    </delete>
+    </update>
 </mapper>

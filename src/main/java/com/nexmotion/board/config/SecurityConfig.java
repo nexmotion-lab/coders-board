@@ -31,13 +31,13 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         String[] permitted = new String[] {
-               "/", "/resources/**", "/css/**", "/js/**", "/lib/**", "/auth/*", "/error/denied", "/img/**"
+                "/resources/**", "/css/**", "/js/**", "/lib/**", "/auth/*", "/error/denied", "/img/**"
         };
 
         http.authorizeRequests()
                 .antMatchers(permitted).permitAll()
-                .antMatchers("/free/**").permitAll()
-                .antMatchers("/").hasRole("ADMIN")
+//              .antMatchers("/").permitAll()
+//              .antMatchers("/").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()

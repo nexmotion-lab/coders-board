@@ -48,18 +48,17 @@ public class FreeRestController {
 
         ResponseObject<Free> ret = new ResponseObject<>();
         Free free = new Free();
-        Free freeDetails = null;
 
         free.setPostId(postId);
 
         try {
-            freeDetails = freeService.selectFreeDetails(free);
+            free = freeService.selectFreeDetails(free);
         } catch (Exception e) {
             ret.setReturnCode(StatusCode.ERROR_SERVICE);
             logger.error("ERROR_SERVICE(freeError)", e);
             return ret;
         }
-        ret.setData(freeDetails);
+        ret.setData(free);
         ret.setReturnCode(StatusCode.OK);
         return ret;
     }
@@ -93,15 +92,14 @@ public class FreeRestController {
 
     @RequestMapping("/free/update")
     public ResponseObject<List<Free>> update(
-            @RequestParam(value = "postId", required = false) int postId,
-            @RequestParam(value = "postTitle", required = false) String postTitle,
-            @RequestParam(value = "postContent", required = false) String postContent,
-            @RequestParam(value = "postUpdateDate", required = false) LocalDateTime postUpdateDate) throws Throwable {
+            @RequestParam(value = "postId", required = true) int postId,
+            @RequestParam(value = "postTitle", required = true) String postTitle,
+            @RequestParam(value = "postContent", required = true) String postContent
+            ) throws Throwable {
 
         ResponseObject<List<Free>> ret = new ResponseObject<>();
         Free free = new Free();
 
-        free.setPostUpdateDate(postUpdateDate);
         free.setPostContent(postContent);
         free.setPostId(postId);
         free.setPostTitle(postTitle);
@@ -119,7 +117,7 @@ public class FreeRestController {
 
     @RequestMapping("/free/update/postHit")
     public ResponseObject<Free> updatePostHit(
-            @RequestParam(value = "postId", required = false) int postId) throws Throwable {
+            @RequestParam(value = "postId", required = true) int postId) throws Throwable {
 
         ResponseObject<Free> ret = new ResponseObject<>();
         Free free = new Free();
