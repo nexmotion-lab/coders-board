@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class NoticeController {
 
     @RequestMapping("/notice")
-    public String attachPage(){
+    public String noticePage(){
         return "/notice/notice";
     }
     @RequestMapping("/noticeWrite")
-    public String attachWritePage(){ return "/notice/noticeWrite"; }
+    public String noticeWritePage(){ return "/notice/noticeWrite"; }
     @RequestMapping("/notice/details/{postId}")
-    public String attachDetailsPage(@PathVariable String postId){ return "/notice/noticeDetails"; }
+    public String noticeDetailsPage(@PathVariable String postId){ return "/notice/noticeDetails"; }
 
     @RequestMapping("/noticeModify/{postId}")
-    public String attachModifyPage(@PathVariable String postId){return "/notice/noticeModify";}
+    public String noticeModifyPage(@PathVariable String postId){return "/notice/noticeModify";}
 }

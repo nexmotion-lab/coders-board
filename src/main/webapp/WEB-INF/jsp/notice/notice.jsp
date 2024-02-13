@@ -104,7 +104,7 @@
                     </ul>
                 </div>
                 <div class="button-wrapper">
-                    <a href="/attachWrite" class="nav-link !tw-bg-[#0B3479] !tw-text-[#fff] tw-py-[8px] tw-px-[15px] tw-rounded-[4px] hover:tw-opacity-[0.85]">
+                    <a href="/noticeWrite" class="nav-link !tw-bg-[#0B3479] !tw-text-[#fff] tw-py-[8px] tw-px-[15px] tw-rounded-[4px] hover:tw-opacity-[0.85]">
                         <span>
                             작성
                         </span>

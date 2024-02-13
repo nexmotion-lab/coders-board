@@ -70,7 +70,7 @@ function getNextPost() {
     window.location.href = '/notice/details/' + (parseInt(postId) - 1);
 }
 
-function reDirectAttachUpdate() {
+function reDirectNoticeUpdate() {
 
     let postId = getPostId(); // 이전에 정의한 함수 사용 (getPostId는 페이지의 postId를 가져오는 함수)
 

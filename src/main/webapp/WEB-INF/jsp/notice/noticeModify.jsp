@@ -1,13 +1,13 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+<%@ page language="java" pageEncoding="UTF-8" %>
 <html>
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/styles.css">
     <script src="/ckeditor5/build/ckeditor.js"></script>
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-    <script type="text/javascript" src="/js/attach/attachModify.js"></script>
+    <script type="text/javascript" src="/js/notice/noticeModify.js"></script>
     <script type="text/javascript" src="/js/common/formUtils.js"></script>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/attach/attachWrite.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/notice/noticeWrite.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <style>
         .ck-editor__editable { height: 400px; }
@@ -34,7 +34,7 @@
             </div>
             <div class="card-body">
                 <form>
-                    <input type="text" id="postTitle" name="postTitle" style="width: 1140px; border: none;" class="p-3 mb-3 bg-secondary-subtle" placeholder="제목을 입력하세요" required><br>
+                    <input type="text" id="postTitle" name="postTitle" style="width: 1000px; border: none;" class="p-3 mb-3 bg-secondary-subtle" placeholder="제목을 입력하세요" required><br>
                     <textarea id="postContent" name="postContent" rows="17" style="width: 1140px;" class="p-3" placeholder="내용을 입력하세요" required></textarea><br>
                 </form>
             </div>

@@ -45,7 +45,7 @@
 
     <update id="updateNotice" parameterType="com.nexmotion.board.notice.Notice">
         /*NoticeMapper.updateNotice Query*/
-        UPDATE post
+        UPDATE notice_board
            SET post_title = #{postTitle}
               ,post_update_date = #{postUpdateDate}
               ,post_content = #{postContent}
