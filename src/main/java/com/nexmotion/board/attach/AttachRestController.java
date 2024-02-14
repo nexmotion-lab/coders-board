@@ -3,16 +3,10 @@ package com.nexmotion.board.attach;
 import com.nexmotion.board.account.AccountService;
 import com.nexmotion.board.common.ResponseObject;
 import com.nexmotion.board.common.StatusCode;
-import com.nexmotion.board.attach.Attach;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.time.LocalDateTime;
+import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
@@ -68,6 +62,24 @@ public class AttachRestController {
             return ret;
         }
         ret.setData(attach);
+        ret.setReturnCode(StatusCode.OK);
+        return ret;
+    }
+    @RequestMapping("/attach/search/select")
+    public ResponseObject<List<Attach>> selectSearch(
+            @RequestParam(value = "keyword") String keyword) throws Throwable {
+
+        ResponseObject<List<Attach>> ret = new ResponseObject<>();
+        List<Attach> attachList = null;
+
+        try{
+            attachList = attachService.selectAttachSearch(keyword);
+        } catch (Exception e) {
+            ret.setReturnCode(StatusCode.ERROR_SERVICE);
+            logger.error("ERROR_SERVICE(attachError)", e);
+            return ret;
+        }
+        ret.setData(attachList);
         ret.setReturnCode(StatusCode.OK);
         return ret;
     }

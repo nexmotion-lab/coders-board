@@ -10,11 +10,13 @@ public class AttachController {
     public String attachPage(){
         return "/attach/attach";
     }
+    @RequestMapping("/attach/{keyword}")
+    public String attachSearchPage() { return "/attach/attach"; }
     @RequestMapping("/attachWrite")
-    public String attachWritePage(){ return "/attach/attachWrite"; }
+    public String attachWritePage() { return "/attach/attachWrite"; }
     @RequestMapping("/attach/details/{postId}")
-    public String attachDetailsPage(@PathVariable String postId){ return "/attach/attachDetails"; }
+    public String attachDetailsPage(@PathVariable String postId) { return "/attach/attachDetails"; }
 
     @RequestMapping("/attachModify/{postId}")
-    public String attachModifyPage(@PathVariable String postId){return "/attach/attachModify";}
+    public String attachModifyPage(@PathVariable String postId) { return "/attach/attachModify"; }
 }
