@@ -8,7 +8,7 @@ import java.util.List;
 @Mapper
 public interface NoticeMapper {
 
-    public List<Notice> selectNotice(Notice notice) throws SQLException;
+    public List<Notice> selectNotice(int offset, int pageSize) throws SQLException;
     public void insertNotice(Notice notice) throws SQLException;
     public void updateNotice(Notice notice) throws SQLException;
     public void deleteNotice(Notice notice) throws SQLException;

@@ -1,5 +1,6 @@
 package com.nexmotion.board.notice;
 
+import org.apache.ibatis.jdbc.SQL;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,8 +14,9 @@ public class NoticeService implements NoticeMapper{
     NoticeMapper noticeMapper;
 
     @Override
-    public List<Notice> selectNotice(Notice notice) throws SQLException {
-        return noticeMapper.selectNotice(notice);
+    public List<Notice> selectNotice(int page, int pageSize) throws SQLException {
+        int offset = (page - 1) * pageSize;
+        return noticeMapper.selectNotice(offset, pageSize);
     }
 
     @Override

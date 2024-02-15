@@ -22,34 +22,17 @@ public class NoticeRestController {
 
     @RequestMapping("/notice/select")
     public ResponseObject<List<Notice>> select(
-            @RequestParam(value = "postUpdateDate", required = false) LocalDateTime postUpdateDate,
-            @RequestParam(value = "postAuthor", required = false) String postAuthor,
-            @RequestParam(value = "postContent", required = false) String postContent,
-            @RequestParam(value = "postId", required = false) int postId,
-            @RequestParam(value = "postHit", required = false) int postHit,
-            @RequestParam(value = "postDate", required = false) LocalDateTime postDate,
-            @RequestParam(value = "postDeleteYn", required = false) String postDeleteYn,
-            @RequestParam(value = "postTitle", required = false) String postTitle) throws Throwable {
+            @RequestParam(name = "page", defaultValue = "1") int page,
+            @RequestParam(name = "pageSize", defaultValue = "10") int pageSize) throws Throwable {
 
         ResponseObject<List<Notice>> ret = new ResponseObject<>();
-        Notice notice = new Notice();
         List<Notice> noticeList = null;
 
-        notice.setBoardCode(1);
-        notice.setPostUpdateDate(postUpdateDate);
-        notice.setPostAuthor(postAuthor);
-        notice.setPostContent(postContent);
-        notice.setPostId(postId);
-        notice.setPostHit(postHit);
-        notice.setPostDate(postDate);
-        notice.setPostDeleteYn(postDeleteYn);
-        notice.setPostTitle(postTitle);
-
         try {
-            noticeList = noticeService.selectNotice(notice);
+            noticeList = noticeService.selectNotice(page, pageSize);
         } catch (Exception e) {
             ret.setReturnCode(StatusCode.ERROR_SERVICE);
-            logger.error("ERROR_SERVICE(NoticeError)", e);
+            logger.error("ERROR_SERVICE(noticeError)", e);
             return ret;
         }
         ret.setData(noticeList);
@@ -71,7 +54,6 @@ public class NoticeRestController {
         ResponseObject<List<Notice>> ret = new ResponseObject<>();
         Notice notice = new Notice();
 
-        notice.setBoardCode(1);
         notice.setPostUpdateDate(postUpdateDate);
         notice.setPostAuthor(postAuthor);
         notice.setPostContent(postContent);
@@ -106,7 +88,6 @@ public class NoticeRestController {
         ResponseObject<List<Notice>> ret = new ResponseObject<>();
         Notice notice = new Notice();
 
-        notice.setBoardCode(1);
         notice.setPostUpdateDate(postUpdateDate);
         notice.setPostAuthor(postAuthor);
         notice.setPostContent(postContent);
