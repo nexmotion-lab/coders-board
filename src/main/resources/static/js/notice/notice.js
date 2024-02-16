@@ -1,13 +1,14 @@
 let notice = {};
-let page = 1; // 기본적으로 첫 번째 페이지를 로드하도록 설정
+let page = 1;
 
 $(document).ready(function () {
-    loadData(page); // 페이지 로드 시 첫 번째 페이지 데이터 로드
-    loadPagination(page); // 페이지 로드 시 페이지네이션 로드
+    loadData(page);
 });
 
 function loadData(current_page) {
+    loadPagination(current_page);
     console.log("current_page: " , current_page);
+
     $.ajax({
         url: '/notice/select',
         type: 'GET',
@@ -19,7 +20,6 @@ function loadData(current_page) {
                 let noticeList = response.data;
 
                 table.empty();
-                console.log("/notice/select response", response);
                 for (let i = 0; i < noticeList.length; i++) {
                     let post = noticeList[i];
                     let row = '<tr onclick="location.href=\'notice/details/' + post.postId + '\'">' +
@@ -52,17 +52,18 @@ function loadPagination(page) {
             if (response.returnCode === "200") {
                 let pagination = $('#page');
                 let data = response.data;
-                let pageNum;
+                // let pageNum;
 
-                console.log("/paging response", response);
+                pagination.empty();
 
-                pageNum = '<li class="page-item"><a class="page-link" href="#" onclick="movePage(' + (page - 1) + ')">' + '<' + '</a></li>';
-                pagination.append(pageNum);
+                pagination.append('<li class="page-item"><a class="page-link" href="#" onclick="movePage(' + 1 + ')">' + '<<' + '</a></li>');
+                pagination.append('<li class="page-item"><a class="page-link" href="#" onclick="prevPage(' + page + ')">' + '<' + '</a></li>');
                 for(let i = data.startPage; i <= data.endPage; i++) {
-                    pageNum = '<li class="page-item"><a class="page-link" href="#" onclick="movePage(' + i + ')">' + i + '</a></li>';
-                    pagination.append(pageNum);
+                    // pageNum = '<li class="page-item"><a class="page-link" href="#" onclick="movePage(' + i + ')">' + i + '</a></li>';
+                    pagination.append('<li class="page-item"><a class="page-link" href="#" onclick="movePage(' + i + ')">' + i + '</a></li>');
                 }
-                pagination.append('<li class="page-item"><a class="page-link" href="#" onClick="movePage(' + (page + 1) + ')">' + '>' + '</a></li>');
+                pagination.append('<li class="page-item"><a class="page-link" href="#" onClick="nextPage(' + page + ')">' + '>' + '</a></li>');
+                pagination.append('<li class="page-item"><a class="page-link" href="#" onClick="movePage(' + data.totalPageCnt + ')">' + '>>' + '</a></li>');
 
             } else {
                 alert('데이터 가져오기 실패');
@@ -88,6 +89,5 @@ function prevPage(current_page) {
 
 function nextPage(current_page) {
     console.log("current_page: " , current_page);
-    // 여기서는 새로운 페이지 번호를 계산하지 않고 그냥 현재 페이지 번호에 1을 더합니다.
     loadData(current_page + 1);
 }
