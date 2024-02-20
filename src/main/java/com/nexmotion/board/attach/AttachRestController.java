@@ -1,16 +1,12 @@
 package com.nexmotion.board.attach;
 
+import com.nexmotion.board.account.AccountService;
 import com.nexmotion.board.common.ResponseObject;
 import com.nexmotion.board.common.StatusCode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.time.LocalDateTime;
+import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
@@ -19,8 +15,11 @@ public class AttachRestController {
 
     @Autowired
     AttachService attachService;
+    @Autowired
+    AccountService accountService;
 
     @RequestMapping("/attach/select")
+    @ResponseBody
     public ResponseObject<List<Attach>> select (
             @RequestParam(value = "postId", required = false) Integer postId,
             @RequestParam(value = "postAuthor", required = false) String postAuthor,
@@ -47,37 +46,56 @@ public class AttachRestController {
         return ret;
     }
 
-    @RequestMapping("attach/details/select")
+    @RequestMapping("/attach/details/select")
     public ResponseObject<Attach> selectDetails(
             @RequestParam(value = "postId", required = true) int postId) throws Throwable {
+
         ResponseObject<Attach> ret = new ResponseObject<>();
         Attach attach = new Attach();
-
         attach.setPostId(postId);
 
         try {
             attach = attachService.selectAttachDetails(attach);
         } catch (Exception e) {
             ret.setReturnCode(StatusCode.ERROR_SERVICE);
-            logger.error("ERROR_SERVICE(freeError)", e);
+            logger.error("ERROR_SERVICE(attachError)", e);
             return ret;
         }
         ret.setData(attach);
         ret.setReturnCode(StatusCode.OK);
         return ret;
     }
+    @RequestMapping("/attach/search/select")
+    public ResponseObject<List<Attach>> selectSearch(
+            @RequestParam(value = "keyword") String keyword) throws Throwable {
 
+        ResponseObject<List<Attach>> ret = new ResponseObject<>();
+        List<Attach> attachList = null;
+
+        try{
+            attachList = attachService.selectAttachSearch(keyword);
+        } catch (Exception e) {
+            ret.setReturnCode(StatusCode.ERROR_SERVICE);
+            logger.error("ERROR_SERVICE(attachError)", e);
+            return ret;
+        }
+        ret.setData(attachList);
+        ret.setReturnCode(StatusCode.OK);
+        return ret;
+    }
 
     @RequestMapping("/attach/insert")
     public ResponseObject<List<Attach>> insert(
-        @RequestParam(value = "postAuthor", required = true) String postAuthor,
         @RequestParam(value = "postTitle", required = true) String postTitle,
-        @RequestParam(value = "postContent", required = true) String postContent) {
+        @RequestParam(value = "postContent", required = true) String postContent) throws Throwable {
 
         ResponseObject<List<Attach>> ret = new ResponseObject<>();
         Attach attach = new Attach();
 
-        attach.setPostAuthor(postAuthor);
+        String userid = accountService.getCurrentUsername();
+        String memberName = accountService.getAccount(userid).getMemberName();
+
+        attach.setPostAuthor(memberName);
         attach.setPostTitle(postTitle);
         attach.setPostContent(postContent);
 
@@ -92,11 +110,35 @@ public class AttachRestController {
         return ret;
     }
 
+    @RequestMapping("/attach/update/postHit")
+    public ResponseObject<Attach> updatePostHit(
+            @RequestParam(value = "postId", required = true) int postId) throws Throwable {
+
+        ResponseObject<Attach> ret = new ResponseObject<>();
+        Attach attach = new Attach();
+
+        attach.setPostId(postId);
+        attach = attachService.selectAttachDetails(attach);
+        attach.setPostHit(attach.getPostHit() + 1);
+
+        try {
+            attachService.updatePostHit(attach);
+        } catch (Exception e) {
+            ret.setReturnCode(StatusCode.ERROR_SERVICE);
+            logger.error("ERROR_SERVICE(attachError)", e);
+            return ret;
+        }
+        ret.setReturnCode(StatusCode.OK);
+        return ret;
+    }
+
+
+
     @RequestMapping("/attach/update")
     public ResponseObject<List<Attach>> update(
             @RequestParam(value = "postTitle", required = true) String postTitle,
             @RequestParam(value = "postContent", required = true) String postContent,
-            @RequestParam(value = "postId", required = true) int postId) {
+            @RequestParam(value = "postId", required = true) int postId) throws Throwable{
 
         ResponseObject<List<Attach>> ret = new ResponseObject<>();
         Attach attach = new Attach();
@@ -118,7 +160,7 @@ public class AttachRestController {
     }
 
     @RequestMapping("/attach/delete")
-    public ResponseObject<List<Attach>> deleteDestructionList(@RequestParam("postId") int postId){
+    public ResponseObject<List<Attach>> deleteDestructionList(@RequestParam(value = "postId") int postId){
 
         ResponseObject<List<Attach>> ret = new ResponseObject<>();
         Attach attach = new Attach();
@@ -135,6 +177,5 @@ public class AttachRestController {
         ret.setReturnCode(StatusCode.OK);
         return ret;
     }
-
 
 }

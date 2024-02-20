@@ -1,7 +1,6 @@
 $(document).ready(function () {
-    // 페이지 로드 시 URL에서 postId를 추출하여 loadData 함수 호출
     let postId = getPostId();
-    loadData(postId);
+    upPostHit(postId);
 });
 
 function loadData(postId) {
@@ -17,7 +16,7 @@ function loadData(postId) {
                 // 가져온 데이터로 페이지 채우기
                 fillPage(post);
             } else {
-                alert('데이터 가져오기 실패');
+                alert('상세보기 데이터 가져오기 실패');
             }
         },
         error: function () {
@@ -26,18 +25,80 @@ function loadData(postId) {
     });
 }
 
+function upPostHit(postId) {
+    $.ajax({
+        url: '/attach/update/postHit',
+        type: 'POST',
+        data: { postId: postId },
+        dataType: 'json',
+        success: function (response) {
+            if(response.returnCode === '200') {
+                console.log("조회수 증가 성공");
+                loadData(postId);
+            } else {
+                console.log("조회수 증가 안됨");
+            }
+        },
+        error: function () {
+            alert('서버와의 통신 중 오류가 발생했습니다.');
+        }
+    })
+}
 function fillPage(post) {
     // 가져온 데이터로 페이지를 동적으로 채우는 코드
-    let postDetailHtml = '<div class="border-bottom border-2 p-3">' +
+    let postDetailHtml =
+        '<div class="border-bottom border-2 p-3">' +
         '<div class="fw-bold h4">' + post.postTitle + '</div>' +
-        '<div class="text-secondary">' + post.postDate + ' | 조회수 ' + post.postHit + ' | ' + post.postAuthor + '</div>' +
+        '<div class="text-secondary">' + post.postDate.replace('T', ' ') + ' | 조회수 ' + post.postHit + ' | ' + post.postAuthor + '</div>' +
         '</div>' +
-        '<div class="p-3" style="">' + post.postContent + '</div>';
+        '<div class="p-3" style="min-height: 300px" id="postContent">' + post.postContent + '</div>';
     $('#postDetail').html(postDetailHtml);
 }
 
 // URL에서 특정 파라미터의 값을 가져오는 함수
 function getPostId() {
-    let postId = window.location.pathname.split('/').pop();
-    return postId;
+    return window.location.pathname.split('/').pop();
+}
+
+function getPrevPost() {
+    let postId = getPostId();
+    window.location.href = '/attach/details/' + (parseInt(postId) + 1);
+}
+
+function getNextPost() {
+    let postId = getPostId();
+    window.location.href = '/attach/details/' + (parseInt(postId) - 1);
+}
+
+function reDirectAttachUpdate() {
+
+    let postId = getPostId(); // 이전에 정의한 함수 사용 (getPostId는 페이지의 postId를 가져오는 함수)
+
+    // 쿼리 매개변수를 사용하여 URL 생성
+    let redirectUrl = "/attachModify/"+ postId;
+
+    // 리다이렉트
+    window.location.href = redirectUrl;
+}
+
+function attachDelete() {
+
+    let postId = getPostId();
+
+    $.ajax({
+        url: '/attach/delete',
+        type: 'POST',
+        data: { postId: postId },
+        dataType: 'json',
+        success: function (response) {
+            if(response.returnCode === "200") {
+                alert('게시글이 성공적으로 삭제되었습니다.');
+            } else
+                alert('게시글을 삭제하지 못했습니다.')
+            window.location.href= "/attach";
+        },
+        error: function () {
+            alert('서버와의 통신 중 오류가 발생했습니다.');
+        }
+    })
 }

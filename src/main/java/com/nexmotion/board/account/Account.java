@@ -13,6 +13,7 @@ public class Account implements UserDetails {
 
     private String userid;
     private String password;
+    private String memberName;
     private String authority;
     private boolean isAccountNonExpired;
     private boolean isAccountNonLocked;
@@ -25,6 +26,10 @@ public class Account implements UserDetails {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void setMemberName(String memberName) {
+        this.memberName = memberName;
     }
 
     public void setAccountNonExpired(boolean isAccountNonExpired) {
@@ -73,6 +78,10 @@ public class Account implements UserDetails {
         return this.userid;
     }
 
+    public String getMemberName() {
+        return memberName;
+    }
+
     @Override
     public boolean isAccountNonExpired() {
         return this.isAccountNonExpired;
@@ -95,9 +104,10 @@ public class Account implements UserDetails {
 
     @Override
     public String toString() {
-        return "Account [userid=" + userid + ", password=" + password + ", authority=" + authority
-                + ", isAccountNonExpired=" + isAccountNonExpired + ", isAccountNonLocked=" + isAccountNonLocked
-                + ", isCredentialsNonExpired=" + isCredentialsNonExpired + ", isEnabled=" + isEnabled + "]";
+        return "Account [userid=" + userid + ", password=" + password + ", memberName=" + memberName +
+                ", authority=" + authority + ", isAccountNonExpired=" + isAccountNonExpired
+                + ", isAccountNonLocked=" + isAccountNonLocked + ", isCredentialsNonExpired="
+                + isCredentialsNonExpired + ", isEnabled=" + isEnabled + "]";
     }
 
 }

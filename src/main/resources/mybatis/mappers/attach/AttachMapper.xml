@@ -28,6 +28,20 @@
         LIMIT 10
     </select>
 
+    <select id="selectAttachDetails" parameterType="com.nexmotion.board.attach.Attach" resultMap="attachResultMap">
+        SELECT *
+        FROM attach_board
+        WHERE post_id = #{postId}
+    </select>
+
+    <select id="selectAttachSearch" parameterType="com.nexmotion.board.attach.Attach" resultMap="attachResultMap">
+        SELECT *
+        FROM attach_board_2
+        WHERE MATCH (post_title, post_content) AGAINST (#{keyword} IN BOOLEAN MODE)
+        ORDER BY post_date DESC
+            LIMIT 10
+    </select>
+
     <!-- insert -->
     <insert id="insertAttach" parameterType="com.nexmotion.board.attach.Attach">
         INSERT INTO attach_board
@@ -46,37 +60,49 @@
     </update>
 
     <!--  delete (delete문을 써야하나)  -->
-    <delete id="deleteAttach" parameterType="int">
+    <update id="deleteAttach" parameterType="int">
         UPDATE attach_board
-        SET post_delete_yn = 'Y'
+        SET post_title="삭제된 게시물 입니다." , post_content="삭제된 게시물입니다."
         WHERE post_id = #{postId}
-    </delete>
+    </update>
+
+<!--    <update id="deleteAttach" parameterType="int">-->
+<!--        UPDATE attach_board-->
+<!--        SET post_delete_yn = 'Y' -->
+<!--        WHERE post_id = #{postId}-->
+<!--    </update>-->
+
+
 
     <!-- select by title -->
     <select id="getAttachByTitle" resultType="com.nexmotion.board.attach.Attach" parameterType="string">
         SELECT * FROM attach_board
-        WHERE post_title LIKE CONCAT('%', #{postTitle}, '%') AND post_delete_yn = 0
+        WHERE post_title LIKE CONCAT('%', #{postTitle}, '%') AND post_delete_yn = "N"
     </select>
 
     <!-- select by content -->
     <select id="getAttachByContent" resultType="com.nexmotion.board.attach.Attach" parameterType="string">
         SELECT * FROM attach_board
-        WHERE post_content LIKE CONCAT('%', #{postContent}, '%') AND post_delete_yn = 0
+        WHERE post_content LIKE CONCAT('%', #{postContent}, '%') AND post_delete_yn = "N"
     </select>
 
-
+    <update id="updatePostHit" parameterType="com.nexmotion.board.attach.Attach">
+        UPDATE attach_board
+        SET post_hit = #{postHit}
+        WHERE post_id = #{postId}
+    </update>
 
     <!-- Your select all query here with pagination -->
     <select id="getAllAttach" resultType="com.nexmotion.board.attach.Attach" parameterType="java.util.Map">
         SELECT * FROM attach_board
-        WHERE post_delete_yn = 0
+        WHERE post_delete_yn = "N"
         ORDER BY post_date DESC
             LIMIT #{start}, #{pageSize}
     </select>
 
     <!-- Your count all query here -->
     <select id="getTotalCount" resultType="int">
-        SELECT COUNT(*) FROM attach_board WHERE post_delete_yn = 0
+        SELECT COUNT(*) FROM attach_board WHERE post_delete_yn = "N"
     </select>
 
 </mapper>

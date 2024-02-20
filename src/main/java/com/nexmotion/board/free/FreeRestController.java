@@ -1,5 +1,6 @@
 package com.nexmotion.board.free;
 
+import com.nexmotion.board.account.AccountService;
 import com.nexmotion.board.common.ResponseObject;
 import com.nexmotion.board.common.StatusCode;
 import org.slf4j.Logger;
@@ -19,13 +20,14 @@ public class FreeRestController {
 
     @Autowired
     FreeService freeService;
+    @Autowired
+    AccountService accountService;
 
     @RequestMapping("/free/select")
     public ResponseObject<List<Free>> select(
             @RequestParam(name = "postId", defaultValue = "2147483647") Integer postId) throws Throwable {
 
         ResponseObject<List<Free>> ret = new ResponseObject<>();
-        Free free = new Free();
         List<Free> freeList = null;
 
         try {
@@ -46,32 +48,34 @@ public class FreeRestController {
 
         ResponseObject<Free> ret = new ResponseObject<>();
         Free free = new Free();
-        Free freeDetails = null;
 
         free.setPostId(postId);
 
         try {
-            freeDetails = freeService.selectFreeDetails(free);
+            free = freeService.selectFreeDetails(free);
         } catch (Exception e) {
             ret.setReturnCode(StatusCode.ERROR_SERVICE);
             logger.error("ERROR_SERVICE(freeError)", e);
             return ret;
         }
-        ret.setData(freeDetails);
+        ret.setData(free);
         ret.setReturnCode(StatusCode.OK);
         return ret;
     }
 
     @RequestMapping("/free/insert")
     public ResponseObject<List<Free>> insert(
-            @RequestParam(value = "postAuthor", required = false) String postAuthor,
-            @RequestParam(value = "postTitle", required = false) String postTitle,
-            @RequestParam(value = "postContent", required = false) String postContent) throws Throwable {
+            @RequestParam(name = "postTitle", required = false) String postTitle,
+            @RequestParam(name = "postContent", required = false) String postContent) throws Throwable {
 
         ResponseObject<List<Free>> ret = new ResponseObject<>();
         Free free = new Free();
 
-        free.setPostAuthor(postAuthor);
+        String userid = accountService.getCurrentUsername();
+
+        String memberName = accountService.getAccount(userid).getMemberName();
+
+        free.setPostAuthor(memberName);
         free.setPostTitle(postTitle);
         free.setPostContent(postContent);
 
@@ -88,22 +92,42 @@ public class FreeRestController {
 
     @RequestMapping("/free/update")
     public ResponseObject<List<Free>> update(
-            @RequestParam(value = "postId", required = false) int postId,
-            @RequestParam(value = "postTitle", required = false) String postTitle,
-            @RequestParam(value = "postContent", required = false) String postContent,
-            @RequestParam(value = "postUpdateDate", required = false) LocalDateTime postUpdateDate) throws Throwable {
-
+            @RequestParam(value = "postId", required = true) int postId,
+            @RequestParam(value = "postTitle", required = true) String postTitle,
+            @RequestParam(value = "postContent", required = true) String postContent
+            ) throws Throwable {
 
         ResponseObject<List<Free>> ret = new ResponseObject<>();
         Free free = new Free();
 
-        free.setPostUpdateDate(postUpdateDate);
         free.setPostContent(postContent);
         free.setPostId(postId);
         free.setPostTitle(postTitle);
 
         try {
             freeService.updateFree(free);
+        } catch (Exception e) {
+            ret.setReturnCode(StatusCode.ERROR_SERVICE);
+            logger.error("ERROR_SERVICE(freeError)", e);
+            return ret;
+        }
+        ret.setReturnCode(StatusCode.OK);
+        return ret;
+    }
+
+    @RequestMapping("/free/update/postHit")
+    public ResponseObject<Free> updatePostHit(
+            @RequestParam(value = "postId", required = true) int postId) throws Throwable {
+
+        ResponseObject<Free> ret = new ResponseObject<>();
+        Free free = new Free();
+
+        free.setPostId(postId);
+        free = freeService.selectFreeDetails(free);
+        free.setPostHit(free.getPostHit() + 1);
+
+        try {
+            freeService.updatePostHit(free);
         } catch (Exception e) {
             ret.setReturnCode(StatusCode.ERROR_SERVICE);
             logger.error("ERROR_SERVICE(freeError)", e);
