@@ -37,7 +37,7 @@
     <select id="selectAttachSearch" parameterType="com.nexmotion.board.attach.Attach" resultMap="attachResultMap">
         SELECT *
         FROM attach_board_2
-        WHERE MATCH (post_title, post_content) AGAINST (#{keyword} IN BOOLEAN MODE)
+        WHERE MATCH (post_title, post_content) AGAINST (#{keyword}* IN BOOLEAN MODE)
         ORDER BY post_date DESC
             LIMIT 10
     </select>
