@@ -31,40 +31,14 @@
         FROM notice_board
     </select>
 
-<!--    <insert id="insertNotice" parameterType="com.nexmotion.board.notice.Notice">-->
-<!--        /*NoticeMapper.insertNotice Query*/-->
-<!--        INSERT-->
-<!--          INTO post-->
-<!--        VALUES (-->
-<!--                #{postId}-->
-<!--               ,#{postAuthor}-->
-<!--               ,#{postTitle}-->
-<!--               ,#{postDate}-->
-<!--               ,#{postUpdateDate}-->
-<!--               ,#{postContent}-->
-<!--               ,#{postHit}-->
-<!--               ,#{postDeleteYn})-->
-<!--    </insert>-->
+    <delete id="deleteNotice" parameterType="com.nexmotion.board.notice.Notice">
+        /*NoticeMapper.deleteNotice Query*/
+        DELETE
+          FROM post
+         WHERE post_id = #{postId}
+    </delete>
 
-<!--    <update id="updateNotice" parameterType="com.nexmotion.board.notice.Notice">-->
-<!--        /*NoticeMapper.updateNotice Query*/-->
-<!--        UPDATE post-->
-<!--           SET post_id = #{postId}-->
-<!--              ,post_author = #{postAuthor}-->
-<!--              ,post_title = #{postTitle}-->
-<!--              ,post_date = #{postDate}-->
-<!--              ,post_update_date = #{postUpdateDate}-->
-<!--              ,post_content = #{postContent}-->
-<!--              ,post_hit = #{postHit}-->
-<!--              ,post_delete_yn = # {postDeleteYn}-->
-<!--         WHERE post_id = #{postId}-->
-<!--    </update>-->
 
-<!--    <delete id="deleteNotice" parameterType="com.nexmotion.board.notice.Notice">-->
-<!--        /*NoticeMapper.deleteNotice Query*/-->
-<!--        DELETE-->
-<!--          FROM post-->
-<!--         WHERE post_id = #{postId}-->
-<!--    </delete>-->
+
 
 </mapper>

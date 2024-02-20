@@ -1,5 +1,6 @@
 package com.nexmotion.board.notice;
 
+import com.nexmotion.board.account.AccountService;
 import com.nexmotion.board.common.ResponseObject;
 import com.nexmotion.board.common.StatusCode;
 import org.slf4j.Logger;
@@ -19,6 +20,8 @@ public class NoticeRestController {
 
     @Autowired
     NoticeService noticeService;
+    @Autowired
+    AccountService accountService;
 
     @RequestMapping("/notice/select")
     public ResponseObject<List<Notice>> select(
@@ -42,25 +45,17 @@ public class NoticeRestController {
 
     @RequestMapping("/notice/insert")
     public ResponseObject<List<Notice>> insert(
-            @RequestParam(value = "postUpdateDate", required = false) LocalDateTime postUpdateDate,
-            @RequestParam(value = "postAuthor", required = false) String postAuthor,
-            @RequestParam(value = "postContent", required = false) String postContent,
-            @RequestParam(value = "postId", required = false) int postId,
-            @RequestParam(value = "postHit", required = false) int postHit,
-            @RequestParam(value = "postDate", required = false) LocalDateTime postDate,
-            @RequestParam(value = "postDeleteYn", required = false) String postDeleteYn,
-            @RequestParam(value = "postTitle", required = false) String postTitle) {
+            @RequestParam(value = "postContent", required = true) String postContent,
+            @RequestParam(value = "postTitle", required = true) String postTitle) throws Throwable{
 
         ResponseObject<List<Notice>> ret = new ResponseObject<>();
         Notice notice = new Notice();
 
-        notice.setPostUpdateDate(postUpdateDate);
-        notice.setPostAuthor(postAuthor);
+        String userid = accountService.getCurrentUsername();
+        String memberName = accountService.getAccount(userid).getMemberName();
+
+        notice.setPostAuthor(memberName);
         notice.setPostContent(postContent);
-        notice.setPostId(postId);
-        notice.setPostHit(postHit);
-        notice.setPostDate(postDate);
-        notice.setPostDeleteYn(postDeleteYn);
         notice.setPostTitle(postTitle);
 
         try {
@@ -74,27 +69,39 @@ public class NoticeRestController {
         return ret;
     }
 
+    @RequestMapping("/notice/update/postHit")
+    public ResponseObject<Notice> updatePostHit(
+            @RequestParam(value = "postId", required = true) int postId) throws Throwable {
+
+        ResponseObject<Notice> ret = new ResponseObject<>();
+        Notice notice = new Notice();
+
+        notice.setPostId(postId);
+        notice = noticeService.selectNoticeDetails(notice);
+        notice.setPostHit(notice.getPostHit() + 1);
+
+        try {
+            noticeService.updatePostHit(notice);
+        } catch (Exception e) {
+            ret.setReturnCode(StatusCode.ERROR_SERVICE);
+            logger.error("ERROR_SERVICE(noticeError)", e);
+            return ret;
+        }
+        ret.setReturnCode(StatusCode.OK);
+        return ret;
+    }
+
     @RequestMapping("/notice/update")
     public ResponseObject<List<Notice>> update(
-            @RequestParam(value = "postUpdateDate", required = false) LocalDateTime postUpdateDate,
-            @RequestParam(value = "postAuthor", required = false) String postAuthor,
-            @RequestParam(value = "postContent", required = false) String postContent,
-            @RequestParam(value = "postId", required = false) int postId,
-            @RequestParam(value = "postHit", required = false) int postHit,
-            @RequestParam(value = "postDate", required = false) LocalDateTime postDate,
-            @RequestParam(value = "postDeleteYn", required = false) String postDeleteYn,
-            @RequestParam(value = "postTitle", required = false) String postTitle) {
+            @RequestParam(value = "postContent", required = true) String postContent,
+            @RequestParam(value = "postId", required = true) int postId,
+            @RequestParam(value = "postTitle", required = true) String postTitle) throws Throwable{
 
         ResponseObject<List<Notice>> ret = new ResponseObject<>();
         Notice notice = new Notice();
 
-        notice.setPostUpdateDate(postUpdateDate);
-        notice.setPostAuthor(postAuthor);
         notice.setPostContent(postContent);
         notice.setPostId(postId);
-        notice.setPostHit(postHit);
-        notice.setPostDate(postDate);
-        notice.setPostDeleteYn(postDeleteYn);
         notice.setPostTitle(postTitle);
 
         try {
