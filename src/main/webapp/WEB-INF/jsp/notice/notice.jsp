@@ -11,11 +11,11 @@
     <title>공지사항 - 삼육대학교 컴퓨터공학부</title>
 </head>
 <body>
-<%--해더부분--%>
-<%@ include file="/WEB-INF/jsp/common/header.jsp" %>
+    <%--해더부분--%>
+    <%@ include file="/WEB-INF/jsp/common/header.jsp" %>
 
-<div class="tw-mt-[127px] tw-w-full tw-flex tw-flex-row tw-w-full tw-max-w-[80%] lg:tw-min-w-[1250px] tw-items-start tw-justify-between tw-mx-auto tw-gap-[30px] !tw-z-[99]" >
-    <%@ include file="/WEB-INF/jsp/common/leftMenu.jsp" %>
+    <div class="tw-mt-[127px] tw-w-full tw-flex tw-flex-row tw-w-full tw-max-w-[80%] lg:tw-min-w-[1250px] tw-items-start tw-justify-between tw-mx-auto tw-gap-[30px] !tw-z-[99]" >
+        <%@ include file="/WEB-INF/jsp/common/leftMenu.jsp" %>
 
     <%--main-content--%>
     <main class="tw-w-full">
@@ -82,8 +82,8 @@
     </main>
 </div>
 
-<%@ include file="/WEB-INF/jsp/common/footer.jsp" %>
+    <%@ include file="/WEB-INF/jsp/common/footer.jsp" %>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script src="/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

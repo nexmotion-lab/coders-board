@@ -1,6 +1,7 @@
 package com.nexmotion.board.attach;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
@@ -20,6 +21,11 @@ public class AttachService implements AttachMapper {
     @Override
     public Attach selectAttachDetails(Attach attach) throws SQLException {
         return attachMapper.selectAttachDetails(attach);
+    }
+
+    @Override
+    public List<Attach> selectAttachSearch(String keyword) throws SQLException{
+        return attachMapper.selectAttachSearch(keyword);
     }
 
     @Override

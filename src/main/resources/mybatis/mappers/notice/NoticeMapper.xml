@@ -30,41 +30,59 @@
         WHERE post_delete_yn = 'N'
         FROM notice_board
     </select>
+    <insert id="insertNotice" parameterType="com.nexmotion.board.notice.Notice">
+        /*NoticeMapper.insertNotice Query*/
+        INSERT
+          INTO notice_board
+              (post_author, post_title, post_content, post_date)
+        VALUES
+            (#{postAuthor}, #{postTitle}, #{postContent}, now())
+    </insert>
 
-<!--    <insert id="insertNotice" parameterType="com.nexmotion.board.notice.Notice">-->
-<!--        /*NoticeMapper.insertNotice Query*/-->
-<!--        INSERT-->
-<!--          INTO post-->
-<!--        VALUES (-->
-<!--                #{postId}-->
-<!--               ,#{postAuthor}-->
-<!--               ,#{postTitle}-->
-<!--               ,#{postDate}-->
-<!--               ,#{postUpdateDate}-->
-<!--               ,#{postContent}-->
-<!--               ,#{postHit}-->
-<!--               ,#{postDeleteYn})-->
-<!--    </insert>-->
+    <update id="updateNotice" parameterType="com.nexmotion.board.notice.Notice">
+        /*NoticeMapper.updateNotice Query*/
+        UPDATE notice_board
+           SET post_title = #{postTitle}
+              ,post_update_date = #{postUpdateDate}
+              ,post_content = #{postContent}
+         WHERE post_id = #{postId}
+    </update>
 
-<!--    <update id="updateNotice" parameterType="com.nexmotion.board.notice.Notice">-->
-<!--        /*NoticeMapper.updateNotice Query*/-->
-<!--        UPDATE post-->
-<!--           SET post_id = #{postId}-->
-<!--              ,post_author = #{postAuthor}-->
-<!--              ,post_title = #{postTitle}-->
-<!--              ,post_date = #{postDate}-->
-<!--              ,post_update_date = #{postUpdateDate}-->
-<!--              ,post_content = #{postContent}-->
-<!--              ,post_hit = #{postHit}-->
-<!--              ,post_delete_yn = # {postDeleteYn}-->
-<!--         WHERE post_id = #{postId}-->
-<!--    </update>-->
+    <delete id="deleteNotice" parameterType="int">
+        UPDATE notice_board
+        SET post_title="삭제된 게시물 입니다." , post_content="삭제된 게시물입니다."
+        WHERE post_id = #{postId}
+    </delete>
 
-<!--    <delete id="deleteNotice" parameterType="com.nexmotion.board.notice.Notice">-->
-<!--        /*NoticeMapper.deleteNotice Query*/-->
-<!--        DELETE-->
-<!--          FROM post-->
-<!--         WHERE post_id = #{postId}-->
-<!--    </delete>-->
+    <!-- select by title -->
+    <select id="getNoticeByTitle" resultType="com.nexmotion.board.notice.Notice" parameterType="string">
+        SELECT * FROM notice_board
+        WHERE post_title LIKE CONCAT('%', #{postTitle}, '%') AND post_delete_yn = "N"
+    </select>
+
+    <!-- select by content -->
+    <select id="getNoticeByContent" resultType="com.nexmotion.board.notice.Notice" parameterType="string">
+        SELECT * FROM notice_board
+        WHERE post_content LIKE CONCAT('%', #{postContent}, '%') AND post_delete_yn = "N"
+    </select>
+
+    <update id="updatePostHit" parameterType="com.nexmotion.board.notice.Notice">
+        UPDATE notice_board
+        SET post_hit = #{postHit}
+        WHERE post_id = #{postId}
+    </update>
+
+    <!-- Your select all query here with pagination -->
+    <select id="getAllNotice" resultType="com.nexmotion.board.notice.Notice" parameterType="java.util.Map">
+        SELECT * FROM notice_board
+        WHERE post_delete_yn = "N"
+        ORDER BY post_date DESC
+            LIMIT #{start}, #{pageSize}
+    </select>
+
+    <!-- Your count all query here -->
+    <select id="getTotalCount" resultType="int">
+        SELECT COUNT(*) FROM notice_board WHERE post_delete_yn = "N"
+    </select>
 
 </mapper>
