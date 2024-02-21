@@ -63,12 +63,12 @@ function getPostId() {
 
 function getPrevPost() {
     let postId = getPostId();
-    window.location.href = '/free/details/' + (parseInt(postId) + 1);
+    window.location.href = '/free/details/' + (parseInt(postId) - 1);
 }
 
 function getNextPost() {
     let postId = getPostId();
-    window.location.href = '/free/details/' + (parseInt(postId) - 1);
+    window.location.href = '/free/details/' + (parseInt(postId) + 1);
 }
 
 function reDirectFreeUpdate() {

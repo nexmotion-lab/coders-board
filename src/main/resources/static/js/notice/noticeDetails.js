@@ -61,12 +61,12 @@ function getPostId() {
 
 function getPrevPost() {
     let postId = getPostId();
-    window.location.href = '/notice/details/' + (parseInt(postId) + 1);
+    window.location.href = '/notice/details/' + (parseInt(postId) - 1);
 }
 
 function getNextPost() {
     let postId = getPostId();
-    window.location.href = '/notice/details/' + (parseInt(postId) - 1);
+    window.location.href = '/notice/details/' + (parseInt(postId) + 1);
 }
 
 function reDirectNoticeUpdate() {
