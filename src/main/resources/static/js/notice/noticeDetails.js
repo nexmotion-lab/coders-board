@@ -55,7 +55,6 @@ function fillPage(post) {
     $('#postDetail').html(postDetailHtml);
 }
 
-// URL에서 특정 파라미터의 값을 가져오는 함수
 function getPostId() {
     return window.location.pathname.split('/').pop();
 }

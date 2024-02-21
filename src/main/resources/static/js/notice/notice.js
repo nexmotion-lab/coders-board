@@ -37,7 +37,7 @@ function loadData(current_page) {
             }
         },
         error: function() {
-            alert('서버와의 통신 중 오류가 발생했습니다.1');
+            alert('서버와의 통신 중 오류가 발생했습니다.');
         }
     });
 }
@@ -70,7 +70,7 @@ function loadPagination(page) {
             }
         },
         error: function() {
-            alert('서버와의 통신 중 오류가 발생했습니다.2');
+            alert('서버와의 통신 중 오류가 발생했습니다.');
         }
     });
 }
